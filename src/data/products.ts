@@ -11,7 +11,9 @@ export const CATEGORY_TABS: CategoryTab[] = [
 ];
 
 export const PRODUCTS: Product[] = [
-  // --- WATER PURIFIERS ---
+  // ==========================================
+  // --- WATER PURIFIERS (PENAPIS AIR) ---
+  // ==========================================
   {
     id: 'villaem3',
     category: 'water',
@@ -19,14 +21,23 @@ export const PRODUCTS: Product[] = [
     code: 'CHP-7320L',
     filterType: 'Reverse Osmosis (RO)',
     description: 'Model No.1 pilihan keluarga dengan 4 tetapan suhu air (Panas, Sejuk, Suam, Bilik) dan tangki besar 11.3L.',
-    tags: ['4 Suhu Air', 'Tangki 11.3L', 'UV Sterilisation'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-villaem3-CHP-7320L.png',
+    tags: ['4 Suhu Air', 'Tangki 11.3L', 'UV Sterilisation', 'Child Lock'],
+    image: 'https://emall.coway.com.my/ProductImages/859ec6e7-6111-41bb-aad4-75a7145a8a50/1/240x240/villaem-3-white.png',
     regularMonthly: 'RM74.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM4,200',
     badge: 'Paling Popular',
-    featured: true
+    featured: true,
+    colorVariants: [
+      { name: 'Pure White', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/859ec6e7-6111-41bb-aad4-75a7145a8a50/1/240x240/villaem-3-white.png' },
+      { name: 'Pebble Gray', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/cfa73eea-3f49-4543-8563-8f626a1e9ea5/1/240x240/villaem-3-gray.png' }
+    ],
+    tankCapacity: { hot: '1.2 L', cold: '2.3 L', ambient: '6.4 L', total: '11.3 L' },
+    dimensions: '340 x 523 x 518 mm',
+    powerConsumption: 'Heater 270W - 320W, Compressor 0.7A',
+    filtrationStages: '6-Step Coway RO Filtration (Plus-Sediment, Pre-Carbon, RO Membrane, Plus Inno-Sense, Antibacterial)',
+    keyFeatures: ['4 Suhu Air Berasingan', 'Pensterilan Faucet UV Automatik', 'Penunjuk Suhu LED & Mood Lamp', 'Child Lock Keselamatan Air Panas']
   },
   {
     id: 'ais',
@@ -35,14 +46,23 @@ export const PRODUCTS: Product[] = [
     code: 'CHPI-7520L',
     filterType: 'Reverse Osmosis (RO)',
     description: 'Penapis air serba canggih dengan pembuat ketulan ais kristal automatik & 3 pilihan suhu air.',
-    tags: ['Pembuat Ais Kristal', 'Dual UV Care', '3 Suhu'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-ais-CHPI-7520L.png',
+    tags: ['Pembuat Ais Kristal', 'Dual UV Care', '3 Suhu Air', 'Eco Mode'],
+    image: 'https://emall.coway.com.my/ProductImages/cd349c96-7052-4f9a-a75d-7eb696eedaa3/1/240x240/ais-white.png',
     regularMonthly: 'RM120.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM7,500',
     badge: 'Pembuat Ais',
-    featured: true
+    featured: true,
+    colorVariants: [
+      { name: 'Porcelain White', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/cd349c96-7052-4f9a-a75d-7eb696eedaa3/1/240x240/ais-white.png' },
+      { name: 'Pebble Gray', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/19f9ad9e-d9a0-4aeb-b633-f34bd0672416/1/240x240/ais-gray.png' }
+    ],
+    tankCapacity: { hot: '1.5 L', cold: '1.8 L', ambient: '1.8 L', ice: '0.7 kg', total: '5.8 L' },
+    dimensions: '270 x 546 x 515 mm',
+    powerConsumption: 'Heater 310W - 370W, Ice Maker 130W, Compressor 0.8A',
+    filtrationStages: 'RO Pure Filtration + Dual UV Sterilisation System',
+    keyFeatures: ['Ais Kristal Bullet Cepat', 'Dual UV Care pada Tangki & Faucet', 'Sentuhan Pintar My Cup Preset', 'Sistem Pembasmian Kuman Automatik']
   },
   {
     id: 'neon',
@@ -50,14 +70,54 @@ export const PRODUCTS: Product[] = [
     name: 'Coway Neon',
     code: 'CHP-6210N',
     filterType: 'Natural Water',
-    description: 'Rekaan ultra-slim minimalis moden yang menjimatkan ruang dapur dengan 3 suhu air mineral semula jadi.',
-    tags: ['Ultra Slim', 'Natural Filter', '3 Suhu'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-neon-water-purifier-CHP-6210N.png',
+    description: 'Rekaan ultra-slim minimalis moden 18cm yang menjimatkan ruang dapur dengan 3 suhu air mineral semula jadi.',
+    tags: ['Ultra Slim 18cm', 'Natural Filter', '3 Suhu', '5 Pilihan Warna'],
+    image: 'https://emall.coway.com.my/ProductImages/db8c15f4-b7a0-485a-ac62-6c2f7c1ec26e/1/240x240/neon-white.png',
     regularMonthly: 'RM59.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM3,600',
-    badge: 'Slim Design'
+    badge: '5 Pilihan Warna',
+    featured: true,
+    colorVariants: [
+      { name: 'Pure White', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/db8c15f4-b7a0-485a-ac62-6c2f7c1ec26e/1/240x240/neon-white.png' },
+      { name: 'Pebble Gray', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/c4c984ec-a10b-4882-9d03-b1b989c7480b/1/240x240/neon-gray.png' },
+      { name: 'Blush Pink', colorHex: '#F472B6', image: 'https://emall.coway.com.my/ProductImages/b415f28c-7f4f-40f3-84e1-617a6a2eeaa4/1/240x240/neon-pink.png' },
+      { name: 'Sky Blue', colorHex: '#38BDF8', image: 'https://emall.coway.com.my/ProductImages/10d2a982-c861-44be-a493-e6d642196d30/1/240x240/neon-blue.png' },
+      { name: 'Sage Green', colorHex: '#86EFAC', image: 'https://emall.coway.com.my/ProductImages/2308356a-5b9c-4259-bd58-58ed2a516b36/1/240x240/neon-green.png' }
+    ],
+    tankCapacity: { hot: '1.0 L', cold: '1.35 L', ambient: '2.65 L', total: '5.0 L' },
+    dimensions: '180 x 440 x 422 mm',
+    powerConsumption: 'Heater 300W, Compressor 0.5A',
+    filtrationStages: 'Coway Nanotrap™ & Plus Inno-Sense Mineral Filtration',
+    keyFeatures: ['Lebar Hanya 18cm Jimat Ruang', '5 Pilihan Warna Estetik Dapur', 'Panel Sentuh Pintar Intuitif', 'Kaya Mineral Semula Jadi']
+  },
+  {
+    id: 'dazzie',
+    category: 'water',
+    name: 'Coway Dazzie',
+    code: 'CHO-1201N',
+    filterType: 'Natural Water',
+    description: 'Penapis air moden tanpa tangki (tankless) dengan pemanasan & penyejukan segera dalam 3 saat.',
+    tags: ['Tankless Direct', 'Pantas Panas 3s', '4 Tetapan Isipadu', '5 Pilihan Warna'],
+    image: 'https://emall.coway.com.my/ProductImages/2cdb7053-6a95-4e6d-8ebc-4263cb6a23e7/1/240x240/dazzie-white.png',
+    regularMonthly: 'RM74.00',
+    promoMonthly: '20',
+    promoMonths: '7',
+    outrightPrice: 'RM4,590',
+    badge: 'Tankless Segera',
+    colorVariants: [
+      { name: 'Pure White', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/2cdb7053-6a95-4e6d-8ebc-4263cb6a23e7/1/240x240/dazzie-white.png' },
+      { name: 'Pebble Gray', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/57977099-8ba5-4172-89ef-57c34ffe121c/1/240x240/dazzie-gray.png' },
+      { name: 'Blush Pink', colorHex: '#F472B6', image: 'https://emall.coway.com.my/ProductImages/1618281c-5660-47bd-b4f3-c4370fd3048c/1/240x240/dazzie-pink.png' },
+      { name: 'Sky Blue', colorHex: '#38BDF8', image: 'https://emall.coway.com.my/ProductImages/be7b101b-1f39-4bd1-8205-16a7dcb1196b/1/240x240/dazzie-blue.png' },
+      { name: 'Sage Green', colorHex: '#86EFAC', image: 'https://emall.coway.com.my/ProductImages/d8b2ec17-f24a-479c-982d-cd5f166e2ad9/1/240x240/dazzie-green.png' }
+    ],
+    tankCapacity: { total: 'Tankless (Aliran Terus Segera)' },
+    dimensions: '180 x 440 x 385 mm',
+    powerConsumption: 'Instant Heating 2200W, Fast Cooling 0.5A',
+    filtrationStages: 'Nanotrap Filtration System + UV Faucet Cleanse',
+    keyFeatures: ['Pemanasan Segera 3 Saat Tanpa Tunggu', '4 Pilihan Kuantiti Air (120ml, 250ml, 500ml, Berterusan)', 'Teknologi Tankless Paling Bersih & Segar']
   },
   {
     id: 'neoplus',
@@ -66,28 +126,18 @@ export const PRODUCTS: Product[] = [
     code: 'CHP-264L',
     filterType: 'Reverse Osmosis (RO)',
     description: 'Penapis air 3 suhu paling mesra bajet & praktikal untuk seisi keluarga dengan rekaan mesra pengguna.',
-    tags: ['3 Suhu', 'Eco Sensor', 'RO Water'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-neo-plus-CHP-264L.png',
+    tags: ['3 Suhu', 'Eco Sensor', 'RO Water', 'Paling Jimat'],
+    image: 'https://emall.coway.com.my/ProductImages/4fc588de-8d1f-423d-9551-b88a032b2c6f/1/240x240/neo-plus.png',
     regularMonthly: 'RM59.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM3,640',
-    badge: 'Mesra Bajet'
-  },
-  {
-    id: 'dazzie',
-    category: 'water',
-    name: 'Coway Dazzie',
-    code: 'CHO-1201N',
-    filterType: 'Natural Water',
-    description: 'Penapis air moden tanpa tangki (tankless) dengan pemanasan & penyejukan segera berteknologi tinggi.',
-    tags: ['Tankless Segera', 'Natural Filter', 'Kompak'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-dazzie-CHP-1201N.png',
-    regularMonthly: 'RM74.00',
-    promoMonthly: '20',
-    promoMonths: '7',
-    outrightPrice: 'RM4,590',
-    badge: 'Tankless Segera'
+    badge: 'Mesra Bajet',
+    tankCapacity: { hot: '1.0 L', cold: '2.3 L', ambient: '2.5 L', total: '5.8 L' },
+    dimensions: '260 x 483 x 500 mm',
+    powerConsumption: 'Heater 300W, Compressor 0.7A',
+    filtrationStages: 'Coway 6-Step Reverse Osmosis Filtration',
+    keyFeatures: ['3 Suhu Asas (Panas, Sejuk, Bilik)', 'Sensor Cahaya Eco Penjimatan Elektrik', 'Kunci Keselamatan Air Panas Kanak-kanak']
   },
   {
     id: 'cinnamon',
@@ -95,14 +145,19 @@ export const PRODUCTS: Product[] = [
     name: 'Coway Cinnamon',
     code: 'P-6320R',
     filterType: 'Reverse Osmosis (RO)',
-    description: 'Penapis air suhu bilik paling jimat & praktikal. Beroperasi tanpa sebarang bekalan elektrik.',
-    tags: ['Suhu Bilik', 'Tanpa Elektrik', 'RO Water'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-cinnamon-P-6320R.png',
+    description: 'Penapis air suhu bilik paling jimat & praktikal. Beroperasi 100% tanpa sebarang bekalan elektrik.',
+    tags: ['Suhu Bilik', 'Tanpa Elektrik', 'RO Water', 'RM32/bln'],
+    image: 'https://emall.coway.com.my/ProductImages/b79c1af2-60c6-46e3-a902-babade97ea48/1/240x240/cinnamon.png',
     regularMonthly: 'RM32.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM2,490',
-    badge: 'Serendah RM32'
+    badge: 'Serendah RM32',
+    tankCapacity: { ambient: '5.0 L', total: '5.0 L' },
+    dimensions: '200 x 400 x 405 mm',
+    powerConsumption: '0 Watt (Tanpa Elektrik)',
+    filtrationStages: 'High Performance RO Membrane Filtration',
+    keyFeatures: ['Bebas Kos Bil Elektrik', 'Kompak & Mudah Dialihkan', 'Kapasiti Tangki 5.0L']
   },
   {
     id: 'ombak',
@@ -110,14 +165,19 @@ export const PRODUCTS: Product[] = [
     name: 'Coway Ombak',
     code: 'CHP-7310R',
     filterType: 'Reverse Osmosis (RO)',
-    description: 'Direka khas untuk citarasa Malaysia dengan 50 tetapan suhu air dan tangki air panas ekstra besar.',
-    tags: ['50 Tetapan Suhu', 'Tangki Panas Mega', 'RO Pure'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-ombak-CHP-7310R.png',
+    description: 'Direka khas untuk citarasa Malaysia dengan 50 tetapan suhu air dan tangki air panas ekstra besar 3.0L.',
+    tags: ['50 Tetapan Suhu', 'Tangki Panas Mega 3.0L', 'RO Pure', 'UV Dispenser'],
+    image: 'https://emall.coway.com.my/ProductImages/e460e15d-9be7-4e1d-b37d-48a283c529f8/1/240x240/ombak.png',
     regularMonthly: 'RM90.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM4,510',
-    badge: 'Pilihan Ibu'
+    badge: 'Pilihan Ibu',
+    tankCapacity: { hot: '3.0 L', cold: '2.3 L', ambient: '7.8 L', total: '13.1 L' },
+    dimensions: '340 x 523 x 518 mm',
+    powerConsumption: 'Heater 672W, Compressor 0.6A',
+    filtrationStages: 'Coway RO System + UV Sterilisation Dispenser',
+    keyFeatures: ['50 Kombinasi Tetapan Suhu & Isipadu Air', 'Tangki Air Panas Gergasi 3.0 Liter', 'UV Sterilisation Faucet Semasa Pengeluaran']
   },
   {
     id: 'coreslim',
@@ -125,14 +185,23 @@ export const PRODUCTS: Product[] = [
     name: 'Core Slim',
     code: 'CHP-5731N',
     filterType: 'Natural Water',
-    description: 'Penapis air berdiri (floor standing) ultra slim dengan rekaan anggun untuk ruang tamu & dapur.',
-    tags: ['Floor Standing', 'Slim Profile', '3 Suhu'],
-    image: 'https://coway.cc/wp-content/uploads/2026/04/product_image-1.png',
+    description: 'Penapis air berdiri (floor standing) ultra slim dengan rekaan anggun untuk ruang tamu, dapur & pejabat.',
+    tags: ['Floor Standing', 'Slim Profile', 'Tangki 12.0L', '3 Suhu'],
+    image: 'https://emall.coway.com.my/ProductImages/cc9302e6-fdfe-4881-bcc5-b37babee082e/1/240x240/core-slim-white.png',
     regularMonthly: 'RM89.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM5,000',
-    badge: 'Floor Standing'
+    badge: 'Floor Standing',
+    colorVariants: [
+      { name: 'Porcelain White', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/cc9302e6-fdfe-4881-bcc5-b37babee082e/1/240x240/core-slim-white.png' },
+      { name: 'Pebble Gray', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/8561e6f3-94ce-457a-a473-77865dd80bee/1/240x240/core-slim-gray.png' }
+    ],
+    tankCapacity: { hot: '3.6 L', cold: '3.8 L', ambient: '4.6 L', total: '12.0 L' },
+    dimensions: '260 x 483 x 1150 mm',
+    powerConsumption: 'Heater 500W, Compressor 0.7A',
+    filtrationStages: 'Coway Nanotrap™ Filtration & Mineral Boost',
+    keyFeatures: ['Rekaan Floor Standing Anggun Tanpa Meja', 'Tangki Besar 12 Liter', 'Ketinggian Ergonomik']
   },
   {
     id: 'coreplus',
@@ -141,13 +210,18 @@ export const PRODUCTS: Product[] = [
     code: 'CHP-5721L',
     filterType: 'Reverse Osmosis (RO)',
     description: 'Kapasiti tangki gergasi 21.1 Liter. Pilihan utama pejabat, restoran, surau dan keluarga besar.',
-    tags: ['Tangki 21.1L Mega', 'RO Water', 'Pejabat & Premis'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-core-plus-CHP-5721L.png',
+    tags: ['Tangki 21.1L Mega', 'RO Water', 'Pejabat & Restoran'],
+    image: 'https://emall.coway.com.my/ProductImages/ec48948e-5e2f-4edd-8531-58dd0edad5e3/1/240x240/core-plus.png',
     regularMonthly: 'RM93.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM6,500',
-    badge: 'Kapasiti Mega'
+    badge: 'Kapasiti Mega',
+    tankCapacity: { hot: '3.6 L', cold: '6.0 L', ambient: '11.5 L', total: '21.1 L' },
+    dimensions: '370 x 490 x 1257 mm',
+    powerConsumption: 'Heater 500W - 660W, Compressor 0.8A',
+    filtrationStages: 'Coway Commercial Grade Reverse Osmosis Filter',
+    keyFeatures: ['Tangki Mega 21.1 Liter Tidak Pernah Putus Air', 'Sesuai Penggunaan Tinggi Berterusan', 'Kualiti Air RO 100% Tulen']
   },
   {
     id: 'outdoor',
@@ -155,133 +229,176 @@ export const PRODUCTS: Product[] = [
     name: 'Outdoor Filter',
     code: 'POE-23A',
     filterType: 'PVDF Membrane',
-    description: 'Penapis air utama luar rumah menapis keladak, karat, dan kotoran sebelum masuk ke paip rumah.',
-    tags: ['Outdoor POE', 'Backwash Automatik', 'Tahan Karat'],
+    description: 'Penapis air utama luar rumah menapis keladak, karat, dan kotoran sebelum masuk ke paip seluruh rumah.',
+    tags: ['Outdoor POE', 'Backwash Automatik', 'PVDF Membrane', 'Tahan Karat'],
     image: 'https://coway.cc/wp-content/uploads/2026/01/coway-outdoor-filter-POE-23A-e1768813038791.png',
     regularMonthly: 'RM60.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM3,500',
-    badge: 'Luar Rumah'
+    badge: 'Luar Rumah',
+    dimensions: '210 x 210 x 1020 mm',
+    filtrationStages: 'PVDF Hollow Fibre Ultrafiltration Membrane (0.01 Micron)',
+    keyFeatures: ['Menapis Air Sebelum Masuk ke Rumah', 'Sistem Pembersihan Balik Automatik (Auto Backwash)', 'Badan Keluli Tahan Karat Gred Tinggi']
   },
 
-  // --- AIR PURIFIERS ---
+  // ==========================================
+  // --- AIR PURIFIERS (PENAPIS UDARA) ---
+  // ==========================================
   {
     id: 'storm2',
     category: 'air',
     name: 'Storm II',
     code: 'AP-1523D',
     description: 'Penapis udara No.1 paling popular dengan sirkulator udara berkuasa tinggi sejauh 10 meter.',
-    tags: ['HEPA H13', 'Sirkulator 10m', 'Liputan 50m²'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-storm2-air-purifier.png',
+    tags: ['HEPA H13', 'Sirkulator 10m', 'Liputan 50m²', 'Anti-Bakteria'],
+    image: 'https://emall.coway.com.my/ProductImages/f18d8c4d-f7d0-4eb5-a5da-389fbc5a66ad/1/240x240/storm-2.jpg',
     regularMonthly: 'RM60.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM3,190',
     badge: 'No.1 Air Purifier',
-    featured: true
+    featured: true,
+    dimensions: '410 x 515 x 752 mm',
+    powerConsumption: '42 Watt',
+    filtrationStages: 'Pre-Filter, Fine Dust Filter, Deodorisation Filter, Coway HEPA H13 Filter',
+    keyFeatures: ['Kipas Sirkulator Udara Jarak Jauh 10 Meter', 'Liputan Luas 50m² (540 sq ft)', 'Sensor Habuk & Kualiti Udara 4 Warna', 'Mod Haze Khas']
   },
   {
     id: 'lombok3',
     category: 'air',
     name: 'Lombok 3',
     code: 'AP-1520C',
-    description: 'Sistem penapisan 6-Peringkat dengan RBD Plasma & Ioniser untuk membasmi kuman dan alergen haiwan.',
-    tags: ['RBD Plasma', 'Ioniser', 'Bebas Alahan'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-lombok3-AP-1520C.png',
+    description: 'Sistem penapisan 6-Peringkat dengan RBD Plasma & Ioniser untuk membasmi virus, kuman dan alergen haiwan.',
+    tags: ['RBD Plasma', 'Ioniser', 'Bebas Alahan', 'Liputan 50m²'],
+    image: 'https://emall.coway.com.my/ProductImages/67a5be7b-e151-44c3-9079-994677a451b6/1/240x240/lombok-3.jpg',
     regularMonthly: 'RM60.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM3,490',
-    badge: 'Pakar Alahan'
+    badge: 'Pakar Alahan',
+    dimensions: '414 x 264 x 651 mm',
+    powerConsumption: '50 Watt',
+    filtrationStages: '6-Step Filtration + RBD Plasma & Negative Ion Generator',
+    keyFeatures: ['Pemusnah Virus & Bakteria RBD Plasma', 'Penjana Ion Negatif Udara Segar Hutan', 'Terbukti Menyingkirkan Bulu Kucing & Hama']
   },
   {
     id: 'studio',
     category: 'air',
     name: 'Coway Studio',
     code: 'AP-1924A',
-    description: 'Rekaan estetik silinder moden dengan pengambilan udara 360 darjah untuk bilik tidur & kerja.',
-    tags: ['360° Air Intake', 'Mod Senyap', 'Jimat Ruang'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-studio-AP-1924A.png',
+    description: 'Rekaan estetik silinder moden dengan pengambilan udara 360 darjah untuk bilik tidur & ruang kerja.',
+    tags: ['360° Air Intake', 'Mod Senyap', 'Jimat Ruang', 'Pilihan Warna'],
+    image: 'https://emall.coway.com.my/ProductImages/9b502336-eff4-4e13-99c6-ac4689181c2b/1/240x240/studio-white.png',
     regularMonthly: 'RM49.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'NA',
-    badge: 'Serendah RM49'
+    badge: 'Serendah RM49',
+    colorVariants: [
+      { name: 'Modern White', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/9b502336-eff4-4e13-99c6-ac4689181c2b/1/240x240/studio-white.png' },
+      { name: 'Warm Beige', colorHex: '#E7DEC8', image: 'https://emall.coway.com.my/ProductImages/58e15860-eac2-48d6-b551-19d8012c2f98/1/240x240/studio-beige.png' }
+    ],
+    dimensions: '260 x 260 x 480 mm',
+    powerConsumption: '30 Watt',
+    filtrationStages: 'All-in-One 360° True HEPA Filtration',
+    keyFeatures: ['Sedutan Udara Silinder 360 Darjah', 'Operasi Senyap Mod Tidur', 'Lampu Indikator Kualiti Udara Estetik']
   },
   {
-    id: 'noble2',
+    id: 'suite',
     category: 'air',
-    name: 'Noble 2',
-    code: 'AP-2023K',
-    description: 'Model premium dengan rekaan seni bertaraf dunia dan penapisan 4D menyeluruh.',
-    tags: ['4D Filtration', 'Rekaan Elit', 'UV Sterilisation'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-noble-AP-2021A_Gray.png',
-    regularMonthly: 'RM95.00',
+    name: 'Coway Suite',
+    code: 'AP-2524B',
+    description: 'Penapis udara berkapasiti sederhana-besar dengan motor senyap dan rekaan anggun Scandinavian.',
+    tags: ['Liputan 66m²', 'Motor Senyap', 'Pilihan Warna', 'HEPA H13'],
+    image: 'https://emall.coway.com.my/ProductImages/6f51c08c-77e3-49cf-85cd-0ba40602cfea/1/240x240/suite-white.png',
+    regularMonthly: 'RM65.00',
     promoMonthly: '20',
     promoMonths: '7',
-    outrightPrice: 'RM4,600',
-    badge: 'Gred Elit'
+    outrightPrice: 'NA',
+    badge: 'Scandinavian',
+    colorVariants: [
+      { name: 'Modern White', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/6f51c08c-77e3-49cf-85cd-0ba40602cfea/1/240x240/suite-white.png' },
+      { name: 'Warm Beige', colorHex: '#E7DEC8', image: 'https://emall.coway.com.my/ProductImages/37594b88-f027-44f9-b721-dcc47def94ec/1/240x240/suite-beige.png' }
+    ],
+    dimensions: '360 x 360 x 600 mm',
+    filtrationStages: 'True HEPA H13 + Deodorisation Filter',
+    keyFeatures: ['Liputan Luas 66m²', 'Pengesan Gas & Bau Pintar', 'Motor Inverter Senyap Bertenaga']
   },
   {
-    id: 'tuba',
+    id: 'atrium',
     category: 'air',
-    name: 'Coway Tuba',
-    code: 'AP-3008FH',
-    description: 'Penapis udara mega berkuasa tinggi untuk ruang luas seperti dewan, klinik, dan tadika.',
-    tags: ['Liputan 93m²', 'Mega Airflow', 'Komersial'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-tuba-slider1.png',
-    regularMonthly: 'RM95.00',
+    name: 'Coway Atrium',
+    code: 'AP-3525I',
+    description: 'Penapis udara gred komersial/ruang tamu besar dengan rekaan mewah bertaraf seni antarabangsa.',
+    tags: ['Liputan 99m²', '3 Pilihan Warna', 'Dual Filter', 'Ultra Luxury'],
+    image: 'https://emall.coway.com.my/ProductImages/ac34611e-d910-44c0-b9b9-28e5c639f9b0/1/240x240/atrium-white.png',
+    regularMonthly: 'RM89.00',
     promoMonthly: '20',
     promoMonths: '7',
-    outrightPrice: 'RM4,040',
-    badge: 'Ruang Luas'
+    outrightPrice: 'RM4,800',
+    badge: 'Ruang Tamu Besar',
+    colorVariants: [
+      { name: 'Modern White', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/ac34611e-d910-44c0-b9b9-28e5c639f9b0/1/240x240/atrium-white.png' },
+      { name: 'Warm Beige', colorHex: '#E7DEC8', image: 'https://emall.coway.com.my/ProductImages/82f5db57-d480-4bc2-b822-802dc5dfc269/1/240x240/atrium-beige.png' },
+      { name: 'Slate Gray', colorHex: '#64748B', image: 'https://emall.coway.com.my/ProductImages/99a8a5aa-d3df-4e61-a7f5-ba5955d27b33/1/240x240/atrium-gray.png' }
+    ],
+    dimensions: '400 x 400 x 780 mm',
+    filtrationStages: 'Dual Side Mega HEPA Filter System',
+    keyFeatures: ['Liputan 99m² (1,065 sq ft)', 'Dual Fan Airflow System', '3 Pilihan Warna Premium']
   },
 
-  // --- AIR CONDITIONERS ---
+  // ==========================================
+  // --- AIR CONDITIONERS (AIRCOND) ---
+  // ==========================================
   {
     id: 'aircond-f10',
     category: 'aircond',
     name: 'Aircond F-Series 1.0HP',
     code: 'CAC09-ST01F',
     description: 'Penyejukan pantas jimat elektrik dengan 5-Star Inverter dan fungsi pembersihan diri automatik.',
-    tags: ['1.0 HP', 'Fast Cooling', '5-Star Inverter'],
+    tags: ['1.0 HP', 'Fast Cooling', '5-Star Inverter', 'Self-Cleaning'],
     image: 'https://coway.cc/wp-content/uploads/2026/01/coway-malaysia-air-conditioner-e1768810258674.png',
     regularMonthly: 'RM80.00',
     promoMonthly: '20',
     promoMonths: '5',
     outrightPrice: 'NA',
-    badge: 'Inverter Pintar'
+    badge: 'Inverter Pintar',
+    keyFeatures: ['5-Star Energy Inverter Saver', 'Pembersihan Diri Automatik', 'Servis Berjadual Juruteknik Coway']
   },
   {
     id: 'aircond-p15',
     category: 'aircond',
     name: 'Aircond P-Series 1.5HP',
     code: 'CAC12-ST02',
-    description: 'Penghawa dingin inverter premium dengan aliran udara lembut 4-Hala dan servis pembersihan berkala.',
-    tags: ['1.5 HP', '4-Way Airflow', 'Servis 7-Step'],
+    description: 'Penghawa dingin inverter premium dengan aliran udara lembut 4-Hala dan servis pembersihan berkala 7-Langkah.',
+    tags: ['1.5 HP', '4-Way Airflow', 'Servis 7-Step', 'Gentle Wind'],
     image: 'https://coway.cc/wp-content/uploads/2026/01/coway-malaysia-p-series-air-conditioner-e1768810284195.png',
     regularMonthly: 'RM90.00',
     promoMonthly: '20',
     promoMonths: '5',
     outrightPrice: 'NA',
-    badge: 'Servis Berkala'
+    badge: 'Servis Berkala',
+    keyFeatures: ['Aliran Udara Lembut 4-Hala', 'Penapis Mikro Anti-Bakteria', 'Servis Pembersihan Mendalam Setiap 6 Bulan']
   },
 
-  // --- REFRIGERATORS ---
+  // ==========================================
+  // --- REFRIGERATORS (PETI SEJUK) ---
+  // ==========================================
   {
     id: 'fridge-715',
     category: 'refrigerator',
     name: 'Side-By-Side Refrigerator 715L',
     code: 'CR715-SBS01',
     description: 'Peti sejuk mega 715L rekaan mewah Black Inox dengan zon multi-suhu dan servis sanitasi berkala.',
-    tags: ['Kapasiti 715L', 'Double Inverter', 'Black Inox'],
+    tags: ['Kapasiti 715L', 'Double Inverter', 'Black Inox', 'Multi-Airflow'],
     image: 'https://coway.cc/wp-content/uploads/2026/05/715L_thumbnail.png',
     regularMonthly: 'RM79.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM5,899',
-    badge: 'Kapasiti 715L'
+    badge: 'Kapasiti 715L',
+    keyFeatures: ['Kapasiti Mega 715 Liter', 'Double Inverter Jimat Elektrik', 'Servis Penjagaan & Sanitasi Cody']
   },
   {
     id: 'fridge-551',
@@ -289,16 +406,19 @@ export const PRODUCTS: Product[] = [
     name: 'Multi-Door Refrigerator 551L',
     code: 'CR551-MDR01',
     description: 'Peti sejuk 4-pintu canggih dengan kawalan kelembapan optimum dan pembasmian bau bakteria.',
-    tags: ['4 Pintu 551L', 'Zon Fleksibel', 'Dual Hygiene'],
+    tags: ['4 Pintu 551L', 'Zon Fleksibel', 'Dual Hygiene', 'Anti-Bau'],
     image: 'https://coway.cc/wp-content/uploads/2026/05/551L_thumbnail.png',
     regularMonthly: 'RM94.00',
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'RM6,799',
-    badge: 'Multi-Door'
+    badge: 'Multi-Door',
+    keyFeatures: ['4 Pintu Multi-Zon Suhu', 'Sistem Kawalan Kelembapan Makanan Segar', 'Penapis Anti-Bau Dual Hygiene']
   },
 
+  // ==========================================
   // --- MATTRESS & BEREX ---
+  // ==========================================
   {
     id: 'primelite',
     category: 'berex',
@@ -311,7 +431,8 @@ export const PRODUCTS: Product[] = [
     promoMonthly: '20',
     promoMonths: '5',
     outrightPrice: 'RM4,500',
-    badge: 'Tilam Hotel'
+    badge: 'Tilam Hotel',
+    keyFeatures: ['Pocket Spring 5-Zon', 'Penukaran Topper Percuma', 'Servis Sanitasi Hama Berkala 7-Langkah']
   },
   {
     id: 'prime2',
@@ -325,7 +446,8 @@ export const PRODUCTS: Product[] = [
     promoMonthly: '20',
     promoMonths: '5',
     outrightPrice: 'RM5,780',
-    badge: 'Anti-Statik'
+    badge: 'Anti-Statik',
+    keyFeatures: ['Fabrik Anti-Statik Pelepasan Cas Badan', 'Sokongan Ergonomik 7-Zon', 'Lapisan Natural Latex & Memory Foam']
   },
   {
     id: 'pebble',
@@ -339,7 +461,8 @@ export const PRODUCTS: Product[] = [
     promoMonthly: '20',
     promoMonths: '3',
     outrightPrice: 'RM8,000',
-    badge: 'Kerusi Urut 3D'
+    badge: 'Kerusi Urut 3D',
+    keyFeatures: ['Teknologi Urutan 3D Ergonomik', 'Kedudukan Rehat Zero Gravity', 'Rekaan Anggun Moden Kompak']
   },
   {
     id: 'massage-bed',
@@ -353,10 +476,13 @@ export const PRODUCTS: Product[] = [
     promoMonthly: '20',
     promoMonths: '3',
     outrightPrice: 'RM14,500',
-    badge: 'Katil Urut Pintar'
+    badge: 'Katil Urut Pintar',
+    keyFeatures: ['Terapi Haba Batu Jed Asli', 'Pengimbasan Tulang Belakang Pintar AI', 'Regangan & Penjajaran Postur Badan']
   },
 
-  // --- BATHROOM ---
+  // ==========================================
+  // --- BATHROOM (BILIK MANDI) ---
+  // ==========================================
   {
     id: 'flowlet-plus',
     category: 'bathroom',
@@ -369,7 +495,8 @@ export const PRODUCTS: Product[] = [
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'NA',
-    badge: 'Bidet Elektronik'
+    badge: 'Bidet Elektronik',
+    keyFeatures: ['Tempat Duduk Dipanaskan Selesa', 'Suhu Air Suam Boleh Laras', 'Pembersihan Automatik Nosel UV']
   },
   {
     id: 'flowlet',
@@ -383,6 +510,7 @@ export const PRODUCTS: Product[] = [
     promoMonthly: '20',
     promoMonths: '7',
     outrightPrice: 'NA',
-    badge: 'Serendah RM30'
+    badge: 'Serendah RM30',
+    keyFeatures: ['Tanpa Perlu Pendawaian Elektrik', 'Kalis Air IPX4', 'Dual Nozzle Pembersihan Lelaki & Wanita']
   }
 ];

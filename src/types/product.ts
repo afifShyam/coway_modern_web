@@ -7,6 +7,20 @@ export type ProductCategory =
   | 'berex' 
   | 'bathroom';
 
+export interface ColorVariant {
+  name: string;
+  colorHex: string;
+  image: string;
+}
+
+export interface TankCapacity {
+  hot?: string;
+  cold?: string;
+  ambient?: string;
+  ice?: string;
+  total?: string;
+}
+
 export interface Product {
   id: string;
   category: ProductCategory;
@@ -22,6 +36,12 @@ export interface Product {
   outrightPrice: string;
   badge: string;
   featured?: boolean;
+  colorVariants?: ColorVariant[];
+  tankCapacity?: TankCapacity;
+  dimensions?: string;
+  powerConsumption?: string;
+  filtrationStages?: string;
+  keyFeatures?: string[];
 }
 
 export interface CategoryTab {

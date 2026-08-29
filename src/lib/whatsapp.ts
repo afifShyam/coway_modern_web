@@ -6,7 +6,8 @@ export function getWhatsAppUrl(customMessage?: string): string {
   return `${siteConfig.whatsappBaseUrl}/${encodeURIComponent(message)}`;
 }
 
-export function getProductWhatsAppUrl(productName: string, productCode: string): string {
-  const msg = `Hai ${siteConfig.agentName}, saya berminat nak tahu sebut harga rasmi & claim promosi RM20 untuk model Coway ${productName} (${productCode}). Boleh bantu saya?`;
+export function getProductWhatsAppUrl(productName: string, productCode: string, color?: string): string {
+  const colorText = color ? ` pilihan warna ${color}` : '';
+  const msg = `Hai ${siteConfig.agentName}, saya berminat nak tahu sebut harga rasmi & claim promosi RM20 untuk model Coway ${productName} (${productCode})${colorText}. Boleh bantu saya?`;
   return getWhatsAppUrl(msg);
 }

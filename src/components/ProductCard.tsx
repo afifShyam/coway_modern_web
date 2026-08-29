@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Product } from '@/types/product';
 import { getProductWhatsAppUrl } from '@/lib/whatsapp';
 import { MessageCircle, Info } from 'lucide-react';
@@ -8,7 +8,7 @@ import { MessageCircle, Info } from 'lucide-react';
 interface ProductCardProps {
   product: Product;
   viewMode?: 'grid' | 'list';
-  onSelectDetail: (product: Product) => void;
+  onSelectDetail: (product: Product, selectedColor?: string) => void;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ 
@@ -16,19 +16,29 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   viewMode = 'grid',
   onSelectDetail 
 }) => {
+  const [selectedColorIdx, setSelectedColorIdx] = useState<number>(0);
+  
+  const activeImage = product.colorVariants && product.colorVariants.length > 0 
+    ? product.colorVariants[selectedColorIdx].image 
+    : product.image;
+
+  const activeColorName = product.colorVariants && product.colorVariants.length > 0
+    ? product.colorVariants[selectedColorIdx].name
+    : undefined;
+
   const savings = parseInt(product.regularMonthly.replace(/[^0-9]/g, '')) - parseInt(product.promoMonthly);
 
-  // List View Mode (Ultra-compact horizontal row)
+  // List View Mode (Compact horizontal row)
   if (viewMode === 'list') {
     return (
       <div className="pro-card p-3 sm:p-4 bg-slate-850 border border-slate-800 flex items-center justify-between gap-3 hover:border-slate-700 transition-all">
         <div 
-          onClick={() => onSelectDetail(product)}
+          onClick={() => onSelectDetail(product, activeColorName)}
           className="flex items-center gap-3 cursor-pointer flex-1 min-w-0"
         >
           <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 rounded-xl p-1.5 flex items-center justify-center shrink-0 border border-slate-800">
             <img 
-              src={product.image} 
+              src={activeImage} 
               alt={product.name} 
               className="max-h-full max-w-full object-contain"
               loading="lazy"
@@ -41,6 +51,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 {product.badge}
               </span>
               <span className="text-[10px] font-mono text-slate-400">{product.code}</span>
+              {activeColorName && (
+                <span className="text-[9px] text-slate-400 font-medium hidden sm:inline">
+                  • {activeColorName}
+                </span>
+              )}
             </div>
             <h3 className="text-sm sm:text-base font-bold text-white truncate mt-0.5">{product.name}</h3>
             <div className="flex items-center gap-2 mt-0.5">
@@ -53,8 +68,28 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
+          {/* Color swatches in list mode */}
+          {product.colorVariants && product.colorVariants.length > 1 && (
+            <div className="hidden md:flex items-center gap-1">
+              {product.colorVariants.map((c, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedColorIdx(i);
+                  }}
+                  title={c.name}
+                  style={{ backgroundColor: c.colorHex }}
+                  className={`w-3.5 h-3.5 rounded-full border transition-all ${
+                    selectedColorIdx === i ? 'ring-2 ring-sky-400 scale-110 border-white' : 'border-slate-600 opacity-70 hover:opacity-100'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+
           <button 
-            onClick={() => onSelectDetail(product)}
+            onClick={() => onSelectDetail(product, activeColorName)}
             className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs transition-colors"
             title="Lihat Maklumat Penuh"
           >
@@ -62,7 +97,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </button>
           
           <a 
-            href={getProductWhatsAppUrl(product.name, product.code)}
+            href={getProductWhatsAppUrl(product.name, product.code, activeColorName)}
             target="_blank" 
             rel="noopener noreferrer"
             className="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1 shadow-sm whitespace-nowrap"
@@ -75,9 +110,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     );
   }
 
-  // Grid View Mode (Optimized for 2-column mobile & multi-column desktop)
+  // Grid View Mode (Optimized 2-col mobile & multi-col desktop)
   return (
-    <div className="pro-card p-3.5 sm:p-5 flex flex-col justify-between relative bg-slate-850 border border-slate-800 hover:border-slate-700 transition-all">
+    <div className="pro-card p-3 sm:p-5 flex flex-col justify-between relative bg-slate-850 border border-slate-800 hover:border-slate-700 transition-all">
       <div>
         {/* Top Badge & Code */}
         <div className="flex items-center justify-between mb-1.5 gap-1">
@@ -89,26 +124,48 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         
         {/* Product Image Container */}
         <div 
-          onClick={() => onSelectDetail(product)}
-          className="h-28 sm:h-44 flex items-center justify-center my-2 p-1.5 sm:p-2 bg-slate-900/70 rounded-xl border border-slate-800/80 cursor-pointer group"
+          onClick={() => onSelectDetail(product, activeColorName)}
+          className="h-28 sm:h-44 flex items-center justify-center my-2 p-1.5 sm:p-2 bg-slate-900/70 rounded-xl border border-slate-800/80 cursor-pointer group relative"
         >
           <img 
-            src={product.image} 
+            src={activeImage} 
             alt={product.name} 
             className="max-h-24 sm:max-h-36 max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
             loading="lazy"
           />
         </div>
 
+        {/* Color Swatches (If variants exist) */}
+        {product.colorVariants && product.colorVariants.length > 1 && (
+          <div className="flex items-center justify-center gap-1.5 my-1.5">
+            {product.colorVariants.map((c, i) => (
+              <button
+                key={i}
+                onClick={() => setSelectedColorIdx(i)}
+                title={c.name}
+                style={{ backgroundColor: c.colorHex }}
+                className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full border transition-all ${
+                  selectedColorIdx === i 
+                    ? 'ring-2 ring-sky-400 scale-125 border-white shadow-sm' 
+                    : 'border-slate-600 opacity-60 hover:opacity-100'
+                }`}
+              />
+            ))}
+            <span className="text-[9px] text-slate-400 font-medium ml-1 truncate max-w-[70px] hidden xs:inline">
+              {activeColorName}
+            </span>
+          </div>
+        )}
+
         {/* Product Title & Description */}
-        <div onClick={() => onSelectDetail(product)} className="cursor-pointer">
+        <div onClick={() => onSelectDetail(product, activeColorName)} className="cursor-pointer">
           <h3 className="text-xs sm:text-base font-extrabold text-white truncate sm:line-clamp-1">{product.name}</h3>
           <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 line-clamp-1 sm:line-clamp-2 leading-relaxed hidden xs:block">
             {product.description}
           </p>
         </div>
 
-        {/* Feature Tags (Desktop only for brevity on mobile) */}
+        {/* Feature Tags */}
         <div className="mt-2 hidden sm:flex flex-wrap gap-1">
           {product.tags.slice(0, 2).map((tag, idx) => (
             <span key={idx} className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] text-slate-300 font-medium">
@@ -119,20 +176,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       </div>
 
       {/* ================= COMPACT PRICING BOX ================= */}
-      <div className="mt-3 pt-2.5 border-t border-slate-800 space-y-2">
+      <div className="mt-2.5 pt-2 border-t border-slate-800 space-y-2">
         
         {/* Promo Price Callout */}
-        <div className="p-2 sm:p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+        <div className="p-1.5 sm:p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
           <div>
             <span className="text-[8px] sm:text-[9px] uppercase font-bold text-sky-400 tracking-wide block">
               Promo Bln 1-{product.promoMonths}
             </span>
-            <div className="text-base sm:text-xl font-black text-sky-400 leading-tight">
-              RM{product.promoMonthly}<span className="text-[10px] font-normal text-slate-400">/bln</span>
+            <div className="text-sm sm:text-xl font-black text-sky-400 leading-tight">
+              RM{product.promoMonthly}<span className="text-[9px] sm:text-[10px] font-normal text-slate-400">/bln</span>
             </div>
           </div>
           <div className="text-right">
-            <div className="text-[9px] text-slate-400">Sewa Asal</div>
+            <div className="text-[8px] sm:text-[9px] text-slate-400">Sewa Asal</div>
             <div className="text-[10px] sm:text-xs font-bold text-slate-200">{product.regularMonthly}</div>
           </div>
         </div>
@@ -140,7 +197,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* Actions Row */}
         <div className="flex items-center gap-1.5">
           <button 
-            onClick={() => onSelectDetail(product)}
+            onClick={() => onSelectDetail(product, activeColorName)}
             className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs transition-colors shrink-0"
             title="Spesifikasi Penuh"
           >
@@ -148,10 +205,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </button>
           
           <a 
-            href={getProductWhatsAppUrl(product.name, product.code)}
+            href={getProductWhatsAppUrl(product.name, product.code, activeColorName)}
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-1 py-2 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] sm:text-xs transition-all flex items-center justify-center gap-1 shadow-sm whitespace-nowrap"
+            className="flex-1 py-2 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] sm:text-xs transition-all flex items-center justify-center gap-1 shadow-sm whitespace-nowrap"
           >
             <MessageCircle className="w-3.5 h-3.5" />
             <span>WhatsApp</span>

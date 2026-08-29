@@ -1,28 +1,50 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Product } from '@/types/product';
 import { getProductWhatsAppUrl } from '@/lib/whatsapp';
-import { X, MessageCircle, CheckCircle2, ShieldCheck, Wrench } from 'lucide-react';
+import { X, MessageCircle, CheckCircle2, Droplets, Zap, Ruler, Layers } from 'lucide-react';
 
 interface ProductDetailModalProps {
   product: Product | null;
+  initialColor?: string;
   onClose: () => void;
 }
 
-export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, onClose }) => {
+export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, initialColor, onClose }) => {
+  const [selectedColorIdx, setSelectedColorIdx] = useState<number>(0);
+
+  useEffect(() => {
+    if (product && product.colorVariants && product.colorVariants.length > 0) {
+      if (initialColor) {
+        const found = product.colorVariants.findIndex(c => c.name.toLowerCase() === initialColor.toLowerCase());
+        setSelectedColorIdx(found !== -1 ? found : 0);
+      } else {
+        setSelectedColorIdx(0);
+      }
+    }
+  }, [product, initialColor]);
+
   if (!product) return null;
+
+  const activeImage = product.colorVariants && product.colorVariants.length > 0 
+    ? product.colorVariants[selectedColorIdx].image 
+    : product.image;
+
+  const activeColorName = product.colorVariants && product.colorVariants.length > 0
+    ? product.colorVariants[selectedColorIdx].name
+    : undefined;
 
   const savings = parseInt(product.regularMonthly.replace(/[^0-9]/g, '')) - parseInt(product.promoMonthly);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
-      <div className="pro-card p-6 bg-slate-900 border border-slate-800 w-full sm:max-w-lg rounded-t-3xl sm:rounded-2xl max-h-[90vh] overflow-y-auto relative shadow-2xl animate-in slide-in-from-bottom duration-200">
+    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+      <div className="pro-card p-6 sm:p-8 bg-slate-900 border border-slate-800 w-full sm:max-w-2xl rounded-t-3xl sm:rounded-2xl max-h-[92vh] overflow-y-auto relative shadow-2xl animate-in slide-in-from-bottom duration-200">
         
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-full bg-slate-800/80 transition-colors"
+          className="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-full bg-slate-800/80 transition-colors z-10"
         >
           <X className="w-5 h-5" />
         </button>
@@ -35,33 +57,156 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
           <span className="text-xs font-mono text-slate-400 font-bold">{product.code}</span>
         </div>
 
-        {/* Product Image & Title */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 my-2 p-4 bg-slate-850 rounded-xl border border-slate-800">
-          <img 
-            src={product.image} 
-            alt={product.name} 
-            className="max-h-36 object-contain"
-          />
-          <div className="text-center sm:text-left">
-            <h3 className="text-xl font-extrabold text-white">{product.name}</h3>
-            {product.filterType && (
-              <span className="text-xs font-semibold text-sky-400 block mt-0.5">{product.filterType}</span>
+        {/* Top Product Showcase & Color Switcher */}
+        <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 my-3 p-4 bg-slate-850 rounded-2xl border border-slate-800 items-center">
+          
+          <div className="sm:col-span-5 h-44 flex items-center justify-center bg-slate-900 rounded-xl p-3 border border-slate-800">
+            <img 
+              src={activeImage} 
+              alt={product.name} 
+              className="max-h-36 max-w-full object-contain drop-shadow-md"
+            />
+          </div>
+
+          <div className="sm:col-span-7 space-y-2.5">
+            <div>
+              <h3 className="text-xl font-extrabold text-white">{product.name}</h3>
+              {product.filterType && (
+                <span className="text-xs font-semibold text-sky-400 block mt-0.5">{product.filterType}</span>
+              )}
+            </div>
+
+            <p className="text-xs text-slate-300 leading-relaxed">{product.description}</p>
+
+            {/* Interactive Color Variant Selector */}
+            {product.colorVariants && product.colorVariants.length > 0 && (
+              <div className="pt-2">
+                <div className="text-[11px] font-bold text-slate-300 mb-1.5 flex items-center justify-between">
+                  <span>Pilihan Warna:</span>
+                  <span className="text-sky-400 font-extrabold">{activeColorName}</span>
+                </div>
+                
+                <div className="flex items-center gap-2 flex-wrap">
+                  {product.colorVariants.map((c, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSelectedColorIdx(i)}
+                      className={`px-3 py-1.5 rounded-xl border flex items-center gap-2 text-xs font-semibold transition-all ${
+                        selectedColorIdx === i 
+                          ? 'bg-sky-950 border-sky-500 text-white ring-1 ring-sky-400' 
+                          : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      <span 
+                        className="w-3 h-3 rounded-full border border-slate-600" 
+                        style={{ backgroundColor: c.colorHex }}
+                      />
+                      <span>{c.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             )}
-            <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">{product.description}</p>
           </div>
         </div>
 
-        {/* Feature Tags */}
-        <div className="my-3">
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Spesifikasi Utama</div>
-          <div className="flex flex-wrap gap-1.5">
-            {product.tags.map((tag, idx) => (
-              <span key={idx} className="px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-xs text-slate-200 font-medium flex items-center gap-1">
-                <CheckCircle2 className="w-3.5 h-3.5 text-sky-400" /> {tag}
-              </span>
-            ))}
+        {/* Tank Capacity Grid (If Applicable) */}
+        {product.tankCapacity && (
+          <div className="my-4">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <Droplets className="w-3.5 h-3.5 text-sky-400" />
+              Kapasiti Tangki Air
+            </div>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+              {product.tankCapacity.hot && (
+                <div className="p-2.5 rounded-xl bg-slate-850 border border-slate-800">
+                  <span className="text-[10px] text-rose-400 font-bold block uppercase">Air Panas</span>
+                  <span className="font-extrabold text-white text-sm">{product.tankCapacity.hot}</span>
+                </div>
+              )}
+              {product.tankCapacity.cold && (
+                <div className="p-2.5 rounded-xl bg-slate-850 border border-slate-800">
+                  <span className="text-[10px] text-sky-400 font-bold block uppercase">Air Sejuk</span>
+                  <span className="font-extrabold text-white text-sm">{product.tankCapacity.cold}</span>
+                </div>
+              )}
+              {product.tankCapacity.ambient && (
+                <div className="p-2.5 rounded-xl bg-slate-850 border border-slate-800">
+                  <span className="text-[10px] text-emerald-400 font-bold block uppercase">Air Bilik</span>
+                  <span className="font-extrabold text-white text-sm">{product.tankCapacity.ambient}</span>
+                </div>
+              )}
+              {product.tankCapacity.ice && (
+                <div className="p-2.5 rounded-xl bg-slate-850 border border-slate-800">
+                  <span className="text-[10px] text-cyan-300 font-bold block uppercase">Kapasiti Ais</span>
+                  <span className="font-extrabold text-white text-sm">{product.tankCapacity.ice}</span>
+                </div>
+              )}
+              {product.tankCapacity.total && (
+                <div className="p-2.5 rounded-xl bg-slate-850 border border-sky-800/60 sm:col-span-4 flex items-center justify-between px-4">
+                  <span className="text-xs text-sky-400 font-bold uppercase">Jumlah Keseluruhan</span>
+                  <span className="font-extrabold text-white text-sm">{product.tankCapacity.total}</span>
+                </div>
+              )}
+            </div>
           </div>
+        )}
+
+        {/* Technical Specs & Dimensions */}
+        <div className="my-4 space-y-2">
+          <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <Ruler className="w-3.5 h-3.5 text-sky-400" />
+            Spesifikasi Teknikal
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            {product.dimensions && (
+              <div className="p-3 rounded-xl bg-slate-850 border border-slate-800 flex items-center gap-2.5">
+                <Ruler className="w-4 h-4 text-sky-400 shrink-0" />
+                <div>
+                  <span className="text-[10px] text-slate-400 block">Dimensi (L x D x T)</span>
+                  <span className="font-bold text-white">{product.dimensions}</span>
+                </div>
+              </div>
+            )}
+
+            {product.powerConsumption && (
+              <div className="p-3 rounded-xl bg-slate-850 border border-slate-800 flex items-center gap-2.5">
+                <Zap className="w-4 h-4 text-amber-400 shrink-0" />
+                <div>
+                  <span className="text-[10px] text-slate-400 block">Penggunaan Kuasa</span>
+                  <span className="font-bold text-white">{product.powerConsumption}</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {product.filtrationStages && (
+            <div className="p-3 rounded-xl bg-slate-850 border border-slate-800 flex items-start gap-2.5 text-xs">
+              <Layers className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+              <div>
+                <span className="text-[10px] text-slate-400 block">Sistem Penapisan</span>
+                <span className="font-semibold text-slate-200">{product.filtrationStages}</span>
+              </div>
+            </div>
+          )}
         </div>
+
+        {/* Key Features Checklist */}
+        {product.keyFeatures && product.keyFeatures.length > 0 && (
+          <div className="my-4">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Ciri-Ciri Utama</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {product.keyFeatures.map((feat, idx) => (
+                <div key={idx} className="p-2.5 rounded-xl bg-slate-850 border border-slate-800 text-xs text-slate-200 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Price Matrix Breakdown */}
         <div className="my-4 p-4 rounded-xl bg-slate-850 border border-slate-800 space-y-3">
@@ -105,13 +250,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
 
         {/* Action Button */}
         <a 
-          href={getProductWhatsAppUrl(product.name, product.code)}
+          href={getProductWhatsAppUrl(product.name, product.code, activeColorName)}
           target="_blank" 
           rel="noopener noreferrer"
           className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40"
         >
           <MessageCircle className="w-4 h-4" />
-          WhatsApp Johan Untuk Tempah Model Ini
+          WhatsApp Johan Tempah {product.name} {activeColorName ? `(${activeColorName})` : ''}
         </a>
 
       </div>
