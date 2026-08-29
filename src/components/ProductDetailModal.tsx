@@ -47,7 +47,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
     ? product.colorVariants[selectedColorIdx].name
     : undefined;
 
-  const savings = parseInt(product.regularMonthly.replace(/[^0-9]/g, '')) - parseInt(product.promoMonthly);
+  const regPrice = Math.round(parseFloat(product.regularMonthly.replace(/[^0-9.]/g, ''))) || 0;
+  const promoPrice = parseInt(product.promoMonthly) || 0;
+  const savings = Math.max(0, regPrice - promoPrice);
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">

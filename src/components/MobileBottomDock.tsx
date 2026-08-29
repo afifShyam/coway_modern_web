@@ -3,7 +3,7 @@
 import React from 'react';
 import { siteConfig } from '@/data/siteConfig';
 import { getWhatsAppUrl } from '@/lib/whatsapp';
-import { Grid, Sparkles, MessageCircle } from 'lucide-react';
+import { Grid, Sparkles } from 'lucide-react';
 
 interface MobileBottomDockProps {
   onOpenQuiz: () => void;
@@ -37,9 +37,9 @@ export const MobileBottomDock: React.FC<MobileBottomDockProps> = ({ onOpenQuiz }
         >
           <div className="w-6 h-6 rounded-full overflow-hidden border border-white shrink-0">
             <img 
-              src={siteConfig.agentImage} 
+              src={siteConfig.agentAvatar || siteConfig.agentImage} 
               alt={siteConfig.agentName} 
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover object-center"
             />
           </div>
           <span>WhatsApp Johan</span>

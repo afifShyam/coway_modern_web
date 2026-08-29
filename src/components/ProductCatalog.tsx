@@ -35,7 +35,7 @@ export const ProductCatalog: React.FC = () => {
         product.code.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.description.toLowerCase().includes(searchQuery.toLowerCase());
       
-      const numPrice = parseInt(product.regularMonthly.replace(/[^0-9]/g, '')) || 0;
+      const numPrice = Math.round(parseFloat(product.regularMonthly.replace(/[^0-9.]/g, ''))) || 0;
       let matchesPrice = true;
       if (priceFilter === 'under60') matchesPrice = numPrice <= 60;
       else if (priceFilter === 'under90') matchesPrice = numPrice > 60 && numPrice <= 90;
