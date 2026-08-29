@@ -13,9 +13,16 @@ export function getProductWhatsAppUrl(productName: string, productCode: string, 
   return getWhatsAppUrl(msg);
 }
 
-export function getProductEmallUrl(emallUrl?: string): string {
-  if (emallUrl) {
-    return emallUrl;
+export function getProductEmallUrl(emallUrlOrSlug?: string): string {
+  if (!emallUrlOrSlug) {
+    return siteConfig.emallUrl;
   }
-  return siteConfig.emallUrl;
+  if (emallUrlOrSlug.startsWith('http')) {
+    if (emallUrlOrSlug.includes('agentcode=')) {
+      return emallUrlOrSlug;
+    }
+    const separator = emallUrlOrSlug.includes('?') ? '&' : '?';
+    return `${emallUrlOrSlug}${separator}agentcode=${siteConfig.hpCode}`;
+  }
+  return `https://emall.coway.com.my/product/${emallUrlOrSlug}?agentcode=${siteConfig.hpCode}`;
 }
