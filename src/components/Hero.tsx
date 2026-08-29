@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { siteConfig } from '@/data/siteConfig';
 import { getWhatsAppUrl } from '@/lib/whatsapp';
 import { 
@@ -16,13 +16,29 @@ import {
 } from 'lucide-react';
 
 interface HeroProps {
-  onOpenQuiz: () => void;
+  onOpenQuiz?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = () => {
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Programmatically ensure autoplay triggers on mount
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => setIsPlaying(true))
+          .catch(() => {
+            // Autoplay with sound or interaction restriction handled
+            setIsPlaying(false);
+          });
+      }
+    }
+  }, []);
 
   const togglePlay = () => {
     if (!videoRef.current) return;
@@ -131,7 +147,7 @@ export const Hero: React.FC<HeroProps> = () => {
 
           </div>
 
-          {/* Right Column: Clean & Spacious Video Card */}
+          {/* Right Column: Clean & Spacious Video Card with Autoplay */}
           <div className="lg:col-span-6">
             <div className="pro-card p-3 sm:p-5 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl space-y-3">
               
@@ -143,6 +159,7 @@ export const Hero: React.FC<HeroProps> = () => {
                 <video
                   ref={videoRef}
                   src="/videos/coway-promo.mp4"
+                  autoPlay
                   playsInline
                   loop
                   muted={isMuted}
@@ -151,13 +168,24 @@ export const Hero: React.FC<HeroProps> = () => {
                   onPause={() => setIsPlaying(false)}
                 />
 
-                {/* Play/Pause Center Overlay */}
+                {/* Play Overlay if paused */}
                 {!isPlaying && (
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/30 transition-colors">
                     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-sky-600 text-white flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-transform">
                       <Play className="w-5 h-5 sm:w-6 sm:h-6 ml-0.5 fill-white" />
                     </div>
                   </div>
+                )}
+
+                {/* Quick Unmute Floating Button if Muted */}
+                {isMuted && isPlaying && (
+                  <button
+                    onClick={toggleMute}
+                    className="absolute bottom-10 left-3 px-3 py-1.5 rounded-full bg-slate-900/90 hover:bg-slate-800 text-white border border-slate-700 text-xs font-bold flex items-center gap-1.5 shadow-lg backdrop-blur-md transition-all animate-bounce"
+                  >
+                    <VolumeX className="w-3.5 h-3.5 text-sky-400" />
+                    <span>Ketik untuk Buka Bunyi</span>
+                  </button>
                 )}
 
                 {/* Video Top Right Controls */}
@@ -167,7 +195,7 @@ export const Hero: React.FC<HeroProps> = () => {
                     className="p-2 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-slate-700 backdrop-blur-sm transition-colors"
                     title={isMuted ? "Buka Audio" : "Bisukan Audio"}
                   >
-                    {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+                    {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-sky-400" />}
                   </button>
 
                   <button
@@ -185,7 +213,7 @@ export const Hero: React.FC<HeroProps> = () => {
                     <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
                     Video Pengenalan Coway
                   </span>
-                  <span className="text-slate-400">{isPlaying ? 'Sedang Dimainkan' : 'Klik Untuk Main'}</span>
+                  <span className="text-slate-400">{isPlaying ? 'Sedang Dimainkan (Auto)' : 'Klik Untuk Main'}</span>
                 </div>
               </div>
 
