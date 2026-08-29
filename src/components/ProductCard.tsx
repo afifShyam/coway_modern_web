@@ -3,104 +3,160 @@
 import React from 'react';
 import { Product } from '@/types/product';
 import { getProductWhatsAppUrl } from '@/lib/whatsapp';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Info } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
+  viewMode?: 'grid' | 'list';
+  onSelectDetail: (product: Product) => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ 
+  product, 
+  viewMode = 'grid',
+  onSelectDetail 
+}) => {
   const savings = parseInt(product.regularMonthly.replace(/[^0-9]/g, '')) - parseInt(product.promoMonthly);
 
+  // List View Mode (Ultra-compact horizontal row)
+  if (viewMode === 'list') {
+    return (
+      <div className="pro-card p-3 sm:p-4 bg-slate-850 border border-slate-800 flex items-center justify-between gap-3 hover:border-slate-700 transition-all">
+        <div 
+          onClick={() => onSelectDetail(product)}
+          className="flex items-center gap-3 cursor-pointer flex-1 min-w-0"
+        >
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 rounded-xl p-1.5 flex items-center justify-center shrink-0 border border-slate-800">
+            <img 
+              src={product.image} 
+              alt={product.name} 
+              className="max-h-full max-w-full object-contain"
+              loading="lazy"
+            />
+          </div>
+          
+          <div className="min-w-0">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-slate-900 text-sky-400 border border-slate-800">
+                {product.badge}
+              </span>
+              <span className="text-[10px] font-mono text-slate-400">{product.code}</span>
+            </div>
+            <h3 className="text-sm sm:text-base font-bold text-white truncate mt-0.5">{product.name}</h3>
+            <div className="flex items-center gap-2 mt-0.5">
+              <span className="text-xs font-black text-sky-400">
+                RM{product.promoMonthly}<span className="text-[10px] font-normal text-slate-400">/bln</span>
+              </span>
+              <span className="text-[10px] text-slate-400 line-through hidden sm:inline">{product.regularMonthly}</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 shrink-0">
+          <button 
+            onClick={() => onSelectDetail(product)}
+            className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs transition-colors"
+            title="Lihat Maklumat Penuh"
+          >
+            <Info className="w-4 h-4" />
+          </button>
+          
+          <a 
+            href={getProductWhatsAppUrl(product.name, product.code)}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1 shadow-sm whitespace-nowrap"
+          >
+            <MessageCircle className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  // Grid View Mode (Optimized for 2-column mobile & multi-column desktop)
   return (
-    <div className="pro-card p-5 flex flex-col justify-between relative bg-slate-850 border border-slate-800">
+    <div className="pro-card p-3.5 sm:p-5 flex flex-col justify-between relative bg-slate-850 border border-slate-800 hover:border-slate-700 transition-all">
       <div>
         {/* Top Badge & Code */}
-        <div className="flex items-center justify-between mb-2">
-          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-900 text-sky-400 border border-slate-750">
+        <div className="flex items-center justify-between mb-1.5 gap-1">
+          <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-slate-900 text-sky-400 border border-slate-800 truncate max-w-[90px] sm:max-w-none">
             {product.badge}
           </span>
-          <span className="text-[10px] font-mono text-slate-400 font-bold">{product.code}</span>
+          <span className="text-[9px] sm:text-[10px] font-mono text-slate-400 font-bold">{product.code}</span>
         </div>
         
         {/* Product Image Container */}
-        <div className="h-44 flex items-center justify-center my-3 p-2 bg-slate-900/60 rounded-xl border border-slate-800">
+        <div 
+          onClick={() => onSelectDetail(product)}
+          className="h-28 sm:h-44 flex items-center justify-center my-2 p-1.5 sm:p-2 bg-slate-900/70 rounded-xl border border-slate-800/80 cursor-pointer group"
+        >
           <img 
             src={product.image} 
             alt={product.name} 
-            className="max-h-36 max-w-full object-contain"
+            className="max-h-24 sm:max-h-36 max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
             loading="lazy"
           />
         </div>
 
         {/* Product Title & Description */}
-        <h3 className="text-base font-bold text-white mt-2">{product.name}</h3>
-        <p className="text-xs text-slate-400 mt-1 line-clamp-2 leading-relaxed">{product.description}</p>
+        <div onClick={() => onSelectDetail(product)} className="cursor-pointer">
+          <h3 className="text-xs sm:text-base font-extrabold text-white truncate sm:line-clamp-1">{product.name}</h3>
+          <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 line-clamp-1 sm:line-clamp-2 leading-relaxed hidden xs:block">
+            {product.description}
+          </p>
+        </div>
 
-        {/* Feature Tags */}
-        <div className="mt-3 flex flex-wrap gap-1">
-          {product.tags.slice(0, 3).map((tag, idx) => (
-            <span key={idx} className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] text-slate-300 font-medium">
+        {/* Feature Tags (Desktop only for brevity on mobile) */}
+        <div className="mt-2 hidden sm:flex flex-wrap gap-1">
+          {product.tags.slice(0, 2).map((tag, idx) => (
+            <span key={idx} className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] text-slate-300 font-medium">
               {tag}
             </span>
           ))}
         </div>
       </div>
 
-      {/* ================= CRYSTAL CLEAR PRICING BOX ================= */}
-      <div className="mt-4 pt-3 border-t border-slate-800 space-y-2">
+      {/* ================= COMPACT PRICING BOX ================= */}
+      <div className="mt-3 pt-2.5 border-t border-slate-800 space-y-2">
         
-        {/* Promo Highlight Box */}
-        <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-750 flex items-center justify-between">
+        {/* Promo Price Callout */}
+        <div className="p-2 sm:p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
           <div>
-            <span className="text-[9px] uppercase font-bold text-sky-400 tracking-wide block">
-              PROMOSI BULAN 1 - {product.promoMonths}
+            <span className="text-[8px] sm:text-[9px] uppercase font-bold text-sky-400 tracking-wide block">
+              Promo Bln 1-{product.promoMonths}
             </span>
-            <div className="text-xl font-black text-sky-400 leading-tight">
-              RM{product.promoMonthly}<span className="text-xs font-normal text-slate-400">/bulan</span>
+            <div className="text-base sm:text-xl font-black text-sky-400 leading-tight">
+              RM{product.promoMonthly}<span className="text-[10px] font-normal text-slate-400">/bln</span>
             </div>
           </div>
           <div className="text-right">
-            <span className="px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-800 font-bold text-[9px] uppercase">
-              Jimat RM{savings}/bln
-            </span>
+            <div className="text-[9px] text-slate-400">Sewa Asal</div>
+            <div className="text-[10px] sm:text-xs font-bold text-slate-200">{product.regularMonthly}</div>
           </div>
         </div>
 
-        {/* Clear Regular & Outright Grid */}
-        <div className="grid grid-cols-2 gap-1.5 text-center text-xs">
-          <div className="p-2 rounded-lg bg-slate-900 border border-slate-800">
-            <div className="text-[9px] text-slate-400 font-semibold uppercase">Sewa Biasa</div>
-            <div className="font-bold text-white text-xs mt-0.5">{product.regularMonthly}</div>
-            <div className="text-[9px] text-slate-500">bulan seterusnya</div>
-          </div>
+        {/* Actions Row */}
+        <div className="flex items-center gap-1.5">
+          <button 
+            onClick={() => onSelectDetail(product)}
+            className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs transition-colors shrink-0"
+            title="Spesifikasi Penuh"
+          >
+            <Info className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+          </button>
           
-          <div className="p-2 rounded-lg bg-slate-900 border border-slate-800">
-            <div className="text-[9px] text-slate-400 font-semibold uppercase">Beli Tunai</div>
-            <div className="font-bold text-sky-300 text-xs mt-0.5">
-              {product.outrightPrice !== 'NA' ? product.outrightPrice : 'Pelan Sewa'}
-            </div>
-            <div className="text-[9px] text-slate-500">outright</div>
-          </div>
+          <a 
+            href={getProductWhatsAppUrl(product.name, product.code)}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex-1 py-2 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] sm:text-xs transition-all flex items-center justify-center gap-1 shadow-sm whitespace-nowrap"
+          >
+            <MessageCircle className="w-3.5 h-3.5" />
+            <span>WhatsApp</span>
+          </a>
         </div>
-
-        {/* Zero Fees Assurance */}
-        <div className="flex items-center justify-between text-[9px] text-emerald-400 font-semibold px-0.5 pt-0.5">
-          <span>✓ Daftar RM0</span>
-          <span>✓ Pasang Percuma</span>
-          <span>✓ Servis Cody RM0</span>
-        </div>
-
-        {/* WhatsApp Action */}
-        <a 
-          href={getProductWhatsAppUrl(product.name, product.code)}
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
-        >
-          <MessageCircle className="w-3.5 h-3.5" />
-          WhatsApp Johan Untuk Tempahan
-        </a>
 
       </div>
 
