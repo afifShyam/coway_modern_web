@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { siteConfig } from '@/data/siteConfig';
-import { Facebook, ShoppingBag, Phone, MessageCircle, Code2, ArrowUpRight, Globe } from 'lucide-react';
+import { Facebook, ShoppingBag, Phone, MessageCircle, ArrowUpRight, Globe } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -83,25 +83,9 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Discreet Developer Signature & Portfolio Link */}
+        {/* Discreet Portfolio Link */}
         {siteConfig.developer && (
-          <div className="pt-4 mt-4 border-t border-slate-900/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
-            <div className="flex items-center gap-1.5">
-              <Code2 className="w-3.5 h-3.5 text-sky-400" />
-              <span>
-                Laman web dibangunkan & direka oleh{' '}
-                <a
-                  href={siteConfig.developer.portfolioUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-bold text-slate-300 hover:text-sky-400 underline decoration-slate-700 underline-offset-2 transition-colors"
-                  title="Lihat Portfolio Afif Shyam"
-                >
-                  {siteConfig.developer.name}
-                </a>
-              </span>
-            </div>
-
+          <div className="pt-4 mt-4 border-t border-slate-900/80 flex items-center justify-center sm:justify-end text-[11px]">
             <a
               href={siteConfig.developer.portfolioUrl}
               target="_blank"
