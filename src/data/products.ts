@@ -31,8 +31,6 @@ export const PRODUCTS: Product[] = [
     badge: 'Pilihan Utama',
     featured: true,
     emallUrl: 'https://emall.coway.com.my/productlist/category/water-purifier-table-top-villaem-3?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Demonstrasi Coway Villaem III (CHP-7320L)',
     colorVariants: [
       { name: 'Putih Murni', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/859ec6e7-6111-41bb-aad4-75a7145a8a50/1/240x240/villaem-3-white.png' },
       { name: 'Kelabu Kerikil', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/cfa73eea-3f49-4543-8563-8f626a1e9ea5/1/240x240/villaem-3-gray.png' }
@@ -64,8 +62,6 @@ export const PRODUCTS: Product[] = [
     badge: 'Pembuat Ais',
     featured: true,
     emallUrl: 'https://emall.coway.com.my/productlist/category/water-purifier-table-top-dazzie-white?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Demonstrasi Coway AIS Pembuat Ais (CHPI-7520L)',
     colorVariants: [
       { name: 'Putih Porselin', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/cd349c96-7052-4f9a-a75d-7eb696eedaa3/1/240x240/ais-white.png' },
       { name: 'Kelabu Kerikil', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/19f9ad9e-d9a0-4aeb-b633-f34bd0672416/1/240x240/ais-gray.png' }
@@ -97,8 +93,6 @@ export const PRODUCTS: Product[] = [
     badge: '5 Pilihan Warna',
     featured: true,
     emallUrl: 'https://emall.coway.com.my/productlist/category/water-purifier-table-top-dazzie-pink?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Demonstrasi Coway Neon Ultra-Slim (CHP-6210N)',
     colorVariants: [
       { name: 'Putih Murni', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/db8c15f4-b7a0-485a-ac62-6c2f7c1ec26e/1/240x240/neon-white.png' },
       { name: 'Kelabu Kerikil', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/c4c984ec-a10b-4882-9d03-b1b989c7480b/1/240x240/neon-gray.png' },
@@ -132,8 +126,6 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM4,590',
     badge: 'Aliran Terus',
     emallUrl: 'https://emall.coway.com.my/productlist/category/water-purifier-table-top-dazzie-gray?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Demonstrasi Coway Dazzie Tankless (CHO-1201N)',
     colorVariants: [
       { name: 'Putih Murni', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/2cdb7053-6a95-4e6d-8ebc-4263cb6a23e7/1/240x240/dazzie-white.png' },
       { name: 'Kelabu Kerikil', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/57977099-8ba5-4172-89ef-57c34ffe121c/1/240x240/dazzie-gray.png' },
@@ -166,8 +158,6 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM3,640',
     badge: 'Paling Jimat',
     emallUrl: 'https://emall.coway.com.my/productlist/category/waterpurifier-tabletop-neoplus?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Demonstrasi Coway Neo Plus (CHP-264L)',
     tankCapacity: { hot: '1.0 L', cold: '2.3 L', ambient: '2.5 L', total: '5.8 L' },
     dimensions: '260 x 483 x 500 mm',
     powerConsumption: 'Pemanas 300W, Pemampat 0.7A',
@@ -218,8 +208,6 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM4,510',
     badge: 'Pilihan Ibu',
     emallUrl: 'https://emall.coway.com.my/productlist/category/waterpurifier-tabletop-ombak?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Demonstrasi Coway Ombak 50 Suhu (CHP-7310R)',
     tankCapacity: { hot: '3.0 L', cold: '2.3 L', ambient: '7.8 L', total: '13.1 L' },
     dimensions: '340 x 523 x 518 mm',
     powerConsumption: 'Pemanas 672W, Pemampat 0.6A',
@@ -326,8 +314,6 @@ export const PRODUCTS: Product[] = [
     badge: 'No.1 Penulen Udara',
     featured: true,
     emallUrl: 'https://emall.coway.com.my/productlist/category/air-purifier-air-purifier-storm-2?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Demonstrasi Coway Storm II (AP-1523D)',
     dimensions: '410 x 515 x 752 mm',
     powerConsumption: '42 Watt',
     filtrationStages: 'Pra-Penapis, Penapis Habuk Halus, Penapis Penyahbauan, Penapis Coway HEPA H13',
@@ -352,8 +338,6 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM3,490',
     badge: 'Pakar Alahan',
     emallUrl: 'https://emall.coway.com.my/productlist/category/airpurifier-airpurifier-lombok3?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Demonstrasi Coway Lombok 3 Plasma RBD (AP-1520C)',
     dimensions: '414 x 264 x 651 mm',
     powerConsumption: '50 Watt',
     filtrationStages: 'Penapisan 6 Peringkat + Plasma RBD & Penjana Ion Negatif',
@@ -462,8 +446,6 @@ export const PRODUCTS: Product[] = [
     badge: '4 Pilihan Warna',
     featured: true,
     emallUrl: 'https://emall.coway.com.my/productlist/category/massage-pebble?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Demonstrasi Kerusi Urut Coway BEREX PEBBLE™ (MC-C01)',
     colorVariants: [
       { name: 'Kelabu Mistik', colorHex: '#64748B', image: 'https://emall.coway.com.my/ProductImages/8b8abf5f-2bc3-4ed3-9a95-5bbb5f7b41dc/1/240x240/pebble-mystic-grey.png' },
       { name: 'Pasir Kuning Langsat', colorHex: '#D6C5B3', image: 'https://emall.coway.com.my/ProductImages/0c88e5fd-a79c-47be-8e77-eaa4916fbf25/1/240x240/pebble-sand-beige.png' },
@@ -493,8 +475,6 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM7,500',
     badge: '3 Pilihan Warna',
     emallUrl: 'https://emall.coway.com.my/productlist/category/massage-massage-chair-mine?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Demonstrasi Kerusi Urut Coway BEREX MINE™ (MC-B02)',
     colorVariants: [
       { name: 'Kuning Champagne', colorHex: '#E5D9C5', image: 'https://emall.coway.com.my/ProductImages/3ecf4894-ce52-4c21-8fd4-c02fa4e58bde/1/240x240/mine-champagne-beige.png' },
       { name: 'Hitam Dakwat', colorHex: '#1F242A', image: 'https://emall.coway.com.my/ProductImages/ed1db9d7-6a0b-4c66-9f27-7d0d9c1c036f/1/240x240/mine-ink-black.png' },
@@ -523,8 +503,6 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM13,500',
     badge: 'Gred Perdana',
     emallUrl: 'https://emall.coway.com.my/productlist/category/massage-massage-coway-berex-senno-plus?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Demonstrasi BEREX Senno Flagship Massage Chair',
     dimensions: '820 x 1500 x 1200 mm',
     powerConsumption: '200 Watt',
     keyFeatures: [
@@ -548,8 +526,6 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM14,500',
     badge: 'Terapi Batu Jed',
     emallUrl: 'https://emall.coway.com.my/productlist/category/massage-massage-bed-standard?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Demonstrasi Katil Urut Haba BEREX',
     colorVariants: [
       { name: 'Kuning Champagne (Premium)', colorHex: '#E5D9C5', image: 'https://emall.coway.com.my/ProductImages/cfa028ff-a59e-438d-a3db-eb9c05ae895e/1/240x240/massage-bed-premium-champagne-beige.png' },
       { name: 'Hitam Dakwat (Premium)', colorHex: '#1F242A', image: 'https://emall.coway.com.my/ProductImages/b38c539e-a00c-4a22-a0de-873f940b5e52/1/240x240/massage-bed-premium-ink-black.png' },
@@ -582,8 +558,6 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM4,500',
     badge: 'Tilam Hotel',
     emallUrl: 'https://emall.coway.com.my/productlist/category/mattress-mattress-only-prime-lite-mattress-queen?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Servis & Penjagaan Tilam Coway BEREX',
     keyFeatures: [
       'Sistem Pegas Poket 5-Zon untuk Sokongan Badan Optimum',
       'Penukaran Lapisan Atas (Topper) Percuma Sepanjang Kontrak',
@@ -604,8 +578,6 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM5,780',
     badge: 'Antistatik',
     emallUrl: 'https://emall.coway.com.my/productlist/category/mattress-mattress-only-prime-mattress-queen-only-soft?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Ciri Antistatik Tilam Coway BEREX Prime II',
     keyFeatures: [
       'Fabrik Antistatik untuk Pelepasan Cas Elektrik Statik Badan',
       'Sokongan Tulang Belakang Ergonomik 7-Zon',
@@ -630,8 +602,6 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'NA',
     badge: 'Inverter Pintar',
     emallUrl: 'https://emall.coway.com.my/productlist/category/aircond-10-hp?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Servis & Kelebihan Penyaman Udara Inverter Coway',
     keyFeatures: [
       'Penjimatan Tenaga Inverter Penarafan 5-Bintang',
       'Fungsi Pembersihan Kendiri Automatik Mengelakkan Kulat',
@@ -652,8 +622,6 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'NA',
     badge: 'Servis Berkala',
     emallUrl: 'https://emall.coway.com.my/productlist/category/cooling-cooling-set-p-series-aircond-15hp?agentcode=748757',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Servis Pembersihan Mendalam 7 Langkah Coway',
     keyFeatures: [
       'Hembusan Aliran Udara Lembut 4-Hala Menyeluruh',
       'Penapis Mikro Antibakteria Menyingkirkan Habuk Halus',
