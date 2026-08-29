@@ -16,16 +16,18 @@ import {
   Play,
   Volume2,
   VolumeX,
-  Maximize2,
-  Sparkles
+  Sparkles,
+  Users,
+  Award,
+  Heart
 } from 'lucide-react';
 
 export const LeadForm: React.FC = () => {
-  const [interestProduct, setInterestProduct] = useState('Coway Villaem III (Penapis Air)');
+  const [interestProduct, setInterestProduct] = useState('Coway Villaem III (Penapis Air 4 Suhu)');
   const [budgetRange, setBudgetRange] = useState('RM60 - RM90/bulan');
   
   // Video player controls
-  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -49,134 +51,128 @@ export const LeadForm: React.FC = () => {
 
   const handleConsultation = (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = `Hai ${siteConfig.agentName}, saya berminat dengan ${interestProduct} (Bajet anggaran: ${budgetRange}). Boleh tolong berikan cadangan & promosi terbaik?`;
+    const msg = `Hai ${siteConfig.agentName}, saya berminat dengan ${interestProduct} (Bajet anggaran: ${budgetRange}). Boleh tolong berikan cadangan pakej promosi terbaik untuk rumah saya?`;
     window.open(getWhatsAppUrl(msg), '_blank');
   };
 
   return (
-    <section id="johan" className="py-16 sm:py-20 bg-slate-900 border-t border-slate-850">
+    <section id="johan" className="py-16 sm:py-22 bg-slate-900 border-t border-slate-850">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="pro-card p-6 sm:p-10 lg:p-12 bg-slate-850 border border-slate-800 rounded-3xl shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Left Column: Johan Adam High-Definition Photo Card */}
+            {/* Left Column: Johan Adam High-Definition Portrait Card */}
             <div className="lg:col-span-4 flex flex-col items-center">
-              <div className="relative rounded-2xl overflow-hidden bg-slate-900 border-2 border-sky-500/30 shadow-2xl max-w-sm w-full group">
+              <div className="relative rounded-3xl overflow-hidden bg-slate-900 border-2 border-sky-500/40 shadow-2xl max-w-sm w-full group">
                 <img 
                   src={siteConfig.agentImage} 
                   alt={`${siteConfig.agentName} - ${siteConfig.designation}`} 
-                  className="w-full h-80 sm:h-96 object-cover object-top filter contrast-105 group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-84 sm:h-98 object-cover object-top filter contrast-105 group-hover:scale-103 transition-transform duration-500"
                 />
                 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-4 text-center">
-                  <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-950/90 text-sky-400 border border-sky-800 text-[10px] font-extrabold uppercase mb-1">
+                {/* Gradient Overlay with HP Details */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-5 text-center">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-950/90 text-sky-400 border border-sky-800 text-[10px] font-extrabold uppercase mb-1.5 shadow-sm">
                     <BadgeCheck className="w-3.5 h-3.5 text-sky-400" />
-                    {siteConfig.designation}
+                    {siteConfig.designation} Sah
                   </div>
-                  <h4 className="text-lg font-extrabold text-white">{siteConfig.agentName}</h4>
-                  <p className="text-xs text-slate-300 font-mono">Kod HP: <strong className="text-sky-400">{siteConfig.hpCode}</strong></p>
+                  <h4 className="text-xl font-extrabold text-white">{siteConfig.agentName}</h4>
+                  <p className="text-xs text-slate-300 font-mono mt-0.5">Kod Ejen: <strong className="text-sky-400">{siteConfig.hpCode}</strong></p>
+                  
+                  <div className="mt-2 pt-2 border-t border-slate-800/80 flex items-center justify-center gap-3 text-[11px] text-slate-300">
+                    <span className="text-emerald-400 font-semibold">✓ 5+ Tahun Pengalaman</span>
+                    <span>•</span>
+                    <span>1,200+ Pemasangan</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Middle Column: Agent Bio, Human Quote & Video */}
+            {/* Middle Column: Johan's Story & Personal Video Showcase */}
             <div className="lg:col-span-4 space-y-4 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-sky-400 text-xs font-bold border border-slate-700">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                {siteConfig.designation} Sah Coway Malaysia
+                <Heart className="w-3.5 h-3.5 text-rose-400 fill-rose-400" />
+                <span>Komitmen Servis Mesra Pelanggan</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                Konsultasi Mesra Bersama <span className="text-sky-400">{siteConfig.agentName}</span>
+                Kenali <span className="text-sky-400">{siteConfig.agentName}</span>
               </h2>
 
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 text-xs font-bold text-slate-300">
-                <span className="flex items-center gap-1.5 bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">
-                  <ShieldCheck className="w-4 h-4 text-sky-400" /> Kod HP: <strong className="text-white">{siteConfig.hpCode}</strong>
-                </span>
-                <a 
-                  href={`tel:${siteConfig.phone}`}
-                  className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 px-3 py-1 rounded-lg border border-slate-800 text-slate-300 hover:text-white transition-colors"
-                >
-                  <Phone className="w-4 h-4 text-emerald-400" /> <strong className="text-white">{siteConfig.displayPhone}</strong>
-                </a>
-              </div>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                &ldquo;Bagi saya, tugas saya bukan sekadar menguruskan pendaftaran. Tanggungjawab saya adalah memastikan setiap keluarga menikmati bekalan air bersih dan udara segar tanpa sebarang kesulitan — dari pemilihan model, urusan kelulusan, pemasangan pantas sehinggalah khidmat Cody berjadual.&rdquo;
+              </p>
 
-              <blockquote className="text-slate-300 text-xs sm:text-sm leading-relaxed border-l-2 border-sky-500 pl-3.5 italic bg-slate-900/60 p-3 rounded-r-xl">
-                &ldquo;Tak pasti model mana yang sesuai untuk keluarga anda? Beritahu saya jumlah ahli keluarga, ruang kediaman dan bajet anda. Saya bantu buat perbandingan tepat tanpa sebarang caj perundingan.&rdquo;
-              </blockquote>
-
-              {/* Video Player Card Embedded In Johan Section */}
+              {/* Video Player Box with Poster Frame */}
               <div className="pt-1">
                 <div 
                   onClick={togglePlay}
-                  className="relative rounded-xl overflow-hidden bg-black border border-slate-750 aspect-video w-full flex items-center justify-center cursor-pointer group shadow-inner"
+                  className="relative rounded-2xl overflow-hidden bg-black border border-slate-750 aspect-video w-full flex items-center justify-center cursor-pointer group shadow-inner"
                 >
                   <video
                     ref={videoRef}
                     src="/videos/coway-promo.mp4"
-                    autoPlay
+                    poster="/images/cody-service-lifestyle.jpg"
                     playsInline
                     loop
                     muted={isMuted}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                   />
                   {!isPlaying && (
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                      <div className="w-10 h-10 rounded-full bg-sky-600 text-white flex items-center justify-center shadow-lg">
-                        <Play className="w-4 h-4 ml-0.5 fill-white" />
+                    <div className="absolute inset-0 bg-black/45 flex flex-col items-center justify-center group-hover:bg-black/35 transition-colors">
+                      <div className="w-12 h-12 rounded-full bg-sky-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                        <Play className="w-5 h-5 ml-0.5 fill-white" />
                       </div>
+                      <span className="text-[11px] font-bold text-white mt-2 bg-slate-900/80 px-2.5 py-0.5 rounded-full border border-slate-700">
+                        Tonton Video Pengenalan (45s)
+                      </span>
                     </div>
                   )}
-                  <div className="absolute top-2 right-2 flex items-center gap-1">
-                    <button
-                      onClick={toggleMute}
-                      className="p-1 rounded-full bg-slate-900/80 text-white border border-slate-700"
-                    >
-                      {isMuted ? <VolumeX className="w-3.5 h-3.5 text-slate-400" /> : <Volume2 className="w-3.5 h-3.5 text-sky-400" />}
-                    </button>
-                  </div>
-                  <div className="absolute bottom-1.5 left-2 right-2 px-2 py-0.5 rounded bg-slate-900/80 text-[10px] text-slate-300 flex items-center justify-between pointer-events-none">
-                    <span>▶ Tonton Video Coway (45s)</span>
-                    <span>{isMuted ? 'Ketik Untuk Audio' : 'Audio Aktif 🔊'}</span>
-                  </div>
+                  {isPlaying && (
+                    <div className="absolute top-2 right-2 flex items-center gap-1">
+                      <button
+                        onClick={toggleMute}
+                        className="p-1 rounded-full bg-slate-900/80 text-white border border-slate-700"
+                      >
+                        {isMuted ? <VolumeX className="w-3.5 h-3.5 text-slate-400" /> : <Volume2 className="w-3.5 h-3.5 text-sky-400" />}
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
 
-              {/* Social Portals */}
-              <div className="flex items-center gap-2 pt-1">
+              {/* Direct Contacts */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1 text-xs">
+                <a 
+                  href={`tel:${siteConfig.phone}`}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 transition-colors"
+                >
+                  <Phone className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>{siteConfig.displayPhone}</span>
+                </a>
+
                 <a 
                   href={siteConfig.facebookUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex-1 px-3 py-2 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 font-semibold transition-colors"
                 >
                   <Facebook className="w-3.5 h-3.5" />
-                  <span>Facebook</span>
-                </a>
-                <a 
-                  href={siteConfig.emallUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex-1 px-3 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 text-xs font-bold transition-all flex items-center justify-center gap-1.5"
-                >
-                  <ShoppingBag className="w-3.5 h-3.5" />
-                  <span>E-Mall Rasmi</span>
+                  <span>{siteConfig.facebookName}</span>
                 </a>
               </div>
             </div>
 
-            {/* Right Column: Zero-Friction 1-Tap Consultation Box */}
+            {/* Right Column: Zero-Friction Consultation Box */}
             <div className="lg:col-span-4">
-              <div className="pro-card p-5 sm:p-6 bg-slate-900 border border-slate-800 rounded-2xl shadow-sm space-y-4">
+              <div className="pro-card p-5 sm:p-6 bg-slate-900 border border-slate-800 rounded-3xl shadow-lg space-y-4">
                 <div>
                   <div className="inline-flex items-center gap-1 text-[11px] font-bold text-sky-400 uppercase tracking-wide mb-1">
                     <Sparkles className="w-3 h-3" />
                     <span>Konsultasi Percuma</span>
                   </div>
-                  <h3 className="text-lg font-extrabold text-white">Nak Saya Bantu Pilih?</h3>
+                  <h3 className="text-lg font-extrabold text-white">Bantu Saya Pilih Model</h3>
                   <p className="text-xs text-slate-400 mt-0.5">
                     Pilih produk & bajet anda untuk cadangan pakej paling berbaloi terus di WhatsApp.
                   </p>

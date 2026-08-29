@@ -34,11 +34,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const emallLink = getProductEmallUrl(product.emallUrl);
   const regularNum = parseInt(product.regularMonthly.replace(/[^0-9.]/g, '')) || 0;
+  const dailyCost = (regularNum / 30).toFixed(2);
 
   // List View Mode (Compact horizontal row)
   if (viewMode === 'list') {
     return (
-      <div className="pro-card p-3 sm:p-4 bg-slate-850 border border-slate-800 flex items-center justify-between gap-3 hover:border-slate-700 transition-all">
+      <div className="pro-card p-3 sm:p-4 bg-slate-850 border border-slate-800 flex items-center justify-between gap-3 hover:border-slate-700 rounded-2xl transition-all">
         <div className="flex items-center gap-3 flex-1 min-w-0">
           
           {/* Clickable Image Box */}
@@ -77,10 +78,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             
             {/* Price line */}
             <div className="flex items-center gap-2 mt-0.5 text-xs">
-              <span className="font-extrabold text-sky-400">
-                Promo: RM{product.promoMonthly}/bln <span className="text-[10px] text-slate-400 font-normal">({product.promoMonths} bln pertama)</span>
+              <span className="font-extrabold text-white">
+                RM{regularNum}/bln <span className="text-[10px] text-slate-400 font-medium">(≈ RM{dailyCost}/hari)</span>
               </span>
-              <span className="text-[11px] text-slate-400 hidden sm:inline">• Selepas promo: <strong className="text-white">RM{regularNum}/bln</strong></span>
+              <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-950/80 text-amber-300 border border-amber-800/60 font-semibold hidden sm:inline">
+                Promo {product.promoMonths} bln: RM{product.promoMonthly}/bln
+              </span>
             </div>
           </div>
         </div>
@@ -122,7 +125,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   // Grid View Mode
   return (
-    <div className="pro-card p-3 sm:p-4 flex flex-col justify-between relative bg-slate-850 border border-slate-800 hover:border-slate-700 rounded-2xl transition-all shadow-md">
+    <div className="pro-card p-3.5 sm:p-4 flex flex-col justify-between relative bg-slate-850 border border-slate-800 hover:border-slate-750 rounded-2xl transition-all shadow-md">
       <div>
         {/* Top Badge & Code */}
         <div className="flex items-center justify-between mb-1.5 gap-1">
@@ -135,13 +138,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* Clickable Product Image */}
         <div 
           onClick={() => onOpenLightbox(product, activeColorName)}
-          className="h-28 sm:h-40 flex items-center justify-center my-2 p-1.5 sm:p-2 bg-slate-900/80 rounded-xl border border-slate-800/80 cursor-pointer group relative overflow-hidden"
+          className="h-28 sm:h-38 flex items-center justify-center my-2 p-1.5 sm:p-2 bg-slate-900/80 rounded-xl border border-slate-800/80 cursor-pointer group relative overflow-hidden"
           title="Klik untuk besarkan gambar"
         >
           <img 
             src={activeImage} 
             alt={product.name} 
-            className="max-h-24 sm:max-h-34 max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
+            className="max-h-24 sm:max-h-32 max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
             loading="lazy"
           />
           
@@ -182,22 +185,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
       </div>
 
-      {/* ================= CRYSTAL CLEAR PRICING BOX ================= */}
+      {/* ================= HONEST PRICING BLOCK ================= */}
       <div className="mt-2.5 pt-2.5 border-t border-slate-800 space-y-2">
         
-        {/* Transparent Price Callout */}
-        <div className="p-2 sm:p-2.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
-          <div className="flex items-center justify-between">
-            <span className="text-[9px] font-extrabold uppercase text-sky-400 tracking-tight">
-              Promo {product.promoMonths} Bulan Pertama
-            </span>
-            <div className="text-sm sm:text-base font-black text-sky-300">
-              RM{product.promoMonthly}<span className="text-[9px] font-normal text-slate-400">/bln*</span>
+        {/* Main Monthly Anchor + Daily Framing */}
+        <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+          <div className="flex items-baseline justify-between">
+            <div>
+              <span className="text-sm sm:text-base font-black text-white">
+                RM{regularNum}
+              </span>
+              <span className="text-[10px] text-slate-400 font-normal">/bulan</span>
             </div>
+            <span className="text-[10px] text-slate-400 font-medium">
+              ≈ <strong className="text-sky-300">RM{dailyCost}</strong>/hari
+            </span>
           </div>
-          <div className="flex items-center justify-between text-[10px] text-slate-400 border-t border-slate-800/80 pt-1">
-            <span>Selepas Promo:</span>
-            <span className="font-bold text-slate-200">RM{regularNum}/bulan</span>
+
+          <div className="flex items-center justify-between text-[10px] border-t border-slate-850 pt-1">
+            <span className="text-amber-400 font-bold">Promo {product.promoMonths} bln awal:</span>
+            <span className="font-extrabold text-amber-300">RM{product.promoMonthly}/bln</span>
           </div>
         </div>
 

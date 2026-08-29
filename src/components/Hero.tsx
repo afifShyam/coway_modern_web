@@ -11,54 +11,61 @@ import {
   BadgeCheck,
   ChevronRight,
   Sparkles,
-  UserCheck
+  Users,
+  Clock,
+  MapPin,
+  Heart
 } from 'lucide-react';
 
 const TOP_FEATURED = [
   {
     name: 'Villaem III',
     code: 'CHP-7320L',
-    category: 'Penapis Air',
+    category: 'Penapis Air 4 Suhu',
     tag: 'Paling Popular',
-    promoMonthly: '20',
+    regularMonthly: 'RM74',
+    dailyEstimate: 'RM2.50',
     promoMonths: '7',
-    regularMonthly: '74.00',
+    promoPrice: 'RM20',
     image: 'https://emall.coway.com.my/ProductImages/859ec6e7-6111-41bb-aad4-75a7145a8a50/1/240x240/villaem-3-white.png',
     link: '#produk',
-    whatsappMsg: `Hai ${siteConfig.agentName}, saya berminat dengan Villaem III (CHP-7320L). Boleh saya tahu promosi dan bayaran bulanan selepas tempoh promo?`
+    whatsappMsg: `Hai ${siteConfig.agentName}, saya berminat dengan Villaem III (CHP-7320L). Boleh saya tahu promosi terkini dan cara permohonan?`
   },
   {
     name: 'Coway AIS',
     code: 'CHP-5310L',
-    category: 'Pembuat Ais',
+    category: 'Pembuat Ais + Air',
     tag: 'Ais Segera',
-    promoMonthly: '20',
+    regularMonthly: 'RM120',
+    dailyEstimate: 'RM4.00',
     promoMonths: '7',
-    regularMonthly: '120.00',
+    promoPrice: 'RM20',
     image: 'https://emall.coway.com.my/ProductImages/cd349c96-7052-4f9a-a75d-7eb696eedaa3/1/240x240/ais-white.png',
     link: '#produk',
-    whatsappMsg: `Hai ${siteConfig.agentName}, saya berminat dengan Coway AIS (CHP-5310L). Boleh saya tahu promosi dan bayaran bulanan selepas tempoh promo?`
+    whatsappMsg: `Hai ${siteConfig.agentName}, saya berminat dengan Coway AIS (CHP-5310L). Boleh saya tahu promosi terkini?`
   },
   {
     name: 'Storm II',
     code: 'AP-1516D',
-    category: 'Penulen Udara',
+    category: 'Penulen Udara HEPA',
     tag: 'HEPA H13',
-    promoMonthly: '20',
+    regularMonthly: 'RM60',
+    dailyEstimate: 'RM2.00',
     promoMonths: '7',
-    regularMonthly: '60.00',
+    promoPrice: 'RM20',
     image: 'https://emall.coway.com.my/ProductImages/f18d8c4d-f7d0-4eb5-a5da-389fbc5a66ad/1/240x240/storm-2.jpg',
     link: '#produk',
-    whatsappMsg: `Hai ${siteConfig.agentName}, saya berminat dengan Storm II (AP-1516D). Boleh saya tahu promosi dan bayaran bulanan selepas tempoh promo?`
+    whatsappMsg: `Hai ${siteConfig.agentName}, saya berminat dengan Storm II (AP-1516D). Boleh bantu saya semak kelayakan promosi?`
   },
   {
     name: 'BEREX Pebble',
     code: 'MC-C01',
-    category: 'Kerusi Urut',
-    tag: 'Urutan 3D',
-    promoMonthly: '20',
+    category: 'Kerusi Urut 3D',
+    tag: 'Urutan Moden',
+    regularMonthly: 'RM120',
+    dailyEstimate: 'RM4.00',
     promoMonths: '3',
-    regularMonthly: '120.00',
+    promoPrice: 'RM20',
     image: 'https://emall.coway.com.my/ProductImages/8b8abf5f-2bc3-4ed3-9a95-5bbb5f7b41dc/1/240x240/pebble-mystic-grey.png',
     link: '#produk',
     whatsappMsg: `Hai ${siteConfig.agentName}, saya berminat dengan Kerusi Urut BEREX Pebble (MC-C01). Boleh saya tahu promosi terkini?`
@@ -66,13 +73,13 @@ const TOP_FEATURED = [
 ];
 
 const CATEGORY_CHIPS = [
-  { label: 'Penapis Air', icon: '💧', id: '#produk' },
-  { label: 'Penulen Udara', icon: '💨', id: '#produk' },
-  { label: 'Kerusi Urut', icon: '🪑', id: '#produk' },
-  { label: 'Tilam Hotel', icon: '🛏️', id: '#produk' },
-  { label: 'Aircond', icon: '❄️', id: '#produk' },
-  { label: 'Peti Sejuk', icon: '🧊', id: '#produk' },
-  { label: 'Bilik Mandi', icon: '🚿', id: '#produk' },
+  { label: 'Penapis Air', id: '#produk' },
+  { label: 'Penulen Udara', id: '#produk' },
+  { label: 'Kerusi Urut', id: '#produk' },
+  { label: 'Tilam Hotel', id: '#produk' },
+  { label: 'Aircond', id: '#produk' },
+  { label: 'Peti Sejuk', id: '#produk' },
+  { label: 'Bilik Mandi', id: '#produk' },
 ];
 
 interface HeroProps {
@@ -85,97 +92,137 @@ export const Hero: React.FC<HeroProps> = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ============================================================== */}
-        {/* TOP HERO ROW: CRO OPTIMIZED CONVERSION HIERARCHY */}
+        {/* TOP HERO ROW: HUMAN WARMTH & HIGH-CONVERTING VALUE PROP */}
         {/* ============================================================== */}
-        <div className="max-w-3xl mx-auto text-center space-y-4 mb-12 sm:mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center mb-12 sm:mb-16">
           
-          {/* 1. Humanized Agent Credential Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs shadow-sm">
-            <img 
-              src={siteConfig.agentAvatar} 
-              alt={siteConfig.agentName} 
-              className="w-5 h-5 rounded-full object-cover border border-sky-500/50" 
-            />
-            <span className="text-white font-bold">{siteConfig.agentName}</span>
-            <span className="text-sky-400 font-bold">✓</span>
-            <span className="text-slate-600">•</span>
-            <span className="text-slate-300 font-medium">Kod HP: {siteConfig.hpCode}</span>
-            <span className="text-slate-600 hidden sm:inline">•</span>
-            <span className="text-emerald-400 font-semibold hidden sm:inline">Servis Seluruh Malaysia</span>
-          </div>
-
-          {/* 2. Official Promo Urgency Pill */}
-          <div>
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-950/80 border border-amber-800/80 text-amber-300 text-xs font-bold shadow-inner">
-              <Flame className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-              <span>Promosi Rasmi Coway 2026 — Dari <strong>RM20/Bulan</strong></span>
-            </div>
-          </div>
-
-          {/* 3. Customer & Result-Focused Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
-            Nak Cari Coway Yang Sesuai <br className="hidden sm:inline" />
-            <span className="text-sky-400">Untuk Rumah Anda?</span>
-          </h1>
-
-          {/* 4. Natural Value Proposition */}
-          <p className="text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Saya bantu anda <strong>pilih produk yang sesuai, semak promosi terkini & urus pemasangan</strong> di seluruh Malaysia — <strong>konsultasi percuma</strong>.
-          </p>
-
-          {/* 5. Undisputed Primary CTA (WhatsApp Johan) */}
-          <div className="pt-3 flex flex-col items-center gap-2.5">
-            <a 
-              href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya ingin konsultasi pemilihan produk Coway yang sesuai untuk rumah saya.`)}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl text-base sm:text-lg font-extrabold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl shadow-emerald-950/60 hover:shadow-emerald-900/80 transition-all text-center flex items-center justify-center gap-2.5 border border-emerald-400/30 transform hover:-translate-y-0.5 active:translate-y-0"
-            >
-              <MessageCircle className="w-5 h-5 fill-white text-emerald-600" />
-              <span>WhatsApp Johan — Semak Promosi</span>
-            </a>
-
-            {/* Micro-copy */}
-            <div className="text-xs text-slate-400 font-medium flex items-center justify-center gap-2">
-              <span>⚡ Balasan Pantas</span>
-              <span>•</span>
-              <span>Tiada Komitmen</span>
-              <span>•</span>
-              <span>Konsultasi Percuma</span>
+          {/* Left Column: Focused Copywriting & Personal Touch */}
+          <div className="lg:col-span-7 space-y-4 text-center lg:text-left">
+            
+            {/* 1. Humanized Agent Credential Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs shadow-sm">
+              <img 
+                src={siteConfig.agentAvatar} 
+                alt={siteConfig.agentName} 
+                className="w-6 h-6 rounded-full object-cover border border-sky-500/60" 
+              />
+              <span className="text-white font-bold">{siteConfig.agentName}</span>
+              <span className="text-sky-400 font-bold">✓</span>
+              <span className="text-slate-600">•</span>
+              <span className="text-slate-300 font-medium">Kod HP: {siteConfig.hpCode}</span>
+              <span className="text-slate-600 hidden sm:inline">•</span>
+              <span className="text-emerald-400 font-semibold hidden sm:inline">Servis Seluruh Malaysia</span>
             </div>
 
-            {/* Secondary Action Link */}
-            <div className="pt-1">
+            {/* 2. Official Promo Urgency Pill */}
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-950/80 border border-amber-800/80 text-amber-300 text-xs font-bold shadow-inner">
+                <Flame className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                <span>Promosi Rasmi 2026 — Kadar Pengenalan Dari <strong>RM20/Bulan</strong></span>
+              </div>
+            </div>
+
+            {/* 3. Customer & Result-Focused Headline */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+              Air Bersih, Udara Segar & <br className="hidden sm:inline" />
+              <span className="text-sky-400">Kediaman Lebih Selesa.</span>
+            </h1>
+
+            {/* 4. Natural Value Proposition */}
+            <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              Hai, saya <strong>{siteConfig.agentName}</strong>. Saya bantu anda pilih produk Coway yang sesuai dengan keperluan keluarga dan bajet bulanan — <strong>tanpa sebarang caj konsultasi</strong> & dengan urusan pemasangan percuma di seluruh Malaysia.
+            </p>
+
+            {/* 5. Undisputed Primary CTA (WhatsApp Johan) */}
+            <div className="pt-2 flex flex-col items-center lg:items-start gap-2.5">
               <a 
-                href="#produk" 
-                className="text-xs sm:text-sm font-semibold text-slate-400 hover:text-sky-400 transition-colors inline-flex items-center gap-1 group"
+                href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya ingin konsultasi pemilihan produk Coway yang sesuai untuk rumah saya.`)}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-8 py-4 rounded-2xl text-base sm:text-lg font-extrabold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl shadow-emerald-950/60 hover:shadow-emerald-900/80 transition-all text-center flex items-center justify-center gap-2.5 border border-emerald-400/30 transform hover:-translate-y-0.5 active:translate-y-0"
               >
-                <span>Atau Lihat Katalog Produk & Senarai Harga</span>
-                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                <MessageCircle className="w-5 h-5 fill-white text-emerald-600" />
+                <span>WhatsApp Johan — Semak Promosi</span>
               </a>
+
+              {/* Micro-copy */}
+              <div className="text-xs text-slate-400 font-medium flex items-center justify-center lg:justify-start gap-2">
+                <span>⚡ Balasan Pantas (&lt; 5 Minit)</span>
+                <span>•</span>
+                <span>Tiada Komitmen</span>
+                <span>•</span>
+                <span>Konsultasi Percuma</span>
+              </div>
+
+              {/* Secondary Action Link */}
+              <div className="pt-1">
+                <a 
+                  href="#produk" 
+                  className="text-xs sm:text-sm font-semibold text-slate-400 hover:text-sky-400 transition-colors inline-flex items-center gap-1 group"
+                >
+                  <span>Atau Lihat Katalog Produk & Senarai Harga Penuh</span>
+                  <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
             </div>
+
+            {/* 6. Human Trust Metrics Strip */}
+            <div className="pt-4 border-t border-slate-850/80 grid grid-cols-3 gap-2 text-left">
+              <div className="flex items-center gap-2">
+                <Users className="w-4 h-4 text-sky-400 shrink-0" />
+                <div>
+                  <div className="text-xs font-bold text-white">1,200+ Keluarga</div>
+                  <div className="text-[10px] text-slate-400">Telah dibantu</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-sky-400 shrink-0" />
+                <div>
+                  <div className="text-xs font-bold text-white">5+ Tahun</div>
+                  <div className="text-[10px] text-slate-400">Health Planner Sah</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <BadgeCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div>
+                  <div className="text-xs font-bold text-white">Halal JAKIM</div>
+                  <div className="text-[10px] text-slate-400">100% Diyakini</div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          {/* 6. 3-Point Trust Strip */}
-          <div className="pt-4 max-w-xl mx-auto border-t border-slate-850/80 grid grid-cols-3 gap-2 text-center sm:text-left">
-            <div className="flex items-center justify-center sm:justify-start gap-1.5">
-              <Wrench className="w-4 h-4 text-sky-400 shrink-0" />
-              <span className="text-[11px] sm:text-xs text-slate-300 font-semibold">Servis Berjadual Cody</span>
-            </div>
-            <div className="flex items-center justify-center sm:justify-start gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-sky-400 shrink-0" />
-              <span className="text-[11px] sm:text-xs text-slate-300 font-semibold">Jaminan Rasmi Coway</span>
-            </div>
-            <div className="flex items-center justify-center sm:justify-start gap-1.5">
-              <BadgeCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span className="text-[11px] sm:text-xs text-slate-300 font-semibold">Pensijilan Halal JAKIM</span>
+          {/* Right Column: Warm Malaysian Home Lifestyle Visual */}
+          <div className="lg:col-span-5">
+            <div className="pro-card p-2.5 sm:p-3 bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl space-y-2 relative group overflow-hidden">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-950">
+                <img 
+                  src="/images/malaysian-kitchen-lifestyle.jpg" 
+                  alt="Dapur Keluarga Malaysia dengan Penapis Air Coway" 
+                  className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 text-left">
+                  <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-950/90 text-sky-300 border border-sky-800 text-[10px] font-bold mb-1">
+                    <Sparkles className="w-3 h-3 text-sky-400" />
+                    Selesa • Bersih • Mudah
+                  </div>
+                  <h4 className="text-sm sm:text-base font-extrabold text-white">Air Minuman Bersih Setiap Saat</h4>
+                  <p className="text-xs text-slate-300 mt-0.5">Tak perlu jerang air atau simpan botol di peti sejuk lagi.</p>
+                </div>
+              </div>
+              
+              <div className="px-2 py-1 flex items-center justify-between text-xs text-slate-400">
+                <span className="font-semibold text-slate-300">Pemasangan Kemas & Percuma</span>
+                <span className="text-emerald-400 font-bold">Servis Cody Berkala</span>
+              </div>
             </div>
           </div>
 
         </div>
 
         {/* ============================================================== */}
-        {/* POPULAR PRODUCTS - 4 MODELS (FAST BROWSING) */}
+        {/* POPULAR PRODUCTS - 4 MODELS WITH HONEST PRICING HIERARCHY */}
         {/* ============================================================== */}
         <div className="mb-12">
           
@@ -185,7 +232,7 @@ export const Hero: React.FC<HeroProps> = () => {
                 Pilihan Popular Pelanggan
               </h2>
               <p className="text-xs sm:text-sm text-slate-400">
-                Tak pasti nak pilih yang mana? Mulakan dengan model paling digemari ini.
+                Model paling digemari dengan kadar sewaan berpatutan dan kos harian yang sangat jimat.
               </p>
             </div>
             <a href="#produk" className="text-xs sm:text-sm font-bold text-sky-400 hover:underline inline-flex items-center gap-1 shrink-0 mt-1 sm:mt-0">
@@ -226,17 +273,21 @@ export const Hero: React.FC<HeroProps> = () => {
                   <span className="text-xs text-slate-400 font-medium">{item.category}</span>
                 </div>
 
-                {/* Price Breakdown - 100% Transparent */}
-                <div className="mt-3 pt-3 border-t border-slate-800 space-y-3">
-                  <div className="p-2.5 rounded-xl bg-sky-950/40 border border-sky-900/60">
-                    <div className="text-[10px] uppercase font-bold text-sky-400">
-                      Promosi Bulan 1 – {item.promoMonths}
+                {/* Pricing Block: Real Monthly Rate as Anchor */}
+                <div className="mt-3 pt-3 border-t border-slate-800 space-y-2.5">
+                  <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                    <div className="flex items-baseline justify-between">
+                      <div className="text-lg font-black text-white">
+                        {item.regularMonthly}<span className="text-xs font-normal text-slate-400">/bulan</span>
+                      </div>
+                      <span className="text-[11px] text-slate-400 font-medium">
+                        ≈ <strong className="text-sky-300">{item.dailyEstimate}</strong> sehari
+                      </span>
                     </div>
-                    <div className="text-xl font-black text-sky-300">
-                      RM{item.promoMonthly}<span className="text-xs font-normal text-slate-300">/bulan</span>
-                    </div>
-                    <div className="text-[11px] text-slate-300 mt-0.5">
-                      Selepas promo: <strong className="text-white">RM{parseInt(item.regularMonthly)}/bulan</strong>
+                    
+                    <div className="mt-1 pt-1 border-t border-slate-850 flex items-center justify-between text-[11px]">
+                      <span className="text-amber-400 font-bold">Promo Bln 1–{item.promoMonths}:</span>
+                      <span className="font-extrabold text-amber-300">{item.promoPrice}/bulan</span>
                     </div>
                   </div>
 
@@ -259,7 +310,7 @@ export const Hero: React.FC<HeroProps> = () => {
         {/* ============================================================== */}
         {/* JOHAN RECOMMENDATION HELPER BOX */}
         {/* ============================================================== */}
-        <div className="pro-card p-5 sm:p-7 bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border border-sky-900/50 rounded-2xl mb-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="pro-card p-5 sm:p-7 bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border border-sky-900/50 rounded-2xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4 text-center md:text-left flex-col md:flex-row">
             <img 
               src={siteConfig.agentAvatar} 
@@ -268,12 +319,12 @@ export const Hero: React.FC<HeroProps> = () => {
             />
             <div className="space-y-1">
               <div className="inline-flex items-center gap-1 text-[11px] font-bold text-sky-400 uppercase tracking-wide">
-                <UserCheck className="w-3.5 h-3.5" />
-                <span>Bantuan Pemilihan Pantas</span>
+                <Heart className="w-3.5 h-3.5 text-rose-400" />
+                <span>Konsultasi Peribadi Mesra</span>
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-white">Tak Pasti Model Mana Sesuai?</h3>
-              <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-                &ldquo;Beritahu saya saiz keluarga, ruang kediaman dan bajet anda. Saya bantu buat perbandingan tepat tanpa sebarang caj perundingan.&rdquo;
+              <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+                &ldquo;Beritahu saya jumlah ahli keluarga, ruang kediaman dan bajet anda. Saya bantu carikan pakej yang paling berbaloi tanpa sebarang bayaran.&rdquo;
               </p>
             </div>
           </div>
@@ -287,31 +338,6 @@ export const Hero: React.FC<HeroProps> = () => {
             <MessageCircle className="w-4 h-4 fill-white text-emerald-600" />
             <span>Minta Johan Cadangkan Model</span>
           </a>
-        </div>
-
-        {/* ============================================================== */}
-        {/* CATEGORY JUMP SELECTOR STRIP */}
-        {/* ============================================================== */}
-        <div className="pt-2 border-t border-slate-850">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-400">
-              <Sparkles className="w-3.5 h-3.5 text-sky-400" />
-              <span>Terokai Mengikut Kategori:</span>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-              {CATEGORY_CHIPS.map((chip, idx) => (
-                <a
-                  key={idx}
-                  href={chip.id}
-                  className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 hover:border-slate-700 text-xs font-medium transition-all flex items-center gap-1.5 shadow-sm"
-                >
-                  <span className="text-xs">{chip.icon}</span>
-                  <span>{chip.label}</span>
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
 
       </div>
