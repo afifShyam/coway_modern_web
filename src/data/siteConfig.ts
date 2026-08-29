@@ -3,6 +3,7 @@ export const siteConfig = {
   tagline: "Change Your Life • Ubah Hidup Anda",
   agentName: "JOHAN ADAM",
   hpCode: "748757",
+  agentImage: "/images/johan-adam.png",
   phone: "601110580077",
   displayPhone: "011-1058 0077",
   title: "Coway Malaysia Rasmi | Penapis Air, Penulen Udara & Perkakas Rumah - Johan Adam HP",

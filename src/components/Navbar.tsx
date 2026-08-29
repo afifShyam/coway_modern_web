@@ -3,7 +3,7 @@
 import React from 'react';
 import { siteConfig } from '@/data/siteConfig';
 import { getWhatsAppUrl } from '@/lib/whatsapp';
-import { Sparkles, MessageCircle, ChevronRight, ShoppingBag, Facebook } from 'lucide-react';
+import { Sparkles, MessageCircle, ChevronRight, ShoppingBag, Facebook, BadgeCheck } from 'lucide-react';
 
 interface NavbarProps {
   onOpenQuiz: () => void;
@@ -55,17 +55,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuiz }) => {
       <header className="sticky top-0 z-50 glass-header transition-all">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
           
-          {/* Brand & Agent Badge */}
+          {/* Brand & Agent Badge with Johan Adam Photo */}
           <a href="#" className="flex items-center gap-2.5 shrink-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sky-600 flex items-center justify-center text-white font-extrabold text-lg sm:text-xl shadow-sm">
-              C
+            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border-2 border-sky-400 shadow-md bg-slate-850 shrink-0">
+              <img 
+                src={siteConfig.agentImage} 
+                alt={siteConfig.agentName}
+                className="w-full h-full object-cover object-top"
+              />
+              <div className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 border border-slate-900"></div>
             </div>
+
             <div className="leading-tight">
-              <div className="font-extrabold text-base sm:text-lg tracking-tight text-white flex items-center gap-1.5">
+              <div className="font-extrabold text-sm sm:text-base tracking-tight text-white flex items-center gap-1.5">
                 COWAY <span className="text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded bg-sky-950 text-sky-400 font-bold border border-sky-800/60">MALAYSIA</span>
               </div>
-              <div className="text-[10px] sm:text-[11px] text-slate-400 font-medium">
-                HP: <strong className="text-slate-200">{siteConfig.agentName}</strong> <span className="text-slate-500">({siteConfig.hpCode})</span>
+              <div className="text-[10px] sm:text-[11px] text-slate-400 font-medium flex items-center gap-1">
+                <span>HP: <strong className="text-slate-200">{siteConfig.agentName}</strong></span>
+                <span className="text-sky-400 font-mono font-bold">({siteConfig.hpCode})</span>
+                <BadgeCheck className="w-3.5 h-3.5 text-sky-400 shrink-0" />
               </div>
             </div>
           </a>
