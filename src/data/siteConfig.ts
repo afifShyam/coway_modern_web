@@ -10,5 +10,10 @@ export const siteConfig = {
   whatsappDirectUrl: "https://cowayw.wasap.my",
   facebookUrl: "https://www.facebook.com/share/18CGBgP4tT/",
   facebookName: "COWAY HP",
-  emallUrl: "https://emall.coway.com.my/?agentcode=748757"
+  emallUrl: "https://emall.coway.com.my/?agentcode=748757",
+  developer: {
+    name: "Afif Shyam",
+    tagline: "Web Developer & Digital Growth",
+    whatsappUrl: "https://wa.me/601110580077?text=Hai%20Afif,%20saya%20tertarik%20dengan%20laman%20web%20Coway%20ini.%20Saya%20berminat%20untuk%20bina%20laman%20web%20seperti%20ini%20juga."
+  }
 };

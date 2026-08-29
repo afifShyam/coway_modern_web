@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { siteConfig } from '@/data/siteConfig';
-import { Facebook, ShoppingBag, Phone, MessageCircle } from 'lucide-react';
+import { Facebook, ShoppingBag, Phone, MessageCircle, Code2, ArrowUpRight } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -71,6 +71,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
+        {/* Brand Copyright Bar */}
         <div className="pt-8 border-t border-slate-850 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
           <div>© 2026 Perancang Kesihatan Coway {siteConfig.agentName} (Kod HP: {siteConfig.hpCode}). Hak Cipta Terpelihara.</div>
           <div className="flex items-center gap-3">
@@ -81,6 +82,28 @@ export const Footer: React.FC = () => {
             <span>Kelulusan Piawaian SIRIM</span>
           </div>
         </div>
+
+        {/* Discreet Developer Signature & Client Acquisition Bar */}
+        {siteConfig.developer && (
+          <div className="pt-4 mt-4 border-t border-slate-900/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+            <div className="flex items-center gap-1.5">
+              <Code2 className="w-3.5 h-3.5 text-sky-400" />
+              <span>Laman web dibangunkan & direka oleh <strong className="text-slate-300">{siteConfig.developer.name}</strong></span>
+            </div>
+
+            <a
+              href={siteConfig.developer.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 hover:bg-slate-850 text-slate-400 hover:text-sky-300 border border-slate-800 transition-colors group"
+            >
+              <span>Ingin bina laman web seperti ini?</span>
+              <span className="text-sky-400 font-bold group-hover:underline flex items-center">
+                Hubungi Afif <ArrowUpRight className="w-3 h-3 ml-0.5" />
+              </span>
+            </a>
+          </div>
+        )}
 
       </div>
     </footer>
