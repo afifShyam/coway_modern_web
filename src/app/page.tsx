@@ -12,7 +12,6 @@ import { LeadForm } from '@/components/LeadForm';
 import { Footer } from '@/components/Footer';
 import { MobileBottomDock } from '@/components/MobileBottomDock';
 import { ModelQuizModal } from '@/components/ModelQuizModal';
-import { SocialProofToast } from '@/components/SocialProofToast';
 
 export default function Home() {
   const [isQuizOpen, setIsQuizOpen] = useState(false);
@@ -51,9 +50,6 @@ export default function Home() {
 
       {/* Smart Model Finder Quiz Modal */}
       <ModelQuizModal isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
-
-      {/* Social Proof Notification Toast */}
-      <SocialProofToast />
     </main>
   );
 }
