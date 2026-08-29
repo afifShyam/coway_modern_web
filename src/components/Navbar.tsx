@@ -20,7 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuiz }) => {
           </span>
           <span>Daftar Sekarang & Nikmati Bayaran Bulanan <strong>Serendah RM20</strong>!</span>
           <a href="#promosi" className="underline font-bold text-sky-400 hover:text-sky-300 inline-flex items-center gap-0.5 ml-1">
-            Lihat Pelan <ChevronRight className="w-3.5 h-3.5" />
+            Lihat Pelan Promosi <ChevronRight className="w-3.5 h-3.5" />
           </a>
         </div>
       </div>
@@ -39,7 +39,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuiz }) => {
                 COWAY <span className="text-[10px] px-1.5 py-0.5 rounded bg-sky-950 text-sky-400 font-bold border border-sky-800/60">MALAYSIA</span>
               </div>
               <div className="text-[11px] text-slate-400 font-medium whitespace-nowrap">
-                Ejen Sah: <strong className="text-slate-200">{siteConfig.agentName}</strong> <span className="text-slate-500">(HP: {siteConfig.hpCode})</span>
+                Ejen Sah: <strong className="text-slate-200">{siteConfig.agentName}</strong> <span className="text-slate-500">(Kod HP: {siteConfig.hpCode})</span>
               </div>
             </div>
           </a>
@@ -51,8 +51,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuiz }) => {
             <a href="#promosi" className="hover:text-sky-400 transition-colors flex items-center gap-1.5">
               Promosi RM20 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             </a>
-            <a href="#langkah" className="hover:text-sky-400 transition-colors">Cara Tempah</a>
-            <a href="#perbandingan" className="hover:text-sky-400 transition-colors">Bandingkan</a>
+            <a href="#langkah" className="hover:text-sky-400 transition-colors">Cara Tempahan</a>
+            <a href="#perbandingan" className="hover:text-sky-400 transition-colors">Bandingkan Pelan</a>
           </nav>
 
           {/* Actions */}
@@ -62,11 +62,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuiz }) => {
               className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-700/60 transition-all whitespace-nowrap"
             >
               <Sparkles className="w-3.5 h-3.5 text-sky-400" />
-              Pencari Model
+              Kuiz Model Pintar
             </button>
 
             <a 
-              href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya berminat nak tahu promosi Coway terkini`)}
+              href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya berminat untuk mengetahui promosi rasmi Coway terkini.`)}
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-md transition-all whitespace-nowrap shrink-0"

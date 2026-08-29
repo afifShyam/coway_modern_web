@@ -10,10 +10,10 @@ export const ComparisonTable: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <span className="text-sky-400 text-xs font-bold tracking-widest uppercase mb-2 block">Perbandingan Pintar</span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Pelan Sewa Beli Coway vs Credit Term Kedai Luar
+            Pelan Sewa Beli Coway Rasmi vs Skim Ansuran Kredit Kedai Luar
           </h2>
           <p className="mt-3 text-slate-400 text-base">
-            Ketahui perbezaan ketara dari segi penjimatan, jaminan servis berkala, dan kemudahan pendaftaran.
+            Ketahui perbezaan ketara dari segi penjimatan, jaminan servis berkala dan kemudahan pendaftaran.
           </p>
         </div>
 
@@ -25,51 +25,51 @@ export const ComparisonTable: React.FC = () => {
                 <th className="p-5 text-sm font-extrabold text-sky-400 bg-slate-900 border-x border-slate-800 w-1/3 text-center">
                   🌟 Pelan Sewa Beli Coway Rasmi
                 </th>
-                <th className="p-5 text-sm font-bold text-slate-400 w-1/3 text-center">Pinjaman / Credit Kedai Luar</th>
+                <th className="p-5 text-sm font-bold text-slate-400 w-1/3 text-center">Skim Ansuran Pihak Ketiga</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800 text-sm">
               <tr>
                 <td className="p-5 font-semibold text-white">Hubungan Transaksi</td>
                 <td className="p-5 bg-slate-900 border-x border-slate-800 text-center font-bold text-sky-300">
-                  Terus dengan Coway Malaysia
+                  Terus dengan Syarikat Coway Malaysia
                 </td>
-                <td className="p-5 text-center text-slate-400">Melalui syarikat kredit pihak ketiga</td>
+                <td className="p-5 text-center text-slate-400">Melalui syarikat pinjaman kredit pihak ketiga</td>
               </tr>
               <tr>
-                <td className="p-5 font-semibold text-white">Kadar Faedah (Interest)</td>
+                <td className="p-5 font-semibold text-white">Kadar Faedah (Bunga)</td>
                 <td className="p-5 bg-slate-900 border-x border-slate-800 text-center font-bold text-emerald-400">
-                  <span className="inline-flex items-center gap-1">✓ 0% Tiada Caj Tersembunyi</span>
+                  <span className="inline-flex items-center gap-1">✓ 0% Tiada Sebarang Caj Tersembunyi</span>
                 </td>
-                <td className="p-5 text-center text-rose-400 font-semibold">✕ Ada faedah tinggi & caj lewat</td>
+                <td className="p-5 text-center text-rose-400 font-semibold">✕ Ada kadar faedah tinggi & caj lewat bayar</td>
               </tr>
               <tr>
-                <td className="p-5 font-semibold text-white">Servis Berkala & Penukaran Filter</td>
+                <td className="p-5 font-semibold text-white">Servis Berkala & Penukaran Penapis</td>
                 <td className="p-5 bg-slate-900 border-x border-slate-800 text-center font-bold text-emerald-400">
-                  <span className="inline-flex items-center gap-1">✓ Percuma Sepanjang Kontrak</span>
+                  <span className="inline-flex items-center gap-1">✓ Percuma Sepanjang Tempoh Kontrak</span>
                 </td>
-                <td className="p-5 text-center text-rose-400 font-semibold">✕ Tanggung sendiri kos servis</td>
+                <td className="p-5 text-center text-rose-400 font-semibold">✕ Perlu menanggung kos servis & penapis sendiri</td>
               </tr>
               <tr>
-                <td className="p-5 font-semibold text-white">Jaminan Waranti & Alat Ganti</td>
+                <td className="p-5 font-semibold text-white">Jaminan Penuh & Alat Ganti Asli</td>
                 <td className="p-5 bg-slate-900 border-x border-slate-800 text-center font-bold text-emerald-400">
-                  <span className="inline-flex items-center gap-1">✓ Waranti Penuh 5 - 7 Tahun</span>
+                  <span className="inline-flex items-center gap-1">✓ Jaminan Penuh 5 hingga 7 Tahun</span>
                 </td>
-                <td className="p-5 text-center text-rose-400 font-semibold">✕ Biasanya terhad 1 tahun sahaja</td>
+                <td className="p-5 text-center text-rose-400 font-semibold">✕ Biasanya terhad kepada 1 tahun sahaja</td>
               </tr>
               <tr>
                 <td className="p-5 font-semibold text-white">Syarat Kelayakan Suri Rumah</td>
                 <td className="p-5 bg-slate-900 border-x border-slate-800 text-center font-bold text-emerald-400">
-                  <span className="inline-flex items-center gap-1">✓ Layak Tanpa Penjamin</span>
+                  <span className="inline-flex items-center gap-1">✓ Layak Memohon Tanpa Penjamin</span>
                 </td>
-                <td className="p-5 text-center text-rose-400 font-semibold">✕ Wajib penjamin & slip gaji</td>
+                <td className="p-5 text-center text-rose-400 font-semibold">✕ Wajib mempunyai penjamin dan slip gaji</td>
               </tr>
               <tr>
                 <td className="p-5 font-semibold text-white">Dokumen Diperlukan</td>
                 <td className="p-5 bg-slate-900 border-x border-slate-800 text-center font-bold text-white">
-                  Hanya Salinan MyKad
+                  Hanya Salinan MyKad Sahaja
                 </td>
-                <td className="p-5 text-center text-slate-400">Penyata bank 3 bulan, slip gaji, bil</td>
+                <td className="p-5 text-center text-slate-400">Penyata bank 3 bulan, slip gaji dan bil utiliti</td>
               </tr>
             </tbody>
           </table>

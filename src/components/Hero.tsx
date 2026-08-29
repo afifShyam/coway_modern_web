@@ -24,12 +24,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.18] sm:leading-[1.15]">
-              Air, Udara & Relaksasi, <br className="hidden sm:inline" />
+              Air, Udara & Kesihatan, <br className="hidden sm:inline" />
               <span className="text-sky-400">Kesejahteraan Keluarga Anda.</span>
             </h1>
 
             <p className="text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              Katalog rasmi penapis air, penulen udara, kerusi urut BEREX, tilam & aircond Coway. Nikmati <strong>promosi bulanan RM20</strong>, servis berkala percuma, dan jaminan waranti 100%.
+              Katalog rasmi penapis air, penulen udara, kerusi urut BEREX, tilam hotel dan penyaman udara Coway. Nikmati <strong>promosi bulanan RM20</strong>, perkhidmatan servis berkala percuma serta jaminan penuh 100%.
             </p>
 
             {/* CTAs */}
@@ -39,7 +39,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
                 className="w-full sm:w-auto px-7 py-3 rounded-full text-xs sm:text-sm font-bold bg-sky-600 hover:bg-sky-500 text-white shadow-md transition-all text-center flex items-center justify-center gap-2"
               >
                 <Grid className="w-4 h-4" />
-                Lihat Katalog & Harga (27+)
+                Lihat Katalog & Senarai Harga (27+)
               </a>
               
               <button 
@@ -47,7 +47,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
                 className="w-full sm:w-auto px-7 py-3 rounded-full text-xs sm:text-sm font-bold bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-700/80 transition-all flex items-center justify-center gap-2"
               >
                 <Sparkles className="w-4 h-4 text-sky-400" />
-                Cadangkan Model Sesuai (Quiz)
+                Cadangkan Model Sesuai (Kuiz)
               </button>
             </div>
 
@@ -68,7 +68,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
                   <Bed className="w-3 h-3 text-sky-400" /> Tilam (2)
                 </a>
                 <a href="#produk" className="px-3 py-1 rounded-full bg-slate-850 hover:bg-slate-800 border border-slate-750 text-[11px] font-semibold text-slate-300 flex items-center gap-1">
-                  <Snowflake className="w-3 h-3 text-sky-400" /> Aircond (2)
+                  <Snowflake className="w-3 h-3 text-sky-400" /> Penyaman Udara (2)
                 </a>
                 <a href="#produk" className="px-3 py-1 rounded-full bg-slate-850 hover:bg-slate-800 border border-slate-750 text-[11px] font-semibold text-slate-300 flex items-center gap-1">
                   <Refrigerator className="w-3 h-3 text-sky-400" /> Peti Sejuk (2)
@@ -93,7 +93,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
                   <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
                 <div>
-                  <div className="text-[11px] sm:text-xs font-bold text-white">Waranti Penuh</div>
+                  <div className="text-[11px] sm:text-xs font-bold text-white">Jaminan Penuh</div>
                   <div className="text-[10px] text-slate-400">Alat ganti 100%</div>
                 </div>
               </div>
@@ -117,7 +117,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
               
               <div className="flex items-center justify-between mb-3">
                 <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-950/70 text-amber-300 border border-amber-800/60 uppercase tracking-wide">
-                  ⭐ Model Paling Popular
+                  ⭐ Pilihan Utama Ramai
                 </span>
                 <span className="text-xs text-emerald-400 font-bold flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-emerald-500"></span> Promosi RM20
@@ -158,7 +158,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
                 </div>
 
                 <a 
-                  href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya nak tanya promosi Coway Villaem 3 RM20`)}
+                  href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya ingin bertanya mengenai promosi Coway Villaem 3 RM20.`)}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-full py-2.5 sm:py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-2 shadow-sm"

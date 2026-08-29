@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from 'react';
 
 const TOAST_DATA = [
-  { name: 'Aiman', loc: 'Shah Alam', item: 'Villaem 3', time: '2 minit lalu' },
-  { name: 'Nurul', loc: 'Johor Bahru', item: 'AIS Ice Maker', time: '5 minit lalu' },
-  { name: 'Farid', loc: 'Petaling Jaya', item: 'Storm 2 Air Purifier', time: '8 minit lalu' },
-  { name: 'Siti Sarah', loc: 'Bangi', item: 'Prime Mattress', time: '12 minit lalu' },
-  { name: 'Kevin Tan', loc: 'Penang', item: 'Smart Aircond', time: '15 minit lalu' },
-  { name: 'Zulkifli', loc: 'Kuantan', item: 'Neo Plus', time: '18 minit lalu' }
+  { name: 'Aiman', loc: 'Shah Alam', item: 'Villaem III', time: '2 minit yang lalu' },
+  { name: 'Nurul', loc: 'Johor Bahru', item: 'AIS (Pembuat Ais)', time: '5 minit yang lalu' },
+  { name: 'Farid', loc: 'Petaling Jaya', item: 'Storm II (Penulen Udara)', time: '8 minit yang lalu' },
+  { name: 'Siti Sarah', loc: 'Bangi', item: 'Tilam Hotel BEREX', time: '12 minit yang lalu' },
+  { name: 'Kevin Tan', loc: 'Pulau Pinang', item: 'Penyaman Udara Inverter', time: '15 minit yang lalu' },
+  { name: 'Zulkifli', loc: 'Kuantan', item: 'Kerusi Urut BEREX Pebble', time: '18 minit yang lalu' }
 ];
 
 export const SocialProofToast: React.FC = () => {
@@ -49,7 +49,7 @@ export const SocialProofToast: React.FC = () => {
         </div>
         <div>
           <div className="text-xs font-bold text-white">{currentToast.name} dari {currentToast.loc}</div>
-          <div className="text-[11px] text-slate-400">Baru langgan {currentToast.item} • {currentToast.time}</div>
+          <div className="text-[11px] text-slate-400">Baru melanggan {currentToast.item} • {currentToast.time}</div>
         </div>
       </div>
     </div>

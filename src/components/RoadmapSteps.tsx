@@ -12,22 +12,22 @@ const STEPS = [
   {
     step: '02',
     title: 'Sediakan Dokumen',
-    desc: 'Hanya salinan hadapan MyKad & maklumat kad bank untuk bayaran bulanan.'
+    desc: 'Hanya salinan hadapan MyKad dan maklumat kad bank untuk bayaran bulanan.'
   },
   {
     step: '03',
     title: 'Semakan Kelulusan',
-    desc: 'Sistem Coway akan memproses semakan secara pantas dan telus.'
+    desc: 'Sistem Coway akan memproses semakan permohonan secara pantas dan telus.'
   },
   {
     step: '04',
     title: 'Pilih Tarikh Pasang',
-    desc: 'Pihak Coway akan menghubungi anda bagi menetapkan waktu pemasangan.'
+    desc: 'Pihak Coway akan menghubungi anda bagi menetapkan waktu pemasangan yang sesuai.'
   },
   {
     step: '05',
     title: 'Pemasangan Percuma',
-    desc: 'Juruteknik bertauliah Coway datang memasang terus ke lokasi anda.',
+    desc: 'Juruteknik bertauliah Coway hadir memasang terus ke lokasi anda.',
     highlight: true
   }
 ];
@@ -43,7 +43,7 @@ export const RoadmapSteps: React.FC = () => {
             Cara Tempahan Mudah Dalam 5 Langkah
           </h2>
           <p className="mt-3 text-slate-400 text-base">
-            Tiada borang fizikal yang rumit. Semuanya selesai secara digital dari rumah anda.
+            Tiada borang fizikal yang rumit. Semuanya selesai secara digital dari keselesaan rumah anda.
           </p>
         </div>
 

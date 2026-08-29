@@ -18,7 +18,7 @@ export const PromoMatrix: React.FC = () => {
             Bayar Bulanan <span className="text-sky-400">Hanya RM20!</span>
           </h2>
           <p className="mt-3 text-slate-400 text-base">
-            Pilih tempoh kontrak di bawah untuk menikmati kadar promosi RM20 bulanan bagi bulan-bulan terawal.
+            Pilih tempoh kontrak di bawah untuk menikmati kadar promosi bulanan RM20 bagi bulan-bulan terawal.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ export const PromoMatrix: React.FC = () => {
               </div>
 
               <a 
-                href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya nak claim ${decodeURIComponent(tier.ctaParam)}`)}
+                href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya ingin menuntut ${decodeURIComponent(tier.ctaParam)}.`)}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="mt-6 w-full py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs text-center transition-all shadow-sm"
@@ -77,26 +77,26 @@ export const PromoMatrix: React.FC = () => {
         <div className="pro-card p-6 sm:p-8 bg-slate-900 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1.5 text-center md:text-left">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-950 text-sky-400 text-[11px] font-extrabold uppercase border border-sky-800">
-              ⚡ Pakej Mix & Match Combo
+              ⚡ Pakej Kombo Suai Padan (Mix & Match)
             </div>
-            <h3 className="text-xl font-bold text-white">Gabungkan 2 Produk & Nikmati Diskaun Kekal!</h3>
+            <h3 className="text-xl font-bold text-white">Gabungkan 2 Produk & Nikmati Potongan Harga Kekal!</h3>
             <p className="text-slate-300 text-sm max-w-2xl">
-              Gabungkan penulen air + penulen udara / tilam / aircond untuk menerima potongan <strong>tambahan RM20/bulan sepanjang tempoh kontrak</strong>.
+              Gabungkan penapis air bersama penulen udara, kerusi urut, tilam atau penyaman udara untuk menerima potongan <strong>tambahan RM20 sebulan sepanjang tempoh kontrak</strong>.
             </p>
           </div>
 
           <div className="flex items-center gap-4 shrink-0">
             <div className="text-center md:text-right">
-              <div className="text-3xl font-black text-white">RM20 <span className="text-base text-sky-400 font-bold">OFF</span></div>
+              <div className="text-3xl font-black text-white">RM20 <span className="text-base text-sky-400 font-bold">POTONGAN</span></div>
               <div className="text-[11px] text-slate-400 font-bold uppercase">Diskaun Kekal Bulanan</div>
             </div>
             <a 
-              href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya nak tahu pakej Combo Mix and Match Coway`)}
+              href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya ingin mengetahui pakej Kombo Suai Padan Coway.`)}
               target="_blank" 
               rel="noopener noreferrer"
               className="px-5 py-3 rounded-full bg-white hover:bg-slate-200 text-slate-950 font-bold text-xs transition-all shadow-sm"
             >
-              Kira Pakej Combo
+              Kira Pakej Kombo
             </a>
           </div>
         </div>

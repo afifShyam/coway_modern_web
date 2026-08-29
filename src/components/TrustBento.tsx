@@ -14,7 +14,7 @@ export const TrustBento: React.FC = () => {
             Kenapa Jutaan Rakyat Malaysia Memilih Coway?
           </h2>
           <p className="mt-3 text-slate-400 text-base">
-            Lebih daripada sekadar perkakas rumah — Coway menawarkan perkhidmatan penjagaan kesihatan berjadual tanpa kos tersembunyi.
+            Lebih daripada sekadar perkakas rumah — Coway menawarkan perkhidmatan penjagaan kesihatan berjadual tanpa sebarang kos tersembunyi.
           </p>
         </div>
 
@@ -32,7 +32,7 @@ export const TrustBento: React.FC = () => {
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-sky-400 font-bold">
-              2M+ Pelanggan Setia
+              2 Juta+ Pelanggan Setia
             </div>
           </div>
 
@@ -44,11 +44,11 @@ export const TrustBento: React.FC = () => {
               </div>
               <h3 className="text-lg font-bold text-white">Pensijilan Halal JAKIM</h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Diiktiraf Halal sepenuhnya dari segi komponen, penapis, dan pemprosesan. Selamat & suci untuk seisi keluarga Muslim.
+                Diiktiraf Halal sepenuhnya dari segi komponen, penapis dan proses pembuatan. Bersih serta suci untuk seisi keluarga Muslim.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-emerald-400 font-bold">
-              100% Halal Certified
+              100% Diiktiraf Halal
             </div>
           </div>
 
@@ -60,11 +60,11 @@ export const TrustBento: React.FC = () => {
               </div>
               <h3 className="text-lg font-bold text-white">Servis Berkala 'Heart' Cody</h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Cody bertauliah akan hadir setiap 2-4 bulan untuk pensterilan wap suhu tinggi dan penukaran katrij filter original secara percuma.
+                Pasukan Cody bertauliah hadir setiap 2 hingga 4 bulan untuk pensterilan wap suhu tinggi dan penukaran kartrij penapis asli secara percuma.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-sky-400 font-bold">
-              Servis & Filter Percuma
+              Servis & Penapis Percuma
             </div>
           </div>
 
@@ -76,7 +76,7 @@ export const TrustBento: React.FC = () => {
               </div>
               <h3 className="text-lg font-bold text-white">Pensijilan WQA Gold Seal</h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Sistem penapisan air Coway diiktiraf oleh Persatuan Kualiti Air Antarabangsa (WQA) mengikut piawaian ketat global.
+                Sistem penapisan air Coway diiktiraf oleh Persatuan Kualiti Air Antarabangsa (WQA) mengikut piawaian ketat keselamatan dunia.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-amber-400 font-bold">
@@ -92,11 +92,11 @@ export const TrustBento: React.FC = () => {
               </div>
               <h3 className="text-lg font-bold text-white">Cekap Tenaga & Mesra Alam</h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Dilengkapi sensor cahaya pintar dan motor inverter jimat elektrik untuk mengurangkan kos bil utiliti bulanan rumah anda.
+                Dilengkapi penderia cahaya pintar dan motor inverter jimat elektrik untuk mengurangkan kos bil utiliti bulanan kediaman anda.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-sky-400 font-bold">
-              Jimat Elektrik Bulanan
+              Penjimatan Elektrik Bulanan
             </div>
           </div>
 
@@ -106,13 +106,13 @@ export const TrustBento: React.FC = () => {
               <div className="w-11 h-11 rounded-xl bg-slate-850 flex items-center justify-center text-indigo-400 border border-slate-800">
                 <Percent className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-white">Kelulusan Mudah Tanpa Payslip</h3>
+              <h3 className="text-lg font-bold text-white">Kelulusan Mudah Tanpa Slip Gaji</h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Hanya MyKad & kad bank sahaja. Suri rumah, peniaga kecil, dan pekerja bebas layak memohon tanpa sebarang penjamin.
+                Hanya salinan MyKad dan kad bank sahaja. Suri rumah, peniaga kecil dan pekerja bebas layak memohon tanpa sebarang penjamin.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-indigo-400 font-bold">
-              Tanpa Penjamin
+              Tanpa Perlu Penjamin
             </div>
           </div>
 

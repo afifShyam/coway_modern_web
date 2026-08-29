@@ -9,12 +9,12 @@ export const LeadForm: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    product: 'Coway Villaem 3 (Penapis Air)'
+    product: 'Coway Villaem III (Penapis Air)'
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = `Hai ${siteConfig.agentName}, saya ${formData.name} (${formData.phone}). Saya berminat untuk dapatkan info & promosi bagi model: ${formData.product}. Boleh bantu saya?`;
+    const msg = `Hai ${siteConfig.agentName}, saya ${formData.name} (${formData.phone}). Saya berminat untuk mendapatkan maklumat & promosi bagi model: ${formData.product}. Boleh bantu saya?`;
     window.open(getWhatsAppUrl(msg), '_blank');
   };
 
@@ -29,7 +29,7 @@ export const LeadForm: React.FC = () => {
             <div className="lg:col-span-6 space-y-5">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-sky-400 text-xs font-bold border border-slate-700">
                 <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                Health Planner Bertauliah
+                Perancang Kesihatan Bertauliah (Health Planner)
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
@@ -37,11 +37,11 @@ export const LeadForm: React.FC = () => {
               </h2>
 
               <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                Coway Health Planner • HP Code: <span className="text-slate-200">{siteConfig.hpCode}</span>
+                Perancang Kesihatan Coway • Kod HP: <span className="text-slate-200">{siteConfig.hpCode}</span>
               </p>
 
               <blockquote className="text-slate-300 text-base leading-relaxed border-l-2 border-sky-500 pl-4 italic">
-                "Sebagai ejen jualan berpengalaman dan terlatih, saya komited membantu anda dan keluarga memiliki barangan Coway idaman dengan pantas, mudah, dan penjimatan maksimum."
+                "Sebagai wakil jualan bertauliah dan berpengalaman, saya komited untuk membantu anda sekeluarga memiliki perkakas Coway idaman dengan pantas, mudah serta menikmati penjimatan maksimum."
               </blockquote>
 
               <div className="grid grid-cols-3 gap-3 pt-2">
@@ -51,7 +51,7 @@ export const LeadForm: React.FC = () => {
                 </div>
                 <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-center">
                   <Clock className="w-5 h-5 text-sky-400 mx-auto mb-1" />
-                  <div className="text-[11px] font-bold text-white">Respon Pantas</div>
+                  <div className="text-[11px] font-bold text-white">Respons Pantas</div>
                 </div>
                 <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-center">
                   <Star className="w-5 h-5 text-sky-400 mx-auto mb-1" />
@@ -64,7 +64,7 @@ export const LeadForm: React.FC = () => {
             <div className="lg:col-span-6">
               <div className="pro-card p-6 sm:p-8 bg-slate-900 border border-slate-800 shadow-sm">
                 <h3 className="text-lg font-bold text-white mb-1">Borang Pertanyaan Pantas</h3>
-                <p className="text-xs text-slate-400 mb-5">Isi borang ringkas di bawah untuk berhubung terus via WhatsApp.</p>
+                <p className="text-xs text-slate-400 mb-5">Sila lengkapkan maklumat ringkas di bawah untuk berhubung terus melalui WhatsApp.</p>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
@@ -98,15 +98,19 @@ export const LeadForm: React.FC = () => {
                       onChange={(e) => setFormData({ ...formData, product: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl bg-slate-850 border border-slate-700 text-white text-xs focus:outline-none focus:border-sky-500 transition-all"
                     >
-                      <option value="Coway Villaem 3 (Penapis Air)">Coway Villaem 3 (Penapis Air)</option>
+                      <option value="Coway Villaem III (Penapis Air)">Coway Villaem III (Penapis Air)</option>
                       <option value="Coway AIS (Penapis Air & Ais)">Coway AIS (Penapis Air & Ais)</option>
-                      <option value="Coway Neo Plus (Penapis Air Bajet)">Coway Neo Plus (Penapis Air Bajet)</option>
-                      <option value="Coway Storm 2 (Penapis Udara)">Coway Storm 2 (Penapis Udara)</option>
-                      <option value="Coway Lombok 3 (Penapis Udara)">Coway Lombok 3 (Penapis Udara)</option>
-                      <option value="Coway Smart Aircond">Coway Smart Aircond</option>
-                      <option value="Coway Prime Lite Mattress">Coway Prime Lite Mattress</option>
-                      <option value="Coway Side-By-Side Refrigerator 715L">Coway Side-By-Side Refrigerator 715L</option>
-                      <option value="Pakej Mix & Match Combo">Pakej Mix & Match Combo</option>
+                      <option value="Coway Neon (Penapis Air Ultra-Nipis)">Coway Neon (Penapis Air Ultra-Nipis)</option>
+                      <option value="Coway Neo Plus (Penapis Air Mesra Bajet)">Coway Neo Plus (Penapis Air Mesra Bajet)</option>
+                      <option value="Coway Storm II (Penulen Udara)">Coway Storm II (Penulen Udara)</option>
+                      <option value="Coway Lombok 3 (Penulen Udara)">Coway Lombok 3 (Penulen Udara)</option>
+                      <option value="Kerusi Urut BEREX Pebble">Kerusi Urut BEREX Pebble</option>
+                      <option value="Kerusi Urut BEREX Mine">Kerusi Urut BEREX Mine</option>
+                      <option value="Katil Urut Haba BEREX">Katil Urut Haba BEREX</option>
+                      <option value="Tilam Hotel BEREX Prime Lite">Tilam Hotel BEREX Prime Lite</option>
+                      <option value="Penyaman Udara Inverter Coway">Penyaman Udara Inverter Coway</option>
+                      <option value="Peti Sejuk Bersebelahan 715L">Peti Sejuk Bersebelahan 715L</option>
+                      <option value="Pakej Kombo Suai Padan (Mix & Match)">Pakej Kombo Suai Padan (Mix & Match)</option>
                     </select>
                   </div>
 
@@ -115,7 +119,7 @@ export const LeadForm: React.FC = () => {
                     className="w-full py-3.5 rounded-xl font-bold text-xs bg-emerald-600 hover:bg-emerald-500 text-white transition-all flex items-center justify-center gap-2 shadow-sm"
                   >
                     <Send className="w-4 h-4" />
-                    Hantar Pertanyaan via WhatsApp
+                    Hantar Pertanyaan Melalui WhatsApp
                   </button>
                 </form>
               </div>
