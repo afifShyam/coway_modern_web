@@ -13,20 +13,21 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-2 space-y-3">
             <div className="font-extrabold text-xl text-white tracking-tight">COWAY MALAYSIA</div>
             <p className="text-slate-400 max-w-sm leading-relaxed">
-              Laman promosi ini diuruskan oleh Perancang Kesihatan Sah Coway (Health Planner: <strong>{siteConfig.agentName}</strong>, Kod HP: <strong>{siteConfig.hpCode}</strong>).
+              Laman promosi dan konsultasi ini diuruskan oleh {siteConfig.designation} Sah Coway (<strong>{siteConfig.agentName}</strong>, Kod HP: <strong>{siteConfig.hpCode}</strong>).
             </p>
             <div className="text-[11px] text-slate-500 max-w-md leading-normal pt-1">
-              <strong>Penafian (Disclaimer):</strong> Segala maklumat produk, spesifikasi, harga, tanda dagang, dan logo adalah hak milik terpelihara Coway (M) Sdn Bhd. Setiap permohonan sewa beli adalah tertakluk kepada terma, syarat, dan dasar kelulusan rasmi syarikat.
+              <strong>Penafian (Disclaimer):</strong> Laman web ini dikendalikan oleh Johan Adam, Coway Health Planner sah (Kod HP: {siteConfig.hpCode}), dan bukan laman korporat utama Coway (M) Sdn Bhd. Segala maklumat produk, tanda dagang, dan logo adalah hak milik terpelihara Coway (M) Sdn Bhd. Setiap permohonan tertakluk kepada terma, syarat, dan dasar kelulusan rasmi Coway.
             </div>
           </div>
 
           <div>
             <h4 className="text-white font-bold text-sm mb-3">Pautan Pantas</h4>
             <ul className="space-y-2">
-              <li><a href="#kenapa" className="hover:text-white transition-colors">Komitmen Kualiti</a></li>
-              <li><a href="#produk" className="hover:text-white transition-colors">Katalog Produk</a></li>
+              <li><a href="#produk" className="hover:text-white transition-colors">Katalog Produk & Harga</a></li>
               <li><a href="#promosi" className="hover:text-white transition-colors">Pelan Promosi RM20</a></li>
-              <li><a href="#perbandingan" className="hover:text-white transition-colors">Perbandingan Pelan</a></li>
+              <li><a href="#perbandingan" className="hover:text-white transition-colors">Sewa vs Beli Terus</a></li>
+              <li><a href="#kenapa" className="hover:text-white transition-colors">8 Sebab Pilih Coway</a></li>
+              <li><a href="#faq" className="hover:text-white transition-colors">Soalan Lazim (FAQ)</a></li>
               <li>
                 <a 
                   href={siteConfig.emallUrl} 
@@ -56,7 +57,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="text-emerald-400 hover:text-emerald-300 font-bold transition-colors inline-flex items-center gap-1.5"
               >
-                <MessageCircle className="w-4 h-4" /> WhatsApp Rasmi
+                <MessageCircle className="w-4 h-4" /> WhatsApp Johan
               </a>
 
               <a 
@@ -73,13 +74,13 @@ export const Footer: React.FC = () => {
 
         {/* Brand Copyright Bar */}
         <div className="pt-8 border-t border-slate-850 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
-          <div>© 2026 Perancang Kesihatan Coway {siteConfig.agentName} (Kod HP: {siteConfig.hpCode}). Hak Cipta Terpelihara.</div>
+          <div>© 2026 {siteConfig.agentName} (Coway HP: {siteConfig.hpCode}). Hak Cipta Terpelihara.</div>
           <div className="flex items-center gap-3">
-            <span>Diiktiraf Halal JAKIM</span>
+            <span>Pensijilan Halal JAKIM</span>
             <span>•</span>
-            <span>Pensijilan Emas WQA</span>
+            <span>Standard Kualiti WQA</span>
             <span>•</span>
-            <span>Kelulusan Piawaian SIRIM</span>
+            <span>Piawaian SIRIM</span>
           </div>
         </div>
 

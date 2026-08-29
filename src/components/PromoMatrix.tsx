@@ -16,7 +16,8 @@ import {
   RefreshCw,
   Layers,
   Building2,
-  ChevronRight
+  ChevronRight,
+  MessageCircle
 } from 'lucide-react';
 
 const OTHER_PROMOS = [
@@ -47,7 +48,7 @@ const OTHER_PROMOS = [
   {
     title: 'Pakej Pejabat & Surau',
     badge: 'Kapasiti Besar Komersial',
-    desc: 'Pakej sewaan korporat berkapasiti tinggi untuk syarikat, sekolah, klinik, surau & masjid.',
+    desc: 'Pakej sewaan khas berkapasiti tinggi untuk syarikat, sekolah, klinik, surau & masjid.',
     icon: Building2,
     iconColor: 'text-purple-400 bg-purple-950/60 border-purple-800/80',
     whatsappMsg: `Hai ${siteConfig.agentName}, saya ingin meminta sebut harga (quotation) Pakej Pejabat/Surau Coway.`
@@ -63,13 +64,13 @@ export const PromoMatrix: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-950 text-sky-400 border border-sky-800 text-xs font-bold uppercase mb-3">
             <Sparkles className="w-3.5 h-3.5 text-sky-400" />
-            <span>Ulang Tahun Ke-20 Coway Malaysia</span>
+            <span>Pakej Promosi Rasmi Coway</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
             Bagaimana Promosi <span className="text-sky-400">RM20 Sebulan</span> Berfungsi?
           </h2>
           <p className="mt-3 text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
-            Sempena Ulang Tahun ke-20 Coway Malaysia, nikmati kadar sewa pengenalan serendah RM20/bulan dengan ketelusan harga 100% tanpa sebarang caj tersembunyi.
+            Nikmati kadar promosi RM20/bulan untuk <strong>3, 5 atau 7 bulan pertama</strong> bergantung kepada kategori produk dan tempoh pelan kontrak yang dipilih.
           </p>
         </div>
 
@@ -83,11 +84,11 @@ export const PromoMatrix: React.FC = () => {
             </div>
             <div className="flex items-center gap-2 text-xs font-bold uppercase text-sky-400 mb-1">
               <Calendar className="w-3.5 h-3.5" />
-              <span>Bulan 1 hingga 6 / 7</span>
+              <span>Bulan-Bulan Pertama</span>
             </div>
             <h3 className="text-lg font-extrabold text-white mb-2">Kadar Promosi RM20/Bulan</h3>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-              Anda hanya membayar <strong>RM20 sebulan</strong> untuk tempoh promosi pengenalan terawal bagi kontrak langganan rasmi Coway.
+              Anda hanya membayar <strong>RM20 sebulan</strong> untuk 3, 5 atau 7 bulan pertama mengikut pakej kontrak pilihan anda.
             </p>
           </div>
 
@@ -102,7 +103,7 @@ export const PromoMatrix: React.FC = () => {
             </div>
             <h3 className="text-lg font-extrabold text-white mb-2">Kadar Sewaan Asal Tetap</h3>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-              Selepas tempoh RM20 berakhir, bayaran bulanan kembali ke kadar sewa biasa (cth: RM74/bln bagi Villaem III atau RM60/bln bagi Storm II) sehingga tamat kontrak.
+              Selepas tamat tempoh promosi RM20, bayaran bulanan kembali ke kadar sewaan biasa (cth: RM74/bln bagi Villaem III atau RM60/bln bagi Storm II) sehingga tamat kontrak.
             </p>
           </div>
 
@@ -115,9 +116,9 @@ export const PromoMatrix: React.FC = () => {
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Sepanjang Kontrak</span>
             </div>
-            <h3 className="text-lg font-extrabold text-white mb-2">Servis & Waranti Percuma</h3>
+            <h3 className="text-lg font-extrabold text-white mb-2">Servis & Jaminan Penuh</h3>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-              Termasuk servis Cody berjadual, penukaran penapis berkala, jaminan kerosakan penuh 100%, dan RM0 kos pendaftaran & pemasangan.
+              Termasuk servis berkala Cody, pertukaran penapis percuma, jaminan kerosakan rasmi Coway, dan RM0 kos pendaftaran & pemasangan.
             </p>
           </div>
 
@@ -166,9 +167,10 @@ export const PromoMatrix: React.FC = () => {
                 href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya ingin mengetahui maklumat lanjut mengenai ${decodeURIComponent(tier.ctaParam)}.`)}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="mt-6 w-full py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs text-center transition-all shadow-md"
+                className="mt-6 w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs text-center transition-all shadow-md flex items-center justify-center gap-2"
               >
-                {tier.ctaText}
+                <MessageCircle className="w-4 h-4" />
+                <span>{tier.ctaText}</span>
               </a>
             </div>
           ))}
@@ -191,8 +193,8 @@ export const PromoMatrix: React.FC = () => {
               <Wrench className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-bold text-white">Servis Cody Percuma</div>
-              <div className="text-[11px] text-slate-400">Sanitasi berkala & tukar filter</div>
+              <div className="text-xs font-bold text-white">Servis Cody Berkala</div>
+              <div className="text-[11px] text-slate-400">Sanitasi & tukar filter percuma</div>
             </div>
           </div>
 
@@ -201,8 +203,8 @@ export const PromoMatrix: React.FC = () => {
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-bold text-white">Jaminan Penuh 100%</div>
-              <div className="text-[11px] text-slate-400">Alat ganti percuma jika rosak</div>
+              <div className="text-xs font-bold text-white">Jaminan Rasmi Coway</div>
+              <div className="text-[11px] text-slate-400">Perlindungan alat ganti penuh</div>
             </div>
           </div>
 
@@ -211,20 +213,18 @@ export const PromoMatrix: React.FC = () => {
               <BadgeCheck className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xs font-bold text-white">100% Halal JAKIM</div>
-              <div className="text-[11px] text-slate-400">Pensijilan rasmi & diyakini</div>
+              <div className="text-xs font-bold text-white">Pensijilan Halal JAKIM</div>
+              <div className="text-[11px] text-slate-400">Piawaian rasmi diyakini</div>
             </div>
           </div>
         </div>
 
-        {/* ============================================================== */}
-        {/* MINIMALIST OTHER PROMOTIONS GRID */}
-        {/* ============================================================== */}
+        {/* Alternative Promotions Grid */}
         <div className="mb-4">
           <div className="flex items-center justify-between mb-4">
             <div>
               <span className="text-[11px] font-bold uppercase tracking-wider text-sky-400 block">Pilihan Penjimatan Tambahan</span>
-              <h3 className="text-lg sm:text-2xl font-extrabold text-white">Skim Promosi & Tawaran Lain 2026</h3>
+              <h3 className="text-lg sm:text-2xl font-extrabold text-white">Promosi Lain Yang Mungkin Sesuai Untuk Anda</h3>
             </div>
           </div>
 
@@ -272,7 +272,7 @@ export const PromoMatrix: React.FC = () => {
         {/* Legal Transparency Note */}
         <div className="mt-8 flex items-center justify-center gap-1.5 text-xs text-slate-500 text-center">
           <AlertCircle className="w-3.5 h-3.5 shrink-0" />
-          <span>Kadar promosi RM20 adalah kadar pengenalan untuk tempoh yang ditetapkan. Tertakluk kepada terma & kelulusan Coway (M) Sdn Bhd.</span>
+          <span>Kadar promosi RM20 adalah kadar pengenalan untuk tempoh yang ditetapkan. Tertakluk kepada terma pelan kontrak & kelulusan Coway (M) Sdn Bhd.</span>
         </div>
 
       </div>

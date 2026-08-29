@@ -18,11 +18,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuiz }) => {
           
           <div className="flex items-center gap-1.5 mx-auto sm:mx-0 text-[11px] sm:text-xs">
             <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-sky-950 text-sky-400 font-bold text-[10px] border border-sky-800/60">
-              Promo 2026
+              Promosi 2026
             </span>
-            <span>Bayaran Bulanan <strong>Serendah RM20</strong>!</span>
+            <span>Kadar Bulanan Pengenalan <strong>Serendah RM20</strong>!</span>
             <a href="#promosi" className="underline font-bold text-sky-400 hover:text-sky-300 inline-flex items-center ml-1">
-              Lihat Pelan <ChevronRight className="w-3 h-3" />
+              Lihat Pakej <ChevronRight className="w-3 h-3" />
             </a>
           </div>
 
@@ -55,9 +55,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuiz }) => {
       <header className="sticky top-0 z-50 glass-header transition-all">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
           
-          {/* Brand & Agent Badge with Johan Adam Headshot */}
-          <a href="#" className="flex items-center gap-3 shrink-0">
-            <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-sky-400 shadow-md bg-slate-800 shrink-0">
+          {/* Brand & Agent Badge */}
+          <a href="#" className="flex items-center gap-2.5 shrink-0">
+            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border-2 border-sky-400 shadow-md bg-slate-800 shrink-0">
               <img 
                 src={siteConfig.agentAvatar || siteConfig.agentImage} 
                 alt={siteConfig.agentName}
@@ -78,22 +78,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuiz }) => {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden xl:flex items-center gap-7 text-sm font-semibold text-slate-300 whitespace-nowrap">
-            <a href="#kenapa" className="hover:text-sky-400 transition-colors">Kenapa Coway</a>
-            <a href="#produk" className="hover:text-sky-400 transition-colors">Katalog Produk</a>
+          <nav className="hidden xl:flex items-center gap-6 text-sm font-semibold text-slate-300 whitespace-nowrap">
+            <a href="#produk" className="hover:text-sky-400 transition-colors">Produk</a>
             <a href="#promosi" className="hover:text-sky-400 transition-colors flex items-center gap-1.5">
               Promosi RM20 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             </a>
+            <a href="#perbandingan" className="hover:text-sky-400 transition-colors">Sewa vs Beli</a>
+            <a href="#kenapa" className="hover:text-sky-400 transition-colors">Kenapa Coway</a>
             <a href="#langkah" className="hover:text-sky-400 transition-colors">Cara Tempahan</a>
-            <a href="#perbandingan" className="hover:text-sky-400 transition-colors">Bandingkan Pelan</a>
-            <a 
-              href={siteConfig.emallUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-1 font-bold"
-            >
-              <ShoppingBag className="w-4 h-4" /> E-Mall
-            </a>
+            <a href="#faq" className="hover:text-sky-400 transition-colors">Soalan Lazim</a>
+            <a href="#johan" className="hover:text-sky-400 transition-colors">Johan Adam</a>
           </nav>
 
           {/* Actions */}
@@ -112,7 +106,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuiz }) => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-md transition-all whitespace-nowrap"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-4 h-4 fill-white text-emerald-600" />
               <span>WhatsApp</span>
             </a>
           </div>
