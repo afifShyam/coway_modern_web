@@ -6,6 +6,7 @@ import { PRODUCTS, CATEGORY_TABS } from '@/data/products';
 import { ProductCard } from '@/components/ProductCard';
 import { ProductDetailModal } from '@/components/ProductDetailModal';
 import { ImageLightboxModal } from '@/components/ImageLightboxModal';
+import { ProductVideoModal } from '@/components/ProductVideoModal';
 import { Search, SearchX, LayoutGrid, List, SlidersHorizontal } from 'lucide-react';
 
 export const ProductCatalog: React.FC = () => {
@@ -20,6 +21,9 @@ export const ProductCatalog: React.FC = () => {
   // Image Lightbox Viewer State
   const [lightboxProduct, setLightboxProduct] = useState<Product | null>(null);
   const [lightboxColor, setLightboxColor] = useState<string | undefined>(undefined);
+
+  // Video Demo Modal State
+  const [videoProduct, setVideoProduct] = useState<Product | null>(null);
 
   const [priceFilter, setPriceFilter] = useState<'all' | 'under60' | 'under90' | 'luxury'>('all');
 
@@ -51,6 +55,10 @@ export const ProductCatalog: React.FC = () => {
     setLightboxColor(color);
   };
 
+  const handleOpenVideo = (product: Product) => {
+    setVideoProduct(product);
+  };
+
   return (
     <section id="produk" className="py-12 sm:py-20 bg-slate-900 border-t border-slate-850">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
@@ -59,13 +67,13 @@ export const ProductCatalog: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
           <div>
             <span className="text-sky-400 text-xs font-bold tracking-widest uppercase mb-1.5 block">
-              Katalog Lengkap & Gambar Resolusi Tinggi
+              Katalog Lengkap & Video Demo Setiap Model
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
               Katalog Produk & Senarai Harga Rasmi
             </h2>
             <p className="mt-1 text-slate-400 text-xs sm:text-base">
-              Klik gambar untuk melihat paparan resolusi tinggi atau pilih warna dan spesifikasi teknikal setiap model.
+              Klik gambar untuk melihat paparan resolusi tinggi atau tonton video demo fungsi setiap model.
             </p>
           </div>
 
@@ -103,7 +111,7 @@ export const ProductCatalog: React.FC = () => {
         </div>
 
         {/* Sticky-Friendly Horizontal Category Tabs */}
-        <div className="sticky top-20 z-30 bg-slate-900/95 backdrop-blur-md py-2.5 -mx-3 px-3 sm:mx-0 sm:px-0 border-y border-slate-800/80 mb-6 overflow-x-auto scrollbar-none flex items-center justify-between gap-2">
+        <div className="sticky top-16 sm:top-20 z-30 bg-slate-900/95 backdrop-blur-md py-2.5 -mx-3 px-3 sm:mx-0 sm:px-0 border-y border-slate-800/80 mb-6 overflow-x-auto scrollbar-none flex items-center justify-between gap-2">
           
           <div className="flex items-center gap-1.5 shrink-0">
             {CATEGORY_TABS.map((tab) => {
@@ -159,6 +167,7 @@ export const ProductCatalog: React.FC = () => {
                 viewMode={viewMode}
                 onSelectDetail={(p, color) => handleOpenDetail(p, color)}
                 onOpenLightbox={(p, color) => handleOpenLightbox(p, color)}
+                onOpenVideo={(p) => handleOpenVideo(p)}
               />
             ))}
           </div>
@@ -181,6 +190,10 @@ export const ProductCatalog: React.FC = () => {
           setSelectedProduct(null);
           handleOpenLightbox(p, color);
         }}
+        onOpenVideo={(p) => {
+          setSelectedProduct(null);
+          handleOpenVideo(p);
+        }}
       />
 
       {/* Crystal Clear Image Lightbox Viewer */}
@@ -188,6 +201,12 @@ export const ProductCatalog: React.FC = () => {
         product={lightboxProduct}
         initialColor={lightboxColor}
         onClose={() => setLightboxProduct(null)}
+      />
+
+      {/* Product Video Demo Modal */}
+      <ProductVideoModal 
+        product={videoProduct}
+        onClose={() => setVideoProduct(null)}
       />
     </section>
   );

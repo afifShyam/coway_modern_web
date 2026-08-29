@@ -3,20 +3,22 @@
 import React, { useState } from 'react';
 import { Product } from '@/types/product';
 import { getProductWhatsAppUrl } from '@/lib/whatsapp';
-import { MessageCircle, Info, ZoomIn } from 'lucide-react';
+import { MessageCircle, Info, ZoomIn, Video } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
   viewMode?: 'grid' | 'list';
   onSelectDetail: (product: Product, selectedColor?: string) => void;
   onOpenLightbox: (product: Product, selectedColor?: string) => void;
+  onOpenVideo?: (product: Product) => void;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ 
   product, 
   viewMode = 'grid',
   onSelectDetail,
-  onOpenLightbox
+  onOpenLightbox,
+  onOpenVideo
 }) => {
   const [selectedColorIdx, setSelectedColorIdx] = useState<number>(0);
   
@@ -78,7 +80,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Color swatches in list mode */}
           {product.colorVariants && product.colorVariants.length > 1 && (
             <div className="hidden md:flex items-center gap-1">
@@ -97,6 +99,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 />
               ))}
             </div>
+          )}
+
+          {onOpenVideo && (
+            <button 
+              onClick={() => onOpenVideo(product)}
+              className="p-2 rounded-xl bg-sky-950/60 hover:bg-sky-900 text-sky-400 border border-sky-800/80 text-xs transition-colors"
+              title="Tonton Video Demo"
+            >
+              <Video className="w-4 h-4" />
+            </button>
           )}
 
           <button 
@@ -213,6 +225,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         {/* Actions Row */}
         <div className="flex items-center gap-1.5">
+          {onOpenVideo && (
+            <button 
+              onClick={() => onOpenVideo(product)}
+              className="p-2 rounded-xl bg-sky-950/70 hover:bg-sky-900 text-sky-400 border border-sky-800/80 text-xs transition-colors shrink-0"
+              title="Tonton Video Demo"
+            >
+              <Video className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            </button>
+          )}
+
           <button 
             onClick={() => onSelectDetail(product, activeColorName)}
             className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs transition-colors shrink-0"

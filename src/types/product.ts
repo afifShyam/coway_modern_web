@@ -43,6 +43,8 @@ export interface Product {
   powerConsumption?: string;
   filtrationStages?: string;
   keyFeatures?: string[];
+  videoUrl?: string;
+  videoTitle?: string;
 }
 
 export interface CategoryTab {

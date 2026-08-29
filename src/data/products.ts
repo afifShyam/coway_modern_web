@@ -30,6 +30,8 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM4,200',
     badge: 'Pilihan Utama',
     featured: true,
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Coway Villaem III (CHP-7320L)',
     colorVariants: [
       { name: 'Putih Murni', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/859ec6e7-6111-41bb-aad4-75a7145a8a50/1/240x240/villaem-3-white.png' },
       { name: 'Kelabu Kerikil', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/cfa73eea-3f49-4543-8563-8f626a1e9ea5/1/240x240/villaem-3-gray.png' }
@@ -60,6 +62,8 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM7,500',
     badge: 'Pembuat Ais',
     featured: true,
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Coway AIS Ice Maker (CHPI-7520L)',
     colorVariants: [
       { name: 'Putih Porselin', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/cd349c96-7052-4f9a-a75d-7eb696eedaa3/1/240x240/ais-white.png' },
       { name: 'Kelabu Kerikil', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/19f9ad9e-d9a0-4aeb-b633-f34bd0672416/1/240x240/ais-gray.png' }
@@ -90,6 +94,8 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM3,600',
     badge: '5 Pilihan Warna',
     featured: true,
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Coway Neon Ultra-Slim (CHP-6210N)',
     colorVariants: [
       { name: 'Putih Murni', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/db8c15f4-b7a0-485a-ac62-6c2f7c1ec26e/1/240x240/neon-white.png' },
       { name: 'Kelabu Kerikil', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/c4c984ec-a10b-4882-9d03-b1b989c7480b/1/240x240/neon-gray.png' },
@@ -122,6 +128,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM4,590',
     badge: 'Aliran Terus',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Coway Dazzie Tankless (CHO-1201N)',
     colorVariants: [
       { name: 'Putih Murni', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/2cdb7053-6a95-4e6d-8ebc-4263cb6a23e7/1/240x240/dazzie-white.png' },
       { name: 'Kelabu Kerikil', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/57977099-8ba5-4172-89ef-57c34ffe121c/1/240x240/dazzie-gray.png' },
@@ -153,6 +161,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM3,640',
     badge: 'Paling Jimat',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Coway Neo Plus (CHP-264L)',
     tankCapacity: { hot: '1.0 L', cold: '2.3 L', ambient: '2.5 L', total: '5.8 L' },
     dimensions: '260 x 483 x 500 mm',
     powerConsumption: 'Pemanas 300W, Pemampat 0.7A',
@@ -303,6 +313,8 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM3,190',
     badge: 'No.1 Penulen Udara',
     featured: true,
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Coway Storm II (AP-1523D)',
     dimensions: '410 x 515 x 752 mm',
     powerConsumption: '42 Watt',
     filtrationStages: 'Pra-Penapis, Penapis Habuk Halus, Penapis Penyahbauan, Penapis Coway HEPA H13',
@@ -326,6 +338,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM3,490',
     badge: 'Pakar Alahan',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Coway Lombok 3 (AP-1520C)',
     dimensions: '414 x 264 x 651 mm',
     powerConsumption: '50 Watt',
     filtrationStages: 'Penapisan 6 Peringkat + Plasma RBD & Penjana Ion Negatif',
@@ -348,6 +362,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'NA',
     badge: 'Serendah RM49',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Coway Studio 360 (AP-1924A)',
     colorVariants: [
       { name: 'Putih Moden', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/9b502336-eff4-4e13-99c6-ac4689181c2b/1/240x240/studio-white.png' },
       { name: 'Kuning Langsat (Beige)', colorHex: '#E7DEC8', image: 'https://emall.coway.com.my/ProductImages/58e15860-eac2-48d6-b551-19d8012c2f98/1/240x240/studio-beige.png' }
@@ -430,6 +446,8 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM8,000',
     badge: '4 Pilihan Warna',
     featured: true,
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Kerusi Urut BEREX Pebble (MC-C01)',
     colorVariants: [
       { name: 'Kelabu Mistik', colorHex: '#64748B', image: 'https://emall.coway.com.my/ProductImages/8b8abf5f-2bc3-4ed3-9a95-5bbb5f7b41dc/1/240x240/pebble-mystic-grey.png' },
       { name: 'Pasir Kuning Langsat', colorHex: '#D6C5B3', image: 'https://emall.coway.com.my/ProductImages/0c88e5fd-a79c-47be-8e77-eaa4916fbf25/1/240x240/pebble-sand-beige.png' },
@@ -458,6 +476,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '3',
     outrightPrice: 'RM7,500',
     badge: '3 Pilihan Warna',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Kerusi Urut BEREX Mine (MC-B02)',
     colorVariants: [
       { name: 'Kuning Champagne', colorHex: '#E5D9C5', image: 'https://emall.coway.com.my/ProductImages/3ecf4894-ce52-4c21-8fd4-c02fa4e58bde/1/240x240/mine-champagne-beige.png' },
       { name: 'Hitam Dakwat', colorHex: '#1F242A', image: 'https://emall.coway.com.my/ProductImages/ed1db9d7-6a0b-4c66-9f27-7d0d9c1c036f/1/240x240/mine-ink-black.png' },
@@ -485,6 +505,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '3',
     outrightPrice: 'RM13,500',
     badge: 'Gred Perdana',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan BEREX Senno Plus Flagship',
     dimensions: '820 x 1500 x 1200 mm',
     powerConsumption: '200 Watt',
     keyFeatures: [
@@ -507,6 +529,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '3',
     outrightPrice: 'RM14,500',
     badge: 'Terapi Batu Jed',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Katil Urut Haba BEREX',
     colorVariants: [
       { name: 'Kuning Champagne (Premium)', colorHex: '#E5D9C5', image: 'https://emall.coway.com.my/ProductImages/cfa028ff-a59e-438d-a3db-eb9c05ae895e/1/240x240/massage-bed-premium-champagne-beige.png' },
       { name: 'Hitam Dakwat (Premium)', colorHex: '#1F242A', image: 'https://emall.coway.com.my/ProductImages/b38c539e-a00c-4a22-a0de-873f940b5e52/1/240x240/massage-bed-premium-ink-black.png' },
@@ -538,6 +562,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '5',
     outrightPrice: 'RM4,500',
     badge: 'Tilam Hotel',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Servis & Penjagaan Tilam Coway BEREX',
     keyFeatures: [
       'Sistem Pegas Poket 5-Zon untuk Sokongan Badan Optimum',
       'Penukaran Lapisan Atas (Topper) Percuma Sepanjang Kontrak',
@@ -557,6 +583,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '5',
     outrightPrice: 'RM5,780',
     badge: 'Antistatik',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Ciri Antistatik Tilam Coway BEREX Prime II',
     keyFeatures: [
       'Fabrik Antistatik untuk Pelepasan Cas Elektrik Statik Badan',
       'Sokongan Tulang Belakang Ergonomik 7-Zon',
@@ -580,6 +608,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '5',
     outrightPrice: 'NA',
     badge: 'Inverter Pintar',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Servis & Kelebihan Penyaman Udara Inverter Coway',
     keyFeatures: [
       'Penjimatan Tenaga Inverter Penarafan 5-Bintang',
       'Fungsi Pembersihan Kendiri Automatik Mengelakkan Kulat',
@@ -599,6 +629,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '5',
     outrightPrice: 'NA',
     badge: 'Servis Berkala',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Servis Pembersihan Mendalam 7 Langkah Coway',
     keyFeatures: [
       'Hembusan Aliran Udara Lembut 4-Hala Menyeluruh',
       'Penapis Mikro Antibakteria Menyingkirkan Habuk Halus',
@@ -622,6 +654,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM5,899',
     badge: 'Kapasiti 715L',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Peti Sejuk Mega Coway 715L',
     keyFeatures: [
       'Kapasiti Simpanan Mega 715 Liter untuk Keluarga',
       'Teknologi Dwi-Inverter Menjimatkan Penggunaan Elektrik',
@@ -641,6 +675,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM6,799',
     badge: '4 Pintu Pintar',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Ciri Pintar Peti Sejuk 4-Pintu Coway 551L',
     keyFeatures: [
       'Rekaan 4 Pintu dengan Zon Pelbagai Suhu Mengikut Jenis Makanan',
       'Sistem Kawalan Kelembapan untuk Mengekalkan Kesegaran Sayur & Buah',
@@ -664,6 +700,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'NA',
     badge: 'Bidet Elektronik',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Fungsi & Pensterilan Nozel Bidet Flowlet Plus',
     keyFeatures: [
       'Tempat Duduk Dipanaskan dengan Suhu Selesa',
       'Suhu Pancuran Air Suam yang Boleh Dilaras',
@@ -683,6 +721,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'NA',
     badge: 'Serendah RM30',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pemasangan & Fungsi Bidet Bateri Flowlet',
     keyFeatures: [
       'Beroperasi Menggunakan Bateri Tanpa Pendawaian Elektrik',
       'Penarafan Kalis Air IPX4 yang Selamat di Bilik Mandi',

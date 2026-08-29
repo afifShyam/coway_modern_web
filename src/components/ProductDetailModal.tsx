@@ -3,20 +3,22 @@
 import React, { useState, useEffect } from 'react';
 import { Product } from '@/types/product';
 import { getProductWhatsAppUrl } from '@/lib/whatsapp';
-import { X, MessageCircle, CheckCircle2, Droplets, Zap, Ruler, Layers, ZoomIn } from 'lucide-react';
+import { X, MessageCircle, CheckCircle2, Droplets, Zap, Ruler, Layers, ZoomIn, Video } from 'lucide-react';
 
 interface ProductDetailModalProps {
   product: Product | null;
   initialColor?: string;
   onClose: () => void;
   onOpenLightbox?: (product: Product, selectedColor?: string) => void;
+  onOpenVideo?: (product: Product) => void;
 }
 
 export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ 
   product, 
   initialColor, 
   onClose,
-  onOpenLightbox
+  onOpenLightbox,
+  onOpenVideo
 }) => {
   const [selectedColorIdx, setSelectedColorIdx] = useState<number>(0);
 
@@ -93,6 +95,15 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             </div>
 
             <p className="text-xs text-slate-300 leading-relaxed">{product.description}</p>
+
+            {/* Video Watch Button in Details */}
+            <button
+              onClick={() => onOpenVideo && onOpenVideo(product)}
+              className="w-full py-2 px-3 rounded-xl bg-sky-950/80 hover:bg-sky-900/90 text-sky-300 border border-sky-800 text-xs font-bold transition-all flex items-center justify-center gap-2"
+            >
+              <Video className="w-4 h-4 text-sky-400" />
+              <span>Tonton Video Demo & Fungsi Model</span>
+            </button>
 
             {/* Interactive Color Variant Selector */}
             {product.colorVariants && product.colorVariants.length > 0 && (
