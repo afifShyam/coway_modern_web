@@ -13,16 +13,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuiz }) => {
   return (
     <>
       {/* Top Announcement Bar */}
-      <div className="bg-slate-900 border-b border-slate-800/80 py-2 px-4 text-center text-xs font-medium text-slate-300">
+      <div className="bg-slate-900 border-b border-slate-800/80 py-1.5 px-3 text-center text-xs font-medium text-slate-300">
         <div className="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-2">
           
-          <div className="flex items-center gap-2 mx-auto sm:mx-0">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-950/80 text-sky-400 font-bold text-[11px] border border-sky-800/50">
-              ✨ Promosi 2026
+          <div className="flex items-center gap-1.5 mx-auto sm:mx-0 text-[11px] sm:text-xs">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-sky-950 text-sky-400 font-bold text-[10px] border border-sky-800/60">
+              Promo 2026
             </span>
-            <span>Daftar Sekarang & Nikmati Bayaran Bulanan <strong>Serendah RM20</strong>!</span>
-            <a href="#promosi" className="underline font-bold text-sky-400 hover:text-sky-300 inline-flex items-center gap-0.5 ml-1">
-              Lihat Pelan <ChevronRight className="w-3.5 h-3.5" />
+            <span>Bayaran Bulanan <strong>Serendah RM20</strong>!</span>
+            <a href="#promosi" className="underline font-bold text-sky-400 hover:text-sky-300 inline-flex items-center ml-1">
+              Lihat Pelan <ChevronRight className="w-3 h-3" />
             </a>
           </div>
 
@@ -53,19 +53,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuiz }) => {
 
       {/* Main Sticky Header */}
       <header className="sticky top-0 z-50 glass-header transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
           
           {/* Brand & Agent Badge */}
-          <a href="#" className="flex items-center gap-3 shrink-0">
-            <div className="w-10 h-10 rounded-xl bg-sky-600 flex items-center justify-center text-white font-extrabold text-xl shadow-sm">
+          <a href="#" className="flex items-center gap-2.5 shrink-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sky-600 flex items-center justify-center text-white font-extrabold text-lg sm:text-xl shadow-sm">
               C
             </div>
             <div className="leading-tight">
-              <div className="font-extrabold text-lg tracking-tight text-white flex items-center gap-1.5">
-                COWAY <span className="text-[10px] px-1.5 py-0.5 rounded bg-sky-950 text-sky-400 font-bold border border-sky-800/60">MALAYSIA</span>
+              <div className="font-extrabold text-base sm:text-lg tracking-tight text-white flex items-center gap-1.5">
+                COWAY <span className="text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded bg-sky-950 text-sky-400 font-bold border border-sky-800/60">MALAYSIA</span>
               </div>
-              <div className="text-[11px] text-slate-400 font-medium whitespace-nowrap">
-                Perancang Kesihatan: <strong className="text-slate-200">{siteConfig.agentName}</strong> <span className="text-slate-500">(Kod HP: {siteConfig.hpCode})</span>
+              <div className="text-[10px] sm:text-[11px] text-slate-400 font-medium">
+                HP: <strong className="text-slate-200">{siteConfig.agentName}</strong> <span className="text-slate-500">({siteConfig.hpCode})</span>
               </div>
             </div>
           </a>
@@ -90,23 +90,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuiz }) => {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <button 
               onClick={onOpenQuiz}
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-700/60 transition-all whitespace-nowrap"
+              className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-700/60 transition-all whitespace-nowrap"
             >
               <Sparkles className="w-3.5 h-3.5 text-sky-400" />
-              Kuiz Model Pintar
+              Kuiz Model
             </button>
 
             <a 
               href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya ingin mendapatkan maklumat promosi rasmi Coway terkini.`)}
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-md transition-all whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-md transition-all whitespace-nowrap"
             >
               <MessageCircle className="w-4 h-4" />
-              <span>WhatsApp {siteConfig.agentName.split(' ')[0]}</span>
+              <span>WhatsApp</span>
             </a>
           </div>
 
