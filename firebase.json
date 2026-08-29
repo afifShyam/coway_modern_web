@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "coway-online",
     "public": "out",
     "ignore": [
       "firebase.json",
