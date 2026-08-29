@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { siteConfig } from '@/data/siteConfig';
 import { getWhatsAppUrl } from '@/lib/whatsapp';
-import { Lock, Clock, Star, Send } from 'lucide-react';
+import { Lock, Clock, Star, Send, ShoppingBag, Facebook, Phone } from 'lucide-react';
 
 export const LeadForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -29,20 +29,45 @@ export const LeadForm: React.FC = () => {
             <div className="lg:col-span-6 space-y-5">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-sky-400 text-xs font-bold border border-slate-700">
                 <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                Perancang Kesihatan Bertauliah (Health Planner)
+                Perancang Kesihatan Sah (Health Planner)
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
                 Hai, Saya <span className="text-sky-400">{siteConfig.agentName}</span>
               </h2>
 
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                Perancang Kesihatan Coway • Kod HP: <span className="text-slate-200">{siteConfig.hpCode}</span>
-              </p>
+              <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-slate-400">
+                <span>Kod HP: <strong className="text-white">{siteConfig.hpCode}</strong></span>
+                <span>•</span>
+                <span className="flex items-center gap-1"><Phone className="w-3.5 h-3.5 text-sky-400" /> <strong className="text-white">{siteConfig.displayPhone}</strong></span>
+              </div>
 
               <blockquote className="text-slate-300 text-base leading-relaxed border-l-2 border-sky-500 pl-4 italic">
-                "Sebagai wakil jualan bertauliah dan berpengalaman, saya komited untuk membantu anda sekeluarga memiliki perkakas Coway idaman dengan pantas, mudah serta menikmati penjimatan maksimum."
+                "Sebagai wakil jualan bertauliah dan berpengalaman, saya komited untuk membantu anda sekeluarga memiliki perkakas Coway idaman dengan pantas, mudah serta menikmati penjimatan promosi rasmi."
               </blockquote>
+
+              {/* Direct Links to Facebook & Official E-Mall */}
+              <div className="flex items-center gap-3 pt-1 flex-wrap">
+                <a 
+                  href={siteConfig.facebookUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 text-xs font-bold transition-all flex items-center gap-2"
+                >
+                  <Facebook className="w-4 h-4 text-blue-400" />
+                  <span>Facebook: {siteConfig.facebookName}</span>
+                </a>
+
+                <a 
+                  href={siteConfig.emallUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 text-xs font-bold transition-all flex items-center gap-2"
+                >
+                  <ShoppingBag className="w-4 h-4 text-amber-400" />
+                  <span>Coway E-Mall (Kod: {siteConfig.hpCode})</span>
+                </a>
+              </div>
 
               <div className="grid grid-cols-3 gap-3 pt-2">
                 <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-center">
@@ -86,7 +111,7 @@ export const LeadForm: React.FC = () => {
                       required 
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="Contoh: 0123456789" 
+                      placeholder="Contoh: 01110580077" 
                       className="w-full px-4 py-2.5 rounded-xl bg-slate-850 border border-slate-700 text-white placeholder:text-slate-500 text-xs focus:outline-none focus:border-sky-500 transition-all"
                     />
                   </div>
