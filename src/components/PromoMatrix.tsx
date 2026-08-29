@@ -4,6 +4,7 @@ import React from 'react';
 import { PROMO_TIERS } from '@/data/promos';
 import { siteConfig } from '@/data/siteConfig';
 import { getWhatsAppUrl } from '@/lib/whatsapp';
+import { AlertCircle } from 'lucide-react';
 
 export const PromoMatrix: React.FC = () => {
   return (
@@ -11,14 +12,14 @@ export const PromoMatrix: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-950/70 text-amber-300 border border-amber-800/60 text-xs font-bold uppercase mb-3">
-            🔥 Pelan Penjimatan Hebat
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-950 text-sky-400 border border-sky-800 text-xs font-bold uppercase mb-3">
+            Pelan Promosi Rasmi Coway
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Bayar Bulanan <span className="text-sky-400">Hanya RM20!</span>
+            Kadar Pengenalan Promosi <span className="text-sky-400">RM20 Sebulan</span>
           </h2>
           <p className="mt-3 text-slate-400 text-base">
-            Pilih tempoh kontrak di bawah untuk menikmati kadar promosi bulanan RM20 bagi bulan-bulan terawal.
+            Nikmati kadar promosi RM20 sebulan bagi tempoh bulan-bulan terawal yang ditetapkan mengikut pakej kontrak sewa beli rasmi Coway.
           </p>
         </div>
 
@@ -51,7 +52,7 @@ export const PromoMatrix: React.FC = () => {
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className={`text-[10px] ${plan.highlight ? 'text-sky-400' : 'text-slate-500'}`}>Hanya</div>
+                        <div className={`text-[10px] ${plan.highlight ? 'text-sky-400' : 'text-slate-500'}`}>Kadar Promo</div>
                         <div className="text-lg font-extrabold text-sky-400">
                           {plan.promoPrice}<span className="text-xs font-normal text-slate-400">/bln</span>
                         </div>
@@ -62,7 +63,7 @@ export const PromoMatrix: React.FC = () => {
               </div>
 
               <a 
-                href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya ingin menuntut ${decodeURIComponent(tier.ctaParam)}.`)}
+                href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya ingin mengetahui maklumat lanjut mengenai ${decodeURIComponent(tier.ctaParam)}.`)}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="mt-6 w-full py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs text-center transition-all shadow-sm"
@@ -77,18 +78,18 @@ export const PromoMatrix: React.FC = () => {
         <div className="pro-card p-6 sm:p-8 bg-slate-900 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1.5 text-center md:text-left">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-950 text-sky-400 text-[11px] font-extrabold uppercase border border-sky-800">
-              ⚡ Pakej Kombo Suai Padan (Mix & Match)
+              Pakej Kombo Suai Padan (Mix & Match)
             </div>
-            <h3 className="text-xl font-bold text-white">Gabungkan 2 Produk & Nikmati Potongan Harga Kekal!</h3>
+            <h3 className="text-xl font-bold text-white">Rebat Bulanan Tambahan untuk Langganan Kombo</h3>
             <p className="text-slate-300 text-sm max-w-2xl">
-              Gabungkan penapis air bersama penulen udara, kerusi urut, tilam atau penyaman udara untuk menerima potongan <strong>tambahan RM20 sebulan sepanjang tempoh kontrak</strong>.
+              Gabungkan 2 produk (seperti penapis air dan penulen udara/tilam) untuk menikmati potongan harga bulanan mengikut skim promosi semasa Coway Malaysia.
             </p>
           </div>
 
           <div className="flex items-center gap-4 shrink-0">
             <div className="text-center md:text-right">
-              <div className="text-3xl font-black text-white">RM20 <span className="text-base text-sky-400 font-bold">POTONGAN</span></div>
-              <div className="text-[11px] text-slate-400 font-bold uppercase">Diskaun Kekal Bulanan</div>
+              <div className="text-2xl font-black text-white">Rebat Kombo</div>
+              <div className="text-[11px] text-slate-400 font-bold uppercase">Sepanjang Tempoh Kontrak</div>
             </div>
             <a 
               href={getWhatsAppUrl(`Hai ${siteConfig.agentName}, saya ingin mengetahui pakej Kombo Suai Padan Coway.`)}
@@ -96,9 +97,15 @@ export const PromoMatrix: React.FC = () => {
               rel="noopener noreferrer"
               className="px-5 py-3 rounded-full bg-white hover:bg-slate-200 text-slate-950 font-bold text-xs transition-all shadow-sm"
             >
-              Kira Pakej Kombo
+              Semak Pakej Kombo
             </a>
           </div>
+        </div>
+
+        {/* Terms Note */}
+        <div className="mt-4 flex items-center justify-center gap-1.5 text-xs text-slate-500 text-center">
+          <AlertCircle className="w-3.5 h-3.5" />
+          <span>Tertakluk kepada terma, syarat serta kelulusan permohonan oleh Coway (M) Sdn Bhd.</span>
         </div>
 
       </div>
