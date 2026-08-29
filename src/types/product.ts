@@ -2,9 +2,10 @@ export type ProductCategory =
   | 'all'
   | 'water' 
   | 'air' 
+  | 'relax'
+  | 'berex' 
   | 'aircond' 
   | 'refrigerator' 
-  | 'berex' 
   | 'bathroom';
 
 export interface ColorVariant {

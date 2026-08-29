@@ -1,12 +1,13 @@
 import { Product, CategoryTab } from '@/types/product';
 
 export const CATEGORY_TABS: CategoryTab[] = [
-  { id: 'all', label: 'Semua Produk', icon: 'Sparkles', count: 25 },
+  { id: 'all', label: 'Semua Produk', icon: 'Sparkles', count: 27 },
   { id: 'water', label: 'Penapis Air', icon: 'Droplets', count: 10 },
   { id: 'air', label: 'Penapis Udara', icon: 'Wind', count: 5 },
+  { id: 'relax', label: 'Kerusi Urut (Massage)', icon: 'Armchair', count: 4 },
+  { id: 'berex', label: 'Tilam Hotel', icon: 'Bed', count: 2 },
   { id: 'aircond', label: 'Aircond', icon: 'Snowflake', count: 2 },
   { id: 'refrigerator', label: 'Peti Sejuk', icon: 'Refrigerator', count: 2 },
-  { id: 'berex', label: 'Tilam & BEREX', icon: 'Bed', count: 4 },
   { id: 'bathroom', label: 'Bilik Mandi', icon: 'Bath', count: 2 },
 ];
 
@@ -349,6 +350,149 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
+  // --- MASSAGE & RELAX (KERUSI & KATIL URUT BEREX) ---
+  // ==========================================
+  {
+    id: 'pebble',
+    category: 'relax',
+    name: 'BEREX Pebble Massage Chair',
+    code: 'MC-C01',
+    description: 'Kerusi urutan estetik kompak berteknologi urutan 3D, pemanas haba badan, Bluetooth speaker, dan mod Zero Gravity.',
+    tags: ['Urutan 3D', 'Zero Gravity', 'Pemanas Haba', '4 Pilihan Warna'],
+    image: 'https://emall.coway.com.my/ProductImages/8b8abf5f-2bc3-4ed3-9a95-5bbb5f7b41dc/1/240x240/pebble-mystic-grey.png',
+    regularMonthly: 'RM120.00',
+    promoMonthly: '20',
+    promoMonths: '3',
+    outrightPrice: 'RM8,000',
+    badge: '4 Pilihan Warna',
+    featured: true,
+    colorVariants: [
+      { name: 'Mystic Grey', colorHex: '#64748B', image: 'https://emall.coway.com.my/ProductImages/8b8abf5f-2bc3-4ed3-9a95-5bbb5f7b41dc/1/240x240/pebble-mystic-grey.png' },
+      { name: 'Sand Beige', colorHex: '#D6C5B3', image: 'https://emall.coway.com.my/ProductImages/0c88e5fd-a79c-47be-8e77-eaa4916fbf25/1/240x240/pebble-sand-beige.png' },
+      { name: 'Terracotta Pink', colorHex: '#E09F8F', image: 'https://emall.coway.com.my/ProductImages/b4bd6469-edf6-436c-a2b2-fd7afe113ff3/1/240x240/pebble-terracotta-pink.png' },
+      { name: 'Hazy Blue', colorHex: '#7A9FB8', image: 'https://emall.coway.com.my/ProductImages/ebfc1727-f750-48dd-95d3-160fa3b33b57/1/240x240/pebble-hazy-blue.png' }
+    ],
+    dimensions: '700 x 1150 x 1030 mm',
+    powerConsumption: '120 Watt',
+    keyFeatures: [
+      'Roller Urutan 3D Mengikut Lengkung Tulang Belakang SL-Track',
+      'Mod Kedudukan Rehat Zero Gravity',
+      'Pemanasan Haba Thermal di Bahagian Pinggang & Belakang',
+      'Pembesar Suara Bluetooth Premium Terbina Dalam'
+    ]
+  },
+  {
+    id: 'mine',
+    category: 'relax',
+    name: 'BEREX Mine Massage Chair',
+    code: 'MC-B02',
+    description: 'Kerusi urutan kompak ergonomik dengan modul urutan betis & kaki boleh pusing 180° dan beg udara pinggul.',
+    tags: ['180° Swivel Footrest', 'Airbag Pinggul', '3 Pilihan Warna', 'Kompak'],
+    image: 'https://emall.coway.com.my/ProductImages/3ecf4894-ce52-4c21-8fd4-c02fa4e58bde/1/240x240/mine-champagne-beige.png',
+    regularMonthly: 'RM110.00',
+    promoMonthly: '20',
+    promoMonths: '3',
+    outrightPrice: 'RM7,500',
+    badge: '3 Pilihan Warna',
+    colorVariants: [
+      { name: 'Champagne Beige', colorHex: '#E5D9C5', image: 'https://emall.coway.com.my/ProductImages/3ecf4894-ce52-4c21-8fd4-c02fa4e58bde/1/240x240/mine-champagne-beige.png' },
+      { name: 'Ink Black', colorHex: '#1F242A', image: 'https://emall.coway.com.my/ProductImages/ed1db9d7-6a0b-4c66-9f27-7d0d9c1c036f/1/240x240/mine-ink-black.png' },
+      { name: 'Rose Brown', colorHex: '#8D6559', image: 'https://emall.coway.com.my/ProductImages/b0e24212-4a7b-4993-94ef-75bf2de52116/1/240x240/mine-rose-brown.png' }
+    ],
+    dimensions: '650 x 1080 x 1010 mm',
+    powerConsumption: '100 Watt',
+    keyFeatures: [
+      'Penyandar Kaki Boleh Pusing 180° Jadi Kerusi Sofa Biasa',
+      'Urutan Mampatan Beg Udara di Pinggul & Peha',
+      'Mod Urutan Senyap Sesuai di Bilik Tidur',
+      'Saiz Kompak Menjimatkan Ruang Rumah'
+    ]
+  },
+  {
+    id: 'senno-plus',
+    category: 'relax',
+    name: 'BEREX Senno Plus Massage Chair',
+    code: 'MC-LUX01',
+    description: 'Kerusi urutan eksekutif gred flagship dengan AI Body Scan, urutan tapak kaki refleksologi dan kompresi udara penuh.',
+    tags: ['AI Body Scan', 'Gred Flagship', 'Urutan Kaki Penuh', '4D Massage'],
+    image: 'https://emall.coway.com.my/ProductImages/036165bd-c4eb-4ce1-8d69-d4dc4042f09d/1/240x240/coway-berex-senno-plus.png',
+    regularMonthly: 'RM160.00',
+    promoMonthly: '20',
+    promoMonths: '3',
+    outrightPrice: 'RM13,500',
+    badge: 'Gred Flagship Elit',
+    dimensions: '820 x 1500 x 1200 mm',
+    powerConsumption: '200 Watt',
+    keyFeatures: [
+      'Pengimbasan Postur Badan AI Sensor Pintar',
+      'Roller Urutan 4D Mendalam dari Leher Hingga Paha Bawah',
+      'Refleksologi Tapak Kaki Berputar & Airbag Betis Penuh',
+      'Skrin Kawalan Sentuh Digital Terbina Dalam'
+    ]
+  },
+  {
+    id: 'massage-bed',
+    category: 'relax',
+    name: 'BEREX Thermal Massage Bed',
+    code: 'MB-B01 / MB-C01',
+    description: 'Katil urutan pintar terapi haba batu jed asli untuk regangan dan penjajaran tulang belakang dari leher ke pinggul.',
+    tags: ['Terapi Batu Jed', 'Inframerah Jauh', 'Boleh Lipat', 'Penjajaran Tulang'],
+    image: 'https://emall.coway.com.my/ProductImages/cfa028ff-a59e-438d-a3db-eb9c05ae895e/1/240x240/massage-bed-premium-champagne-beige.png',
+    regularMonthly: 'RM235.00',
+    promoMonthly: '20',
+    promoMonths: '3',
+    outrightPrice: 'RM14,500',
+    badge: 'Terapi Batu Jed',
+    colorVariants: [
+      { name: 'Champagne Beige (Premium)', colorHex: '#E5D9C5', image: 'https://emall.coway.com.my/ProductImages/cfa028ff-a59e-438d-a3db-eb9c05ae895e/1/240x240/massage-bed-premium-champagne-beige.png' },
+      { name: 'Ink Black (Premium)', colorHex: '#1F242A', image: 'https://emall.coway.com.my/ProductImages/b38c539e-a00c-4a22-a0de-873f940b5e52/1/240x240/massage-bed-premium-ink-black.png' },
+      { name: 'Ink Black (Standard)', colorHex: '#334155', image: 'https://emall.coway.com.my/ProductImages/209b5910-5e06-4502-ade6-4e765d55553c/1/240x240/massage-bed-standard-ink-black.png' }
+    ],
+    dimensions: '700 x 2000 x 450 mm (Boleh Dilipat Jadi Sofa Estetik)',
+    powerConsumption: '250 Watt',
+    keyFeatures: [
+      'Batu Jed Asli Memancarkan Sinar Inframerah Jauh Menembusi Otot',
+      'Pemanasan Haba Boleh Laras Sehingga 65°C',
+      'Rekaan Katil Boleh Dilipat Masuk Jimat Ruang',
+      'Mod Rawatan Tulang Belakang Khusus Ahli Fisioterapi'
+    ]
+  },
+
+  // ==========================================
+  // --- MATTRESS (TILAM HOTEL & KESIHATAN) ---
+  // ==========================================
+  {
+    id: 'primelite',
+    category: 'berex',
+    name: 'Prime Lite Mattress',
+    code: 'BEREX Prime Lite',
+    description: 'Tilam hotel mewah dengan sokongan tulang belakang 5 zon dan servis pembersihan berkala 7 langkah.',
+    tags: ['5-Zone Spring', 'Tukar Topper Percuma', 'Servis Tilam'],
+    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-prime-lite-mattress-e1768818162967.png',
+    regularMonthly: 'RM49.00',
+    promoMonthly: '20',
+    promoMonths: '5',
+    outrightPrice: 'RM4,500',
+    badge: 'Tilam Hotel',
+    keyFeatures: ['Pocket Spring 5-Zon', 'Penukaran Topper Percuma', 'Servis Sanitasi Hama Berkala 7-Langkah']
+  },
+  {
+    id: 'prime2',
+    category: 'berex',
+    name: 'Prime II Mattress',
+    code: 'BEREX Prime 2',
+    description: 'Tilam kesihatan dengan fabrik anti-statik yang meneutralkan cas elektrik badan untuk tidur lena.',
+    tags: ['7-Zone Spring', 'Anti-Statik', 'Memory Foam'],
+    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-prime2-series-mattress-e1768818304349.png',
+    regularMonthly: 'RM70.00',
+    promoMonthly: '20',
+    promoMonths: '5',
+    outrightPrice: 'RM5,780',
+    badge: 'Anti-Statik',
+    keyFeatures: ['Fabrik Anti-Statik Pelepasan Cas Badan', 'Sokongan Ergonomik 7-Zon', 'Lapisan Natural Latex & Memory Foam']
+  },
+
+  // ==========================================
   // --- AIR CONDITIONERS (AIRCOND) ---
   // ==========================================
   {
@@ -414,70 +558,6 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM6,799',
     badge: 'Multi-Door',
     keyFeatures: ['4 Pintu Multi-Zon Suhu', 'Sistem Kawalan Kelembapan Makanan Segar', 'Penapis Anti-Bau Dual Hygiene']
-  },
-
-  // ==========================================
-  // --- MATTRESS & BEREX ---
-  // ==========================================
-  {
-    id: 'primelite',
-    category: 'berex',
-    name: 'Prime Lite Mattress',
-    code: 'BEREX Prime Lite',
-    description: 'Tilam hotel mewah dengan sokongan tulang belakang 5 zon dan servis pembersihan berkala 7 langkah.',
-    tags: ['5-Zone Spring', 'Tukar Topper Percuma', 'Servis Tilam'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-prime-lite-mattress-e1768818162967.png',
-    regularMonthly: 'RM49.00',
-    promoMonthly: '20',
-    promoMonths: '5',
-    outrightPrice: 'RM4,500',
-    badge: 'Tilam Hotel',
-    keyFeatures: ['Pocket Spring 5-Zon', 'Penukaran Topper Percuma', 'Servis Sanitasi Hama Berkala 7-Langkah']
-  },
-  {
-    id: 'prime2',
-    category: 'berex',
-    name: 'Prime II Mattress',
-    code: 'BEREX Prime 2',
-    description: 'Tilam kesihatan dengan fabrik anti-statik yang meneutralkan cas elektrik badan untuk tidur lena.',
-    tags: ['7-Zone Spring', 'Anti-Statik', 'Memory Foam'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-prime2-series-mattress-e1768818304349.png',
-    regularMonthly: 'RM70.00',
-    promoMonthly: '20',
-    promoMonths: '5',
-    outrightPrice: 'RM5,780',
-    badge: 'Anti-Statik',
-    keyFeatures: ['Fabrik Anti-Statik Pelepasan Cas Badan', 'Sokongan Ergonomik 7-Zon', 'Lapisan Natural Latex & Memory Foam']
-  },
-  {
-    id: 'pebble',
-    category: 'berex',
-    name: 'BEREX Pebble Massage Chair',
-    code: 'BEREX Pebble',
-    description: 'Kerusi urutan estetik kompak berteknologi urutan 3D, pemanas haba badan, dan mod Zero Gravity.',
-    tags: ['Urutan 3D', 'Zero Gravity', 'Pemanas Haba'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/coway-berex-pebble-e1768818669920.png',
-    regularMonthly: 'RM120.00',
-    promoMonthly: '20',
-    promoMonths: '3',
-    outrightPrice: 'RM8,000',
-    badge: 'Kerusi Urut 3D',
-    keyFeatures: ['Teknologi Urutan 3D Ergonomik', 'Kedudukan Rehat Zero Gravity', 'Rekaan Anggun Moden Kompak']
-  },
-  {
-    id: 'massage-bed',
-    category: 'berex',
-    name: 'BEREX Massage Bed',
-    code: 'BEREX Bed',
-    description: 'Katil urutan pintar terapi haba batu jed untuk regangan tulang belakang menyeluruh dari leher ke pinggul.',
-    tags: ['Terapi Tulang Belakang', 'Batu Jed Haba', 'AI Scan'],
-    image: 'https://coway.cc/wp-content/uploads/2026/01/berex-massage-bed-e1768818622662.png',
-    regularMonthly: 'RM235.00',
-    promoMonthly: '20',
-    promoMonths: '3',
-    outrightPrice: 'RM14,500',
-    badge: 'Katil Urut Pintar',
-    keyFeatures: ['Terapi Haba Batu Jed Asli', 'Pengimbasan Tulang Belakang Pintar AI', 'Regangan & Penjajaran Postur Badan']
   },
 
   // ==========================================

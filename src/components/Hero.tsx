@@ -3,7 +3,7 @@
 import React from 'react';
 import { siteConfig } from '@/data/siteConfig';
 import { getWhatsAppUrl } from '@/lib/whatsapp';
-import { Grid, Sparkles, Wrench, ShieldCheck, BadgeCheck, MessageCircle, Droplets, Wind, Snowflake, Bed, Refrigerator } from 'lucide-react';
+import { Grid, Sparkles, Wrench, ShieldCheck, BadgeCheck, MessageCircle, Droplets, Wind, Snowflake, Bed, Refrigerator, Armchair } from 'lucide-react';
 
 interface HeroProps {
   onOpenQuiz: () => void;
@@ -24,12 +24,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.18] sm:leading-[1.15]">
-              Air & Udara Bersih, <br className="hidden sm:inline" />
+              Air, Udara & Relaksasi, <br className="hidden sm:inline" />
               <span className="text-sky-400">Kesejahteraan Keluarga Anda.</span>
             </h1>
 
             <p className="text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              Katalog lengkap penapis air, penulen udara, tilam & aircond Coway. Nikmati <strong>promosi bulanan RM20</strong>, servis berkala percuma, dan jaminan waranti 100%.
+              Katalog rasmi penapis air, penulen udara, kerusi urut BEREX, tilam & aircond Coway. Nikmati <strong>promosi bulanan RM20</strong>, servis berkala percuma, dan jaminan waranti 100%.
             </p>
 
             {/* CTAs */}
@@ -39,7 +39,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
                 className="w-full sm:w-auto px-7 py-3 rounded-full text-xs sm:text-sm font-bold bg-sky-600 hover:bg-sky-500 text-white shadow-md transition-all text-center flex items-center justify-center gap-2"
               >
                 <Grid className="w-4 h-4" />
-                Lihat Katalog & Harga (25+)
+                Lihat Katalog & Harga (27+)
               </a>
               
               <button 
@@ -62,10 +62,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
                   <Wind className="w-3 h-3 text-sky-400" /> Udara (5)
                 </a>
                 <a href="#produk" className="px-3 py-1 rounded-full bg-slate-850 hover:bg-slate-800 border border-slate-750 text-[11px] font-semibold text-slate-300 flex items-center gap-1">
-                  <Snowflake className="w-3 h-3 text-sky-400" /> Aircond (2)
+                  <Armchair className="w-3 h-3 text-sky-400" /> Kerusi Urut (4)
                 </a>
                 <a href="#produk" className="px-3 py-1 rounded-full bg-slate-850 hover:bg-slate-800 border border-slate-750 text-[11px] font-semibold text-slate-300 flex items-center gap-1">
-                  <Bed className="w-3 h-3 text-sky-400" /> Tilam (4)
+                  <Bed className="w-3 h-3 text-sky-400" /> Tilam (2)
+                </a>
+                <a href="#produk" className="px-3 py-1 rounded-full bg-slate-850 hover:bg-slate-800 border border-slate-750 text-[11px] font-semibold text-slate-300 flex items-center gap-1">
+                  <Snowflake className="w-3 h-3 text-sky-400" /> Aircond (2)
                 </a>
                 <a href="#produk" className="px-3 py-1 rounded-full bg-slate-850 hover:bg-slate-800 border border-slate-750 text-[11px] font-semibold text-slate-300 flex items-center gap-1">
                   <Refrigerator className="w-3 h-3 text-sky-400" /> Peti Sejuk (2)
@@ -124,7 +127,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
               {/* Product Showcase Image */}
               <div className="h-48 sm:h-60 flex items-center justify-center my-3 bg-slate-850/60 rounded-2xl p-3 border border-slate-800">
                 <img 
-                  src="https://coway.cc/wp-content/uploads/2026/01/coway-villaem3-CHP-7320L.png" 
+                  src="https://emall.coway.com.my/ProductImages/859ec6e7-6111-41bb-aad4-75a7145a8a50/1/240x240/villaem-3-white.png" 
                   alt="Coway Villaem 3" 
                   className="max-h-44 sm:max-h-52 object-contain drop-shadow-md"
                 />
