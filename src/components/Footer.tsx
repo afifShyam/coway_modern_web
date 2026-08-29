@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { siteConfig } from '@/data/siteConfig';
-import { Facebook, ShoppingBag, Phone, MessageCircle, Code2, ArrowUpRight } from 'lucide-react';
+import { Facebook, ShoppingBag, Phone, MessageCircle, Code2, ArrowUpRight, Globe } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -83,23 +83,35 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Discreet Developer Signature & Client Acquisition Bar */}
+        {/* Discreet Developer Signature & Portfolio Link */}
         {siteConfig.developer && (
           <div className="pt-4 mt-4 border-t border-slate-900/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
             <div className="flex items-center gap-1.5">
               <Code2 className="w-3.5 h-3.5 text-sky-400" />
-              <span>Laman web dibangunkan & direka oleh <strong className="text-slate-300">{siteConfig.developer.name}</strong></span>
+              <span>
+                Laman web dibangunkan & direka oleh{' '}
+                <a
+                  href={siteConfig.developer.portfolioUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-slate-300 hover:text-sky-400 underline decoration-slate-700 underline-offset-2 transition-colors"
+                  title="Lihat Portfolio Afif Shyam"
+                >
+                  {siteConfig.developer.name}
+                </a>
+              </span>
             </div>
 
             <a
-              href={siteConfig.developer.whatsappUrl}
+              href={siteConfig.developer.portfolioUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 hover:bg-slate-850 text-slate-400 hover:text-sky-300 border border-slate-800 transition-colors group"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-900 hover:bg-slate-850 text-slate-400 hover:text-sky-300 border border-slate-800 transition-colors group"
             >
+              <Globe className="w-3 h-3 text-sky-400" />
               <span>Ingin bina laman web seperti ini?</span>
               <span className="text-sky-400 font-bold group-hover:underline flex items-center">
-                Hubungi Afif <ArrowUpRight className="w-3 h-3 ml-0.5" />
+                Lihat Portfolio <ArrowUpRight className="w-3 h-3 ml-0.5" />
               </span>
             </a>
           </div>

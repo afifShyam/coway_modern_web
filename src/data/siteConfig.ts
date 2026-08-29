@@ -13,7 +13,8 @@ export const siteConfig = {
   emallUrl: "https://emall.coway.com.my/?agentcode=748757",
   developer: {
     name: "Afif Shyam",
-    tagline: "Web Developer & Digital Growth",
+    tagline: "Mobile & Web App Development",
+    portfolioUrl: "https://mobile-dev-showcase-24.web.app/",
     whatsappUrl: "https://wa.me/601110580077?text=Hai%20Afif,%20saya%20tertarik%20dengan%20laman%20web%20Coway%20ini.%20Saya%20berminat%20untuk%20bina%20laman%20web%20seperti%20ini%20juga."
   }
 };
