@@ -5,14 +5,22 @@ import { ProductCategory, Product } from '@/types/product';
 import { PRODUCTS, CATEGORY_TABS } from '@/data/products';
 import { ProductCard } from '@/components/ProductCard';
 import { ProductDetailModal } from '@/components/ProductDetailModal';
+import { ImageLightboxModal } from '@/components/ImageLightboxModal';
 import { Search, SearchX, LayoutGrid, List, SlidersHorizontal } from 'lucide-react';
 
 export const ProductCatalog: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  
+  // Specs Detail Modal State
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedProductColor, setSelectedProductColor] = useState<string | undefined>(undefined);
+  
+  // Image Lightbox Viewer State
+  const [lightboxProduct, setLightboxProduct] = useState<Product | null>(null);
+  const [lightboxColor, setLightboxColor] = useState<string | undefined>(undefined);
+
   const [priceFilter, setPriceFilter] = useState<'all' | 'under60' | 'under90' | 'luxury'>('all');
 
   const filteredProducts = useMemo(() => {
@@ -38,6 +46,11 @@ export const ProductCatalog: React.FC = () => {
     setSelectedProductColor(color);
   };
 
+  const handleOpenLightbox = (product: Product, color?: string) => {
+    setLightboxProduct(product);
+    setLightboxColor(color);
+  };
+
   return (
     <section id="produk" className="py-12 sm:py-20 bg-slate-900 border-t border-slate-850">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
@@ -46,13 +59,13 @@ export const ProductCatalog: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
           <div>
             <span className="text-sky-400 text-xs font-bold tracking-widest uppercase mb-1.5 block">
-              Katalog Lengkap & Harga Telus
+              Katalog Lengkap & Gambar Resolusi Tinggi
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
               Katalog Produk & Senarai Harga Rasmi
             </h2>
             <p className="mt-1 text-slate-400 text-xs sm:text-base">
-              Pilih kategori atau warna pilihan untuk melihat harga promo bulanan RM20 dan spesifikasi teknikal setiap model.
+              Klik gambar untuk melihat paparan resolusi tinggi atau pilih warna dan spesifikasi teknikal setiap model.
             </p>
           </div>
 
@@ -63,7 +76,7 @@ export const ProductCatalog: React.FC = () => {
                 type="text" 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Cari model: Villaem, Neon, Ais..." 
+                placeholder="Cari model: Villaem, Pebble, Ais..." 
                 className="w-full pl-9 pr-4 py-2 rounded-full bg-slate-850 border border-slate-700 text-white text-xs placeholder:text-slate-500 focus:outline-none focus:border-sky-500 transition-all shadow-inner"
               />
               <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
@@ -108,7 +121,7 @@ export const ProductCatalog: React.FC = () => {
                   }`}
                 >
                   <span>{tab.label}</span>
-                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-sky-800 text-sky-100' : 'bg-slate-850 text-slate-400'}`}>
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-sky-800 text-sky-100' : 'bg-slate-800 text-slate-400'}`}>
                     {count}
                   </span>
                 </button>
@@ -145,6 +158,7 @@ export const ProductCatalog: React.FC = () => {
                 product={product} 
                 viewMode={viewMode}
                 onSelectDetail={(p, color) => handleOpenDetail(p, color)}
+                onOpenLightbox={(p, color) => handleOpenLightbox(p, color)}
               />
             ))}
           </div>
@@ -158,11 +172,22 @@ export const ProductCatalog: React.FC = () => {
 
       </div>
 
-      {/* Product Detail Modal with Color & Specs */}
+      {/* Full Specs Modal */}
       <ProductDetailModal 
         product={selectedProduct} 
         initialColor={selectedProductColor}
         onClose={() => setSelectedProduct(null)} 
+        onOpenLightbox={(p, color) => {
+          setSelectedProduct(null);
+          handleOpenLightbox(p, color);
+        }}
+      />
+
+      {/* Crystal Clear Image Lightbox Viewer */}
+      <ImageLightboxModal 
+        product={lightboxProduct}
+        initialColor={lightboxColor}
+        onClose={() => setLightboxProduct(null)}
       />
     </section>
   );

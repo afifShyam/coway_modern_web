@@ -3,15 +3,21 @@
 import React, { useState, useEffect } from 'react';
 import { Product } from '@/types/product';
 import { getProductWhatsAppUrl } from '@/lib/whatsapp';
-import { X, MessageCircle, CheckCircle2, Droplets, Zap, Ruler, Layers } from 'lucide-react';
+import { X, MessageCircle, CheckCircle2, Droplets, Zap, Ruler, Layers, ZoomIn } from 'lucide-react';
 
 interface ProductDetailModalProps {
   product: Product | null;
   initialColor?: string;
   onClose: () => void;
+  onOpenLightbox?: (product: Product, selectedColor?: string) => void;
 }
 
-export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, initialColor, onClose }) => {
+export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ 
+  product, 
+  initialColor, 
+  onClose,
+  onOpenLightbox
+}) => {
   const [selectedColorIdx, setSelectedColorIdx] = useState<number>(0);
 
   useEffect(() => {
@@ -44,7 +50,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-full bg-slate-800/80 transition-colors z-10"
+          className="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-full bg-slate-850 border border-slate-750 transition-colors z-10"
         >
           <X className="w-5 h-5" />
         </button>
@@ -60,12 +66,22 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
         {/* Top Product Showcase & Color Switcher */}
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 my-3 p-4 bg-slate-850 rounded-2xl border border-slate-800 items-center">
           
-          <div className="sm:col-span-5 h-44 flex items-center justify-center bg-slate-900 rounded-xl p-3 border border-slate-800">
+          {/* Clickable Image to Zoom */}
+          <div 
+            onClick={() => onOpenLightbox && onOpenLightbox(product, activeColorName)}
+            className="sm:col-span-5 h-44 flex items-center justify-center bg-slate-900 rounded-xl p-3 border border-slate-800 cursor-pointer relative group overflow-hidden"
+            title="Klik untuk lihat gambar resolusi tinggi"
+          >
             <img 
               src={activeImage} 
               alt={product.name} 
-              className="max-h-36 max-w-full object-contain drop-shadow-md"
+              className="max-h-36 max-w-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
             />
+            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity rounded-xl">
+              <span className="px-2.5 py-1 rounded-full bg-slate-900/90 text-white text-[11px] font-bold flex items-center gap-1 border border-slate-700">
+                <ZoomIn className="w-3.5 h-3.5 text-sky-400" /> Zoom
+              </span>
+            </div>
           </div>
 
           <div className="sm:col-span-7 space-y-2.5">

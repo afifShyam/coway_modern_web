@@ -3,18 +3,20 @@
 import React, { useState } from 'react';
 import { Product } from '@/types/product';
 import { getProductWhatsAppUrl } from '@/lib/whatsapp';
-import { MessageCircle, Info } from 'lucide-react';
+import { MessageCircle, Info, ZoomIn } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
   viewMode?: 'grid' | 'list';
   onSelectDetail: (product: Product, selectedColor?: string) => void;
+  onOpenLightbox: (product: Product, selectedColor?: string) => void;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ 
   product, 
   viewMode = 'grid',
-  onSelectDetail 
+  onSelectDetail,
+  onOpenLightbox
 }) => {
   const [selectedColorIdx, setSelectedColorIdx] = useState<number>(0);
   
@@ -32,20 +34,29 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   if (viewMode === 'list') {
     return (
       <div className="pro-card p-3 sm:p-4 bg-slate-850 border border-slate-800 flex items-center justify-between gap-3 hover:border-slate-700 transition-all">
-        <div 
-          onClick={() => onSelectDetail(product, activeColorName)}
-          className="flex items-center gap-3 cursor-pointer flex-1 min-w-0"
-        >
-          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 rounded-xl p-1.5 flex items-center justify-center shrink-0 border border-slate-800">
+        <div className="flex items-center gap-3 flex-1 min-w-0">
+          
+          {/* Clickable Image Box with Zoom Indicator */}
+          <div 
+            onClick={() => onOpenLightbox(product, activeColorName)}
+            className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 rounded-xl p-1.5 flex items-center justify-center shrink-0 border border-slate-800 cursor-pointer relative group overflow-hidden"
+            title="Klik untuk lihat gambar penuh"
+          >
             <img 
               src={activeImage} 
               alt={product.name} 
-              className="max-h-full max-w-full object-contain"
+              className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
               loading="lazy"
             />
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity rounded-xl">
+              <ZoomIn className="w-4 h-4 text-white" />
+            </div>
           </div>
           
-          <div className="min-w-0">
+          <div 
+            onClick={() => onSelectDetail(product, activeColorName)}
+            className="min-w-0 cursor-pointer"
+          >
             <div className="flex items-center gap-1.5 flex-wrap">
               <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-slate-900 text-sky-400 border border-slate-800">
                 {product.badge}
@@ -91,7 +102,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <button 
             onClick={() => onSelectDetail(product, activeColorName)}
             className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs transition-colors"
-            title="Lihat Maklumat Penuh"
+            title="Lihat Maklumat & Spesifikasi"
           >
             <Info className="w-4 h-4" />
           </button>
@@ -122,10 +133,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <span className="text-[9px] sm:text-[10px] font-mono text-slate-400 font-bold">{product.code}</span>
         </div>
         
-        {/* Product Image Container */}
+        {/* Clickable Product Image Container with Zoom Badge */}
         <div 
-          onClick={() => onSelectDetail(product, activeColorName)}
-          className="h-28 sm:h-44 flex items-center justify-center my-2 p-1.5 sm:p-2 bg-slate-900/70 rounded-xl border border-slate-800/80 cursor-pointer group relative"
+          onClick={() => onOpenLightbox(product, activeColorName)}
+          className="h-28 sm:h-44 flex items-center justify-center my-2 p-1.5 sm:p-2 bg-slate-900/70 rounded-xl border border-slate-800/80 cursor-pointer group relative overflow-hidden"
+          title="Klik untuk besarkan gambar & lihat jelas"
         >
           <img 
             src={activeImage} 
@@ -133,6 +145,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             className="max-h-24 sm:max-h-36 max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
             loading="lazy"
           />
+          
+          {/* Zoom Overlay Indicator */}
+          <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-slate-900/80 text-slate-300 opacity-80 group-hover:opacity-100 group-hover:text-sky-400 group-hover:bg-slate-850 transition-all border border-slate-800">
+            <ZoomIn className="w-3.5 h-3.5" />
+          </div>
         </div>
 
         {/* Color Swatches (If variants exist) */}
