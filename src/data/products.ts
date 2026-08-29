@@ -70,7 +70,7 @@ export const PRODUCTS: Product[] = [
     ],
     tankCapacity: { hot: '1.5 L', cold: '1.8 L', ambient: '1.8 L', ice: '0.7 kg', total: '5.8 L' },
     dimensions: '270 x 546 x 515 mm',
-    powerConsumption: 'Pemanas 310W - 370W, Pembuat Ais 130W, Pemampat 0.8A',
+    powerConsumption: 'Pemanas 310W - 370W, Pemampat 0.8A',
     filtrationStages: 'Sistem Penapisan RO Tulen + Pensterilan Dwi-UV',
     keyFeatures: [
       'Pembuatan Ais Kristal Bentuk Peluru dengan Pantas',
@@ -211,6 +211,8 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM4,510',
     badge: 'Pilihan Ibu',
+    videoUrl: '/videos/coway-promo.mp4',
+    videoTitle: 'Video Pengenalan Coway Ombak 50 Suhu (CHP-7310R)',
     tankCapacity: { hot: '3.0 L', cold: '2.3 L', ambient: '7.8 L', total: '13.1 L' },
     dimensions: '340 x 523 x 518 mm',
     powerConsumption: 'Pemanas 672W, Pemampat 0.6A',
@@ -654,8 +656,6 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM5,899',
     badge: 'Kapasiti 715L',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Pengenalan Peti Sejuk Mega Coway 715L',
     keyFeatures: [
       'Kapasiti Simpanan Mega 715 Liter untuk Keluarga',
       'Teknologi Dwi-Inverter Menjimatkan Penggunaan Elektrik',
@@ -675,8 +675,6 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM6,799',
     badge: '4 Pintu Pintar',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Ciri Pintar Peti Sejuk 4-Pintu Coway 551L',
     keyFeatures: [
       'Rekaan 4 Pintu dengan Zon Pelbagai Suhu Mengikut Jenis Makanan',
       'Sistem Kawalan Kelembapan untuk Mengekalkan Kesegaran Sayur & Buah',
@@ -700,8 +698,6 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'NA',
     badge: 'Bidet Elektronik',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Fungsi & Pensterilan Nozel Bidet Flowlet Plus',
     keyFeatures: [
       'Tempat Duduk Dipanaskan dengan Suhu Selesa',
       'Suhu Pancuran Air Suam yang Boleh Dilaras',
@@ -721,8 +717,6 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'NA',
     badge: 'Serendah RM30',
-    videoUrl: '/videos/coway-promo.mp4',
-    videoTitle: 'Video Pemasangan & Fungsi Bidet Bateri Flowlet',
     keyFeatures: [
       'Beroperasi Menggunakan Bateri Tanpa Pendawaian Elektrik',
       'Penarafan Kalis Air IPX4 yang Selamat di Bilik Mandi',

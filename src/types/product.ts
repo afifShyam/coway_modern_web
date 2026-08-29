@@ -44,6 +44,7 @@ export interface Product {
   filtrationStages?: string;
   keyFeatures?: string[];
   videoUrl?: string;
+  youtubeId?: string;
   videoTitle?: string;
 }
 

@@ -22,6 +22,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   const [selectedColorIdx, setSelectedColorIdx] = useState<number>(0);
   
+  const hasVideo = Boolean(product.videoUrl || product.youtubeId);
+
   const activeImage = product.colorVariants && product.colorVariants.length > 0 
     ? product.colorVariants[selectedColorIdx].image 
     : product.image;
@@ -29,8 +31,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const activeColorName = product.colorVariants && product.colorVariants.length > 0
     ? product.colorVariants[selectedColorIdx].name
     : undefined;
-
-  const savings = parseInt(product.regularMonthly.replace(/[^0-9]/g, '')) - parseInt(product.promoMonthly);
 
   // List View Mode (Compact horizontal row)
   if (viewMode === 'list') {
@@ -101,7 +101,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </div>
           )}
 
-          {onOpenVideo && (
+          {/* Conditional Video Button: ONLY IF PRODUCT HAS VIDEO */}
+          {hasVideo && onOpenVideo && (
             <button 
               onClick={() => onOpenVideo(product)}
               className="p-2 rounded-xl bg-sky-950/60 hover:bg-sky-900 text-sky-400 border border-sky-800/80 text-xs transition-colors"
@@ -225,7 +226,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         {/* Actions Row */}
         <div className="flex items-center gap-1.5">
-          {onOpenVideo && (
+          {/* Conditional Video Button: ONLY IF PRODUCT HAS VIDEO */}
+          {hasVideo && onOpenVideo && (
             <button 
               onClick={() => onOpenVideo(product)}
               className="p-2 rounded-xl bg-sky-950/70 hover:bg-sky-900 text-sky-400 border border-sky-800/80 text-xs transition-colors shrink-0"

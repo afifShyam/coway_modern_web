@@ -35,6 +35,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
   if (!product) return null;
 
+  const hasVideo = Boolean(product.videoUrl || product.youtubeId);
+
   const activeImage = product.colorVariants && product.colorVariants.length > 0 
     ? product.colorVariants[selectedColorIdx].image 
     : product.image;
@@ -96,14 +98,16 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
             <p className="text-xs text-slate-300 leading-relaxed">{product.description}</p>
 
-            {/* Video Watch Button in Details */}
-            <button
-              onClick={() => onOpenVideo && onOpenVideo(product)}
-              className="w-full py-2 px-3 rounded-xl bg-sky-950/80 hover:bg-sky-900/90 text-sky-300 border border-sky-800 text-xs font-bold transition-all flex items-center justify-center gap-2"
-            >
-              <Video className="w-4 h-4 text-sky-400" />
-              <span>Tonton Video Demo & Fungsi Model</span>
-            </button>
+            {/* Video Watch Button in Details: ONLY IF PRODUCT HAS VIDEO */}
+            {hasVideo && onOpenVideo && (
+              <button
+                onClick={() => onOpenVideo(product)}
+                className="w-full py-2 px-3 rounded-xl bg-sky-950/80 hover:bg-sky-900/90 text-sky-300 border border-sky-800 text-xs font-bold transition-all flex items-center justify-center gap-2"
+              >
+                <Video className="w-4 h-4 text-sky-400" />
+                <span>Tonton Video Demo & Fungsi Model</span>
+              </button>
+            )}
 
             {/* Interactive Color Variant Selector */}
             {product.colorVariants && product.colorVariants.length > 0 && (
