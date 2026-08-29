@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { Product } from '@/types/product';
-import { getProductWhatsAppUrl } from '@/lib/whatsapp';
-import { X, MessageCircle, CheckCircle2, Droplets, Zap, Ruler, Layers, ZoomIn, Video } from 'lucide-react';
+import { siteConfig } from '@/data/siteConfig';
+import { getProductWhatsAppUrl, getProductEmallUrl } from '@/lib/whatsapp';
+import { X, MessageCircle, CheckCircle2, Droplets, Zap, Ruler, Layers, ZoomIn, Video, ShoppingCart, ExternalLink } from 'lucide-react';
 
 interface ProductDetailModalProps {
   product: Product | null;
@@ -36,6 +37,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   if (!product) return null;
 
   const hasVideo = Boolean(product.videoUrl || product.youtubeId);
+  const emallLink = getProductEmallUrl(product.emallUrl);
 
   const activeImage = product.colorVariants && product.colorVariants.length > 0 
     ? product.colorVariants[selectedColorIdx].image 
@@ -279,16 +281,37 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </div>
         </div>
 
-        {/* Action Button */}
-        <a 
-          href={getProductWhatsAppUrl(product.name, product.code, activeColorName)}
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40"
-        >
-          <MessageCircle className="w-4 h-4" />
-          WhatsApp Johan Tempah {product.name} {activeColorName ? `(${activeColorName})` : ''}
-        </a>
+        {/* Action Buttons: Dual Action (Beli Online & WhatsApp) */}
+        <div className="space-y-2 pt-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {/* Online Purchase on E-Mall */}
+            <a 
+              href={emallLink}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="py-3.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-sky-950/40"
+            >
+              <ShoppingCart className="w-4 h-4" />
+              <span>Beli di E-Mall (Kod Ejen: {siteConfig.hpCode})</span>
+              <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+            </a>
+
+            {/* WhatsApp Booking */}
+            <a 
+              href={getProductWhatsAppUrl(product.name, product.code, activeColorName)}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>WhatsApp Johan Tempah</span>
+            </a>
+          </div>
+
+          <p className="text-[10px] text-center text-slate-400">
+            Pembelian rasmi melalui Coway E-Mall & WhatsApp diselia di bawah kod ejen berdaftar <strong className="text-white">{siteConfig.agentName} ({siteConfig.hpCode})</strong>.
+          </p>
+        </div>
 
       </div>
     </div>

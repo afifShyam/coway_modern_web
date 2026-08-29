@@ -46,6 +46,7 @@ export interface Product {
   videoUrl?: string;
   youtubeId?: string;
   videoTitle?: string;
+  emallUrl?: string;
 }
 
 export interface CategoryTab {

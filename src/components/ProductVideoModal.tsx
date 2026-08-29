@@ -3,8 +3,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Product } from '@/types/product';
 import { siteConfig } from '@/data/siteConfig';
-import { getProductWhatsAppUrl } from '@/lib/whatsapp';
-import { X, Play, Volume2, VolumeX, Maximize2, MessageCircle, Video } from 'lucide-react';
+import { getProductWhatsAppUrl, getProductEmallUrl } from '@/lib/whatsapp';
+import { X, Play, Volume2, VolumeX, Maximize2, MessageCircle, Video, ShoppingCart } from 'lucide-react';
 
 interface ProductVideoModalProps {
   product: Product | null;
@@ -37,6 +37,8 @@ export const ProductVideoModal: React.FC<ProductVideoModalProps> = ({ product, o
   }, [onClose]);
 
   if (!product || (!product.videoUrl && !product.youtubeId)) return null;
+
+  const emallLink = getProductEmallUrl(product.emallUrl);
 
   const togglePlay = () => {
     if (!videoRef.current) return;
@@ -168,23 +170,37 @@ export const ProductVideoModal: React.FC<ProductVideoModalProps> = ({ product, o
         )}
 
         {/* Modal Bottom Actions */}
-        <div className="p-2.5 bg-slate-850 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="p-3 bg-slate-850 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="text-center sm:text-left">
             <span className="text-[10px] uppercase font-bold text-sky-400 block">Berminat dengan {product.name}?</span>
             <div className="text-xs text-slate-300 font-medium">
-              Hubungi {siteConfig.agentName} untuk penerangan lanjut atau tempahan promosi RM{product.promoMonthly}/bln.
+              Beli terus di E-Mall atau WhatsApp {siteConfig.agentName} ({siteConfig.hpCode}) untuk promosi RM{product.promoMonthly}/bln.
             </div>
           </div>
 
-          <a 
-            href={getProductWhatsAppUrl(product.name, product.code)}
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-md whitespace-nowrap"
-          >
-            <MessageCircle className="w-4 h-4" />
-            <span>Tempah {product.name} (WhatsApp)</span>
-          </a>
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            {/* Online Purchase */}
+            <a 
+              href={emallLink}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md whitespace-nowrap"
+            >
+              <ShoppingCart className="w-4 h-4" />
+              <span>Beli di E-Mall</span>
+            </a>
+
+            {/* WhatsApp CTA */}
+            <a 
+              href={getProductWhatsAppUrl(product.name, product.code)}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md whitespace-nowrap"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>WhatsApp</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>

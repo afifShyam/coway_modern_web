@@ -12,3 +12,10 @@ export function getProductWhatsAppUrl(productName: string, productCode: string, 
   const msg = `Hai ${siteConfig.agentName}, saya berminat untuk mengetahui maklumat rasmi & sebut harga bagi model Coway ${productName} (${productCode})${colorText}. Boleh bantu saya?`;
   return getWhatsAppUrl(msg);
 }
+
+export function getProductEmallUrl(emallUrl?: string): string {
+  if (emallUrl) {
+    return emallUrl;
+  }
+  return siteConfig.emallUrl;
+}

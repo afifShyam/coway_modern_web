@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { Product } from '@/types/product';
-import { getProductWhatsAppUrl } from '@/lib/whatsapp';
-import { MessageCircle, Info, ZoomIn, Video } from 'lucide-react';
+import { getProductWhatsAppUrl, getProductEmallUrl } from '@/lib/whatsapp';
+import { MessageCircle, Info, ZoomIn, Video, ShoppingCart, ExternalLink } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -31,6 +31,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const activeColorName = product.colorVariants && product.colorVariants.length > 0
     ? product.colorVariants[selectedColorIdx].name
     : undefined;
+
+  const emallLink = getProductEmallUrl(product.emallUrl);
 
   // List View Mode (Compact horizontal row)
   if (viewMode === 'list') {
@@ -119,7 +121,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           >
             <Info className="w-4 h-4" />
           </button>
+
+          {/* Online Purchase (E-Mall) Button */}
+          <a 
+            href={emallLink}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="px-3 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs flex items-center gap-1 shadow-sm whitespace-nowrap"
+            title="Beli Terus di Coway E-Mall Rasmi"
+          >
+            <ShoppingCart className="w-3.5 h-3.5" />
+            <span className="hidden md:inline">Beli Online</span>
+          </a>
           
+          {/* WhatsApp Button */}
           <a 
             href={getProductWhatsAppUrl(product.name, product.code, activeColorName)}
             target="_blank" 
@@ -224,35 +239,51 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </div>
         </div>
 
-        {/* Actions Row */}
+        {/* Quick Tools Row (Info & Video) */}
         <div className="flex items-center gap-1.5">
+          <button 
+            onClick={() => onSelectDetail(product, activeColorName)}
+            className="flex-1 py-1.5 px-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-[11px] font-medium transition-colors flex items-center justify-center gap-1"
+            title="Spesifikasi Penuh"
+          >
+            <Info className="w-3 h-3 text-sky-400" />
+            <span>Spesifikasi</span>
+          </button>
+
           {/* Conditional Video Button: ONLY IF PRODUCT HAS VIDEO */}
           {hasVideo && onOpenVideo && (
             <button 
               onClick={() => onOpenVideo(product)}
-              className="p-2 rounded-xl bg-sky-950/70 hover:bg-sky-900 text-sky-400 border border-sky-800/80 text-xs transition-colors shrink-0"
+              className="py-1.5 px-2.5 rounded-lg bg-sky-950/70 hover:bg-sky-900 text-sky-300 border border-sky-800/80 text-[11px] font-medium transition-colors flex items-center gap-1"
               title="Tonton Video Demo"
             >
-              <Video className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <Video className="w-3 h-3 text-sky-400" />
+              <span>Video</span>
             </button>
           )}
+        </div>
 
-          <button 
-            onClick={() => onSelectDetail(product, activeColorName)}
-            className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs transition-colors shrink-0"
-            title="Spesifikasi Penuh"
+        {/* Primary Purchase Buttons (Beli Online & WhatsApp) */}
+        <div className="grid grid-cols-2 gap-1.5 pt-0.5">
+          <a 
+            href={emallLink}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="py-2 sm:py-2.5 px-1 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-[10px] sm:text-xs transition-all flex items-center justify-center gap-1 shadow-sm whitespace-nowrap"
+            title="Beli Terus Melalui Coway E-Mall Rasmi"
           >
-            <Info className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-          </button>
-          
+            <ShoppingCart className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">Beli Online</span>
+          </a>
+
           <a 
             href={getProductWhatsAppUrl(product.name, product.code, activeColorName)}
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-1 py-2 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] sm:text-xs transition-all flex items-center justify-center gap-1 shadow-sm whitespace-nowrap"
+            className="py-2 sm:py-2.5 px-1 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] sm:text-xs transition-all flex items-center justify-center gap-1 shadow-sm whitespace-nowrap"
           >
-            <MessageCircle className="w-3.5 h-3.5" />
-            <span>WhatsApp</span>
+            <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">WhatsApp</span>
           </a>
         </div>
 
