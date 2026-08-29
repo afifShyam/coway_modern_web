@@ -30,7 +30,7 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM4,200',
     badge: 'Pilihan Utama',
     featured: true,
-    emallUrl: 'https://emall.coway.com.my/product/villaem-3?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/water-purifier-table-top-villaem-3?agentcode=748757',
     youtubeId: 'FUKnnNU8mDE',
     videoTitle: 'Video Rasmi Coway Villaem III (CHP-7320L)',
     colorVariants: [
@@ -63,7 +63,7 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM7,500',
     badge: 'Pembuat Ais',
     featured: true,
-    emallUrl: 'https://emall.coway.com.my/product/ais?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/water-purifier-table-top-dazzie-white?agentcode=748757',
     youtubeId: 'FLyjKoAbZwbuIExA',
     videoTitle: 'Video Rasmi Coway AIS Pembuat Ais (CHPI-7520L)',
     colorVariants: [
@@ -96,7 +96,7 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM3,600',
     badge: '5 Pilihan Warna',
     featured: true,
-    emallUrl: 'https://emall.coway.com.my/product/neon?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/water-purifier-table-top-dazzie-pink?agentcode=748757',
     youtubeId: 'HMqMWPTKD2x',
     videoTitle: 'Video Rasmi Coway Neon Ultra-Slim (CHP-6210N)',
     colorVariants: [
@@ -131,7 +131,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM4,590',
     badge: 'Aliran Terus',
-    emallUrl: 'https://emall.coway.com.my/product/dazzie?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/water-purifier-table-top-dazzie-gray?agentcode=748757',
     youtubeId: 'Ggm8597aNZc',
     videoTitle: 'Video Rasmi Coway Dazzie Tankless (CHO-1201N)',
     colorVariants: [
@@ -165,7 +165,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM3,640',
     badge: 'Paling Jimat',
-    emallUrl: 'https://emall.coway.com.my/product/neo-plus?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/waterpurifier-tabletop-neoplus?agentcode=748757',
     tankCapacity: { hot: '1.0 L', cold: '2.3 L', ambient: '2.5 L', total: '5.8 L' },
     dimensions: '260 x 483 x 500 mm',
     powerConsumption: 'Pemanas 300W, Pemampat 0.7A',
@@ -190,7 +190,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM2,490',
     badge: 'Serendah RM32',
-    emallUrl: 'https://emall.coway.com.my/product/cinnamon?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/waterpurifier-table-top-cinnamon?agentcode=748757',
     tankCapacity: { ambient: '5.0 L', total: '5.0 L' },
     dimensions: '200 x 400 x 405 mm',
     powerConsumption: '0 Watt (Tanpa Elektrik)',
@@ -215,7 +215,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM4,510',
     badge: 'Pilihan Ibu',
-    emallUrl: 'https://emall.coway.com.my/product/ombak?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/waterpurifier-tabletop-ombak?agentcode=748757',
     tankCapacity: { hot: '3.0 L', cold: '2.3 L', ambient: '7.8 L', total: '13.1 L' },
     dimensions: '340 x 523 x 518 mm',
     powerConsumption: 'Pemanas 672W, Pemampat 0.6A',
@@ -240,7 +240,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM5,000',
     badge: 'Jenis Berdiri',
-    emallUrl: 'https://emall.coway.com.my/product/core-slim?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/water-purifier-floor-standing-core-slim?agentcode=748757',
     colorVariants: [
       { name: 'Putih Porselin', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/cc9302e6-fdfe-4881-bcc5-b37babee082e/1/240x240/core-slim-white.png' },
       { name: 'Kelabu Kerikil', colorHex: '#94A3B8', image: 'https://emall.coway.com.my/ProductImages/8561e6f3-94ce-457a-a473-77865dd80bee/1/240x240/core-slim-gray.png' }
@@ -269,7 +269,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM6,500',
     badge: 'Kapasiti Mega',
-    emallUrl: 'https://emall.coway.com.my/product/core-plus?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/water-purifier-floor-standing-core-plus?agentcode=748757',
     tankCapacity: { hot: '3.6 L', cold: '6.0 L', ambient: '11.5 L', total: '21.1 L' },
     dimensions: '370 x 490 x 1257 mm',
     powerConsumption: 'Pemanas 500W - 660W, Pemampat 0.8A',
@@ -294,7 +294,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM3,500',
     badge: 'Penapis Utama',
-    emallUrl: 'https://emall.coway.com.my/product/outdoor-filter-poe-23a?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/outdoor-outdoor-filter-coway-outdoor-filter?agentcode=748757',
     dimensions: '210 x 210 x 1020 mm',
     filtrationStages: 'Membran Ultrapenapisan Gentian Berongga PVDF (0.01 Mikron)',
     keyFeatures: [
@@ -321,12 +321,12 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM3,190',
     badge: 'No.1 Penulen Udara',
     featured: true,
-    emallUrl: 'https://emall.coway.com.my/product/storm-2?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/air-purifier-air-purifier-storm-2?agentcode=748757',
     youtubeId: 'k5yT3K5z2bI',
     videoTitle: 'Video Rasmi Coway Storm II (AP-1523D)',
     dimensions: '410 x 515 x 752 mm',
     powerConsumption: '42 Watt',
-    filtrationStages: 'Pra-Penapis, Penapis Habuk Halus, Penapis Penyahbauan, Penapis Cowa HEPA H13',
+    filtrationStages: 'Pra-Penapis, Penapis Habuk Halus, Penapis Penyahbauan, Penapis Coway HEPA H13',
     keyFeatures: [
       'Kipas Pengitar Udara Jarak Jauh Sehingga 10 Meter',
       'Kawasan Liputan Luas 50m² (540 kaki persegi)',
@@ -347,7 +347,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM3,490',
     badge: 'Pakar Alahan',
-    emallUrl: 'https://emall.coway.com.my/product/lombok-3?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/airpurifier-airpurifier-lombok3?agentcode=748757',
     youtubeId: 'H8uk3gNCHKF',
     videoTitle: 'Video Rasmi Coway Lombok 3 Plasma RBD (AP-1520C)',
     dimensions: '414 x 264 x 651 mm',
@@ -372,7 +372,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'NA',
     badge: 'Serendah RM49',
-    emallUrl: 'https://emall.coway.com.my/product/studio?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/air-purifier-air-purifier-studio?agentcode=748757',
     colorVariants: [
       { name: 'Putih Moden', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/9b502336-eff4-4e13-99c6-ac4689181c2b/1/240x240/studio-white.png' },
       { name: 'Kuning Langsat (Beige)', colorHex: '#E7DEC8', image: 'https://emall.coway.com.my/ProductImages/58e15860-eac2-48d6-b551-19d8012c2f98/1/240x240/studio-beige.png' }
@@ -399,7 +399,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'NA',
     badge: 'Scandinavian',
-    emallUrl: 'https://emall.coway.com.my/product/suite?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/air-purifier-air-purifier-suite?agentcode=748757',
     colorVariants: [
       { name: 'Putih Moden', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/6f51c08c-77e3-49cf-85cd-0ba40602cfea/1/240x240/suite-white.png' },
       { name: 'Kuning Langsat (Beige)', colorHex: '#E7DEC8', image: 'https://emall.coway.com.my/ProductImages/37594b88-f027-44f9-b721-dcc47def94ec/1/240x240/suite-beige.png' }
@@ -425,7 +425,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM4,800',
     badge: 'Ruang Tamu Besar',
-    emallUrl: 'https://emall.coway.com.my/product/atrium?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/air-purifier-air-purifier-atrium?agentcode=748757',
     colorVariants: [
       { name: 'Putih Moden', colorHex: '#FFFFFF', image: 'https://emall.coway.com.my/ProductImages/ac34611e-d910-44c0-b9b9-28e5c639f9b0/1/240x240/atrium-white.png' },
       { name: 'Kuning Langsat (Beige)', colorHex: '#E7DEC8', image: 'https://emall.coway.com.my/ProductImages/82f5db57-d480-4bc2-b822-802dc5dfc269/1/240x240/atrium-beige.png' },
@@ -457,7 +457,7 @@ export const PRODUCTS: Product[] = [
     outrightPrice: 'RM8,000',
     badge: '4 Pilihan Warna',
     featured: true,
-    emallUrl: 'https://emall.coway.com.my/product/berex-pebble?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/massage-pebble?agentcode=748757',
     youtubeId: 'Esbrrbu2a75',
     videoTitle: 'Video Rasmi Kerusi Urut Coway BEREX PEBBLE™ (MC-C01)',
     colorVariants: [
@@ -488,7 +488,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '3',
     outrightPrice: 'RM7,500',
     badge: '3 Pilihan Warna',
-    emallUrl: 'https://emall.coway.com.my/product/berex-mine?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/massage-massage-chair-mine?agentcode=748757',
     youtubeId: 'FWPuLKMHZAK',
     videoTitle: 'Video Rasmi Kerusi Urut Coway BEREX MINE™ (MC-B02)',
     colorVariants: [
@@ -518,7 +518,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '3',
     outrightPrice: 'RM13,500',
     badge: 'Gred Perdana',
-    emallUrl: 'https://emall.coway.com.my/product/berex-senno-plus?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/massage-massage-coway-berex-senno-plus?agentcode=748757',
     youtubeId: 'FY7P3cuVXdA',
     videoTitle: 'Video Rasmi BEREX Senno Flagship Massage Chair',
     dimensions: '820 x 1500 x 1200 mm',
@@ -543,7 +543,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '3',
     outrightPrice: 'RM14,500',
     badge: 'Terapi Batu Jed',
-    emallUrl: 'https://emall.coway.com.my/product/berex-massage-bed?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/massage-massage-bed-standard?agentcode=748757',
     colorVariants: [
       { name: 'Kuning Champagne (Premium)', colorHex: '#E5D9C5', image: 'https://emall.coway.com.my/ProductImages/cfa028ff-a59e-438d-a3db-eb9c05ae895e/1/240x240/massage-bed-premium-champagne-beige.png' },
       { name: 'Hitam Dakwat (Premium)', colorHex: '#1F242A', image: 'https://emall.coway.com.my/ProductImages/b38c539e-a00c-4a22-a0de-873f940b5e52/1/240x240/massage-bed-premium-ink-black.png' },
@@ -575,7 +575,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '5',
     outrightPrice: 'RM4,500',
     badge: 'Tilam Hotel',
-    emallUrl: 'https://emall.coway.com.my/product/prime-lite?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/mattress-mattress-only-prime-lite-mattress-queen?agentcode=748757',
     youtubeId: 'H2sIA6wcnmR',
     videoTitle: 'Video Rasmi Coway BEREX Smart Mattress Care Service',
     keyFeatures: [
@@ -597,7 +597,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '5',
     outrightPrice: 'RM5,780',
     badge: 'Antistatik',
-    emallUrl: 'https://emall.coway.com.my/product/prime-2?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/mattress-mattress-only-prime-mattress-queen-only-soft?agentcode=748757',
     youtubeId: 'H2sIA6wcnmR',
     videoTitle: 'Video Ciri Antistatik Tilam Coway BEREX Prime II',
     keyFeatures: [
@@ -623,7 +623,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '5',
     outrightPrice: 'NA',
     badge: 'Inverter Pintar',
-    emallUrl: 'https://emall.coway.com.my/product/air-conditioner-f-series?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/aircond-10-hp?agentcode=748757',
     keyFeatures: [
       'Penjimatan Tenaga Inverter Penarafan 5-Bintang',
       'Fungsi Pembersihan Kendiri Automatik Mengelakkan Kulat',
@@ -643,7 +643,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '5',
     outrightPrice: 'NA',
     badge: 'Servis Berkala',
-    emallUrl: 'https://emall.coway.com.my/product/air-conditioner-p-series?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/cooling-cooling-set-p-series-aircond-15hp?agentcode=748757',
     keyFeatures: [
       'Hembusan Aliran Udara Lembut 4-Hala Menyeluruh',
       'Penapis Mikro Antibakteria Menyingkirkan Habuk Halus',
@@ -667,7 +667,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM5,899',
     badge: 'Kapasiti 715L',
-    emallUrl: 'https://emall.coway.com.my/product/side-by-side-refrigerator-715l?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/new-new-2?agentcode=748757',
     keyFeatures: [
       'Kapasiti Simpanan Mega 715 Liter untuk Keluarga',
       'Teknologi Dwi-Inverter Menjimatkan Penggunaan Elektrik',
@@ -687,7 +687,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'RM6,799',
     badge: '4 Pintu Pintar',
-    emallUrl: 'https://emall.coway.com.my/product/multi-door-refrigerator-551l?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/new-new-1?agentcode=748757',
     keyFeatures: [
       'Rekaan 4 Pintu dengan Zon Pelbagai Suhu Mengikut Jenis Makanan',
       'Sistem Kawalan Kelembapan untuk Mengekalkan Kesegaran Sayur & Buah',
@@ -711,7 +711,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'NA',
     badge: 'Bidet Elektronik',
-    emallUrl: 'https://emall.coway.com.my/product/flowlet-plus?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/bathroom-bidet-flowlet-plus-panel-round?agentcode=748757',
     keyFeatures: [
       'Tempat Duduk Dipanaskan dengan Suhu Selesa',
       'Suhu Pancuran Air Suam yang Boleh Dilaras',
@@ -731,7 +731,7 @@ export const PRODUCTS: Product[] = [
     promoMonths: '7',
     outrightPrice: 'NA',
     badge: 'Serendah RM30',
-    emallUrl: 'https://emall.coway.com.my/product/flowlet?agentcode=748757',
+    emallUrl: 'https://emall.coway.com.my/productlist/category/bathroom-bidet-manualbidet?agentcode=748757',
     keyFeatures: [
       'Beroperasi Menggunakan Bateri Tanpa Pendawaian Elektrik',
       'Penarafan Kalis Air IPX4 yang Selamat di Bilik Mandi',
