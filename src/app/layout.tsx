@@ -1,6 +1,16 @@
 import type { Metadata } from 'next';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { siteConfig } from '@/data/siteConfig';
+import { FAQS } from '@/data/faqs';
+
+// Self-hosted at build time: replaces the render-blocking Google Fonts @import
+// that previously pulled 17 static weights from a third-party origin.
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-jakarta',
+});
 
 const OG_IMAGE_URL = 'https://coway-online.web.app/images/og-thumbnail.jpg';
 const SITE_TITLE = 'Coway Malaysia – Promosi RM20/Bulan | Johan Adam (HP 748757)';
@@ -21,6 +31,19 @@ export const metadata: Metadata = {
     'Promosi Coway RM20'
   ],
   authors: [{ name: `${siteConfig.agentName} (Coway HP: ${siteConfig.hpCode})` }],
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+  },
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESC,
@@ -54,36 +77,53 @@ export const metadata: Metadata = {
   },
 };
 
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      name: siteConfig.name,
+      areaServed: 'MY',
+      telephone: `+${siteConfig.phone}`,
+      url: 'https://coway-online.web.app',
+      image: OG_IMAGE_URL,
+      sameAs: [siteConfig.facebookUrl],
+      description: `Perkhidmatan rasmi Coway Malaysia oleh ${siteConfig.agentName}, Coway Health Planner sah (Kod HP: ${siteConfig.hpCode}).`,
+    },
+    {
+      '@type': 'Person',
+      name: siteConfig.agentName,
+      jobTitle: 'Coway Health Planner',
+      identifier: siteConfig.hpCode,
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: FAQS.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ms" className="scroll-smooth">
+    <html lang="ms" className={`${jakarta.variable} scroll-smooth`}>
       <head>
-        {/* Direct OpenGraph and WhatsApp Link Preview Tags */}
-        <meta property="og:title" content={SITE_TITLE} />
-        <meta property="og:description" content={SITE_DESC} />
-        <meta property="og:image" content={OG_IMAGE_URL} />
-        <meta property="og:image:secure_url" content={OG_IMAGE_URL} />
-        <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Coway Malaysia - Johan Adam HP 748757" />
-        <meta property="og:url" content="https://coway-online.web.app" />
-        <meta property="og:type" content="website" />
-        
-        {/* Fallback for legacy crawlers */}
-        <link rel="image_src" href={OG_IMAGE_URL} />
-        
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={SITE_TITLE} />
-        <meta name="twitter:description" content={SITE_DESC} />
-        <meta name="twitter:image" content={OG_IMAGE_URL} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </head>
-      <body className="bg-slate-950 text-slate-100 antialiased font-sans">
+      <body className="bg-[#090D16] text-slate-100 antialiased font-sans">
         {children}
       </body>
     </html>
