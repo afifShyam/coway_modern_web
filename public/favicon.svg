@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cowayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="50%" stop-color="#0082CA" />
+      <stop offset="100%" stop-color="#0369A1" />
+    </linearGradient>
+    <linearGradient id="dropGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+  
+  <!-- Outer Rounded Shield / Circle -->
+  <rect width="512" height="512" rx="128" fill="url(#cowayGrad)" />
+  
+  <!-- Outer Glow Ring -->
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="#38BDF8" stroke-width="8" stroke-opacity="0.4" />
+
+  <!-- Center Stylized Droplet & 'C' Crest -->
+  <g filter="url(#shadow)">
+    <!-- Iconic Water Droplet Core -->
+    <path 
+      d="M256 96 C256 96 160 224 160 304 C160 357.019 202.981 400 256 400 C309.019 400 352 357.019 352 304 C352 224 256 96 256 96 Z" 
+      fill="#FFFFFF" 
+    />
+    <!-- Inner Cyan Water Ripple -->
+    <path 
+      d="M256 160 C256 160 192 245 192 304 C192 339.346 220.654 368 256 368 C291.346 368 320 339.346 320 304 C320 245 256 160 256 160 Z" 
+      fill="url(#dropGrad)" 
+    />
+    <!-- Highlight Shimmer -->
+    <ellipse cx="232" cy="280" rx="20" ry="32" transform="rotate(-30 232 280)" fill="#FFFFFF" opacity="0.8" />
+  </g>
+</svg>

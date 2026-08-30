@@ -2,177 +2,210 @@
 
 import React, { useState } from 'react';
 import { 
-  Award, 
+  BadgeCheck, 
   ShieldCheck, 
-  HeartHandshake, 
-  CheckCircle2, 
+  Clock, 
   Wrench, 
-  Truck, 
-  Gift, 
-  ZoomIn, 
+  Award, 
+  Sparkles, 
+  HeartHandshake, 
+  Flame,
+  Maximize2,
   X,
-  Droplets,
-  CalendarCheck,
-  Trophy,
-  FileCheck,
-  Layers
+  CheckCircle2
 } from 'lucide-react';
 
-const EIGHT_REASONS = [
+const REASONS = [
   {
-    num: '01',
-    title: 'Pensijilan Halal JAKIM',
-    desc: 'Penapis air Coway menerima pensijilan Halal rasmi oleh JAKIM bagi menjamin kebersihan, kesucian dan keselamatan air minuman keluarga anda.',
+    icon: BadgeCheck,
+    iconColor: 'text-emerald-400',
+    title: 'Sijil Halal JAKIM',
+    desc: 'Diiktiraf 100% Halal rasmi oleh JAKIM untuk semua penapis air dan komponen Coway di Malaysia.'
+  },
+  {
+    icon: Clock,
+    iconColor: 'text-sky-400',
+    title: 'Servis Cody Berkala',
+    desc: 'Sanitasi wap panas dan penukaran penapis berjadual setiap 2–4 bulan secara percuma.'
+  },
+  {
     icon: Award,
+    iconColor: 'text-amber-400',
+    title: 'Piawaian WQA & SIRIM',
+    desc: 'Pengiktirafan tertinggi WQA Gold Seal dan SIRIM untuk air paling bersih bertaraf dunia.'
   },
   {
-    num: '02',
-    title: 'Piawaian Kualiti WQA',
-    desc: 'Memenuhi standard pensijilan kualiti penapisan air antarabangsa Water Quality Association (WQA) untuk prestasi penapisan terbaik.',
-    icon: Droplets,
+    icon: Wrench,
+    iconColor: 'text-indigo-400',
+    title: 'Pasang & Waranti Percuma',
+    desc: 'Pendaftaran RM0, penghantaran percuma serta jaminan penuh alat ganti sepanjang kontrak.'
   },
   {
-    num: '03',
-    title: 'Jenama Dipercayai Pengguna',
-    desc: 'Pemenang Anugerah Reader\'s Digest Trusted Brand Platinum di Malaysia secara berturut-turut berdasarkan undian pengguna.',
-    icon: Trophy,
+    icon: ShieldCheck,
+    iconColor: 'text-cyan-400',
+    title: 'Pusat R&D Terbesar',
+    desc: 'Pusat penyelidikan kualiti air terbesar di dunia dengan lebih 370 pakar saintis.'
   },
   {
-    num: '04',
-    title: 'Pematuhan Piawaian SIRIM',
-    desc: 'Lulus piawaian ujian keselamatan komponen dan elektrik oleh SIRIM QAS International untuk ketenangan fikiran pengguna.',
-    icon: FileCheck,
+    icon: Sparkles,
+    iconColor: 'text-rose-400',
+    title: 'Pensterilan Dwi-UV',
+    desc: 'Teknologi sinar UV automatik memastikan nozel dan tangki bebas kuman setiap masa.'
   },
   {
-    num: '05',
-    title: 'Pelan Fleksibel Jadi Hak Milik',
-    desc: 'Pilihan tempoh sewa beli berpatutan mengikut bajet anda. Produk terus menjadi hak milik sepenuhnya selepas tempoh kontrak tamat.',
-    icon: CalendarCheck,
+    icon: Flame,
+    iconColor: 'text-orange-400',
+    title: 'Promo Dari RM20/Bulan',
+    desc: 'Pelan ansuran sewa beli mesra bajet dengan kadar pengenalan serendah RM20.'
   },
   {
-    num: '06',
-    title: 'Pelbagai Pilihan Model',
-    desc: 'Pilihan model kompak, bertangki, tanpa tangki (tankless) mahupun kapasiti besar untuk kediaman serta pejabat.',
-    icon: Layers,
-  },
-  {
-    num: '07',
-    title: 'Servis Berjadual Cody',
-    desc: 'Servis sanitasi dan penukaran penapis berkala oleh juruteknik terlatih (Cody) bagi menjamin air sentiasa segar dan bersih.',
     icon: HeartHandshake,
-  },
-  {
-    num: '08',
-    title: 'Reka Bentuk & Inovasi',
-    desc: 'Pemenang anugerah reka bentuk antarabangsa seperti iF Design, Red Dot & Good Design Award untuk reka bentuk moden dan mesra pengguna.',
-    icon: Award,
+    iconColor: 'text-pink-400',
+    title: 'Khidmat Johan (HP 748757)',
+    desc: 'Konsultasi telus dan urusan pendaftaran pantas terus bersama Health Planner sah anda.'
   }
 ];
 
 export const TrustBento: React.FC = () => {
-  const [isPosterOpen, setIsPosterOpen] = useState(false);
+  const [isInfographicZoomed, setIsInfographicZoomed] = useState<boolean>(false);
 
   return (
-    <section id="kenapa" className="py-16 sm:py-20 bg-slate-950 border-t border-slate-850">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="kenapa" className="py-8 sm:py-16 bg-[#0D1322] border-t border-slate-850">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
-          <span className="text-sky-400 text-xs font-bold tracking-widest uppercase mb-1.5 block">
-            Jaminan Kualiti & Kepercayaan
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            8 Sebab Kenapa Anda Perlu Pilih <span className="text-sky-400">Coway</span>
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-950 text-sky-300 border border-sky-800 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1.5">
+            <ShieldCheck className="w-3.5 h-3.5 text-sky-400" />
+            <span>Kualiti & Kepercayaan</span>
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+            8 Sebab Memilih Coway Malaysia
           </h2>
-          <p className="mt-3 text-slate-400 text-sm sm:text-base leading-relaxed">
-            Ketahui kelebihan sistem penapisan air, penulen udara dan servis berjadual rasmi Coway Malaysia yang dipercayai jutaan keluarga.
+          <p className="mt-1 text-slate-300 text-xs sm:text-sm leading-relaxed">
+            Jenama penapis air & udara No.1 paling dipercayai dengan servis berjadual terbaik.
           </p>
         </div>
 
-        {/* Infographic Banner & Highlights */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
-          
-          {/* Infographic Poster Card (Clickable to zoom) */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div 
-              onClick={() => setIsPosterOpen(true)}
-              className="pro-card p-3 sm:p-4 bg-slate-900 border border-slate-800 rounded-2xl cursor-pointer group relative overflow-hidden max-w-md w-full shadow-2xl hover:border-sky-500/60 transition-all"
-              title="Klik untuk lihat poster infografik resolusi tinggi"
-            >
-              <div className="relative rounded-xl overflow-hidden bg-slate-950 flex items-center justify-center">
+        {/* Highlight Banner: 8 Sebab Infographic + Overview Feature */}
+        <div className="mb-6 pro-card p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#111726] border border-slate-800 shadow-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            
+            {/* Left: Official 8 Sebab Image Showcase */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div 
+                onClick={() => setIsInfographicZoomed(true)}
+                className="relative rounded-xl overflow-hidden bg-slate-950 p-1.5 border border-slate-800 shadow-lg cursor-pointer group max-w-xs w-full"
+              >
                 <img 
-                  src="/images/8-sebab-pilih-coway.png" 
-                  alt="8 Sebab Kenapa Anda Perlu Pilih Coway" 
-                  className="w-full object-contain group-hover:scale-105 transition-transform duration-300 rounded-xl"
+                  src="/images/8-sebab-pilih-coway.webp" 
+                  alt="8 Sebab Utama Memilih Coway Malaysia" 
+                  className="w-full h-auto object-contain rounded-lg transition-transform duration-300 group-hover:scale-103"
                 />
-                
-                {/* Zoom Overlay Banner */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center transition-opacity text-center p-4">
-                  <div className="p-3 rounded-full bg-sky-600 text-white mb-2 shadow-lg scale-90 group-hover:scale-100 transition-transform">
-                    <ZoomIn className="w-6 h-6" />
+                <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+                  <div className="px-3 py-1.5 rounded-lg bg-sky-600 text-white text-[11px] font-bold flex items-center gap-1 shadow-md">
+                    <Maximize2 className="w-3.5 h-3.5" />
+                    <span>Tekan Untuk Zoom</span>
                   </div>
-                  <span className="text-xs font-bold text-white bg-slate-900/90 px-3 py-1 rounded-full border border-slate-700">
-                    Klik Untuk Paparan Penuh (Zoom)
-                  </span>
                 </div>
-              </div>
-
-              <div className="pt-3 pb-1 px-1 flex items-center justify-between text-xs">
-                <span className="text-slate-300 font-bold flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  Infografik Rasmi Coway
-                </span>
-                <span className="text-sky-400 font-bold hover:underline flex items-center gap-1">
-                  <ZoomIn className="w-3.5 h-3.5" /> Besarkan
-                </span>
               </div>
             </div>
-          </div>
 
-          {/* 8-Points Modern Grid */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-            {EIGHT_REASONS.map((item, idx) => (
-              <div 
-                key={idx} 
-                className="pro-card p-4 sm:p-5 bg-slate-900/90 border border-slate-800 rounded-2xl flex items-start gap-3.5 hover:border-slate-700 transition-all"
-              >
-                <div className="w-9 h-9 rounded-xl bg-sky-950/70 border border-sky-800 text-sky-400 font-black text-xs flex items-center justify-center shrink-0">
-                  {item.num}
+            {/* Right: Explanatory Context & Key Guarantees */}
+            <div className="lg:col-span-7 space-y-2.5 text-center lg:text-left">
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-950 text-sky-300 text-[10px] font-bold border border-sky-800">
+                <Sparkles className="w-3 h-3 text-amber-400" />
+                <span>Piawaian Mutlak Kesihatan Rumah</span>
+              </div>
+
+              <h3 className="text-lg sm:text-2xl font-black text-white leading-tight">
+                Jaminan Kualiti Air & Udara Tanpa Kompromi
+              </h3>
+
+              <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                Diuji lebih 1 juta kali di Pusat R&D terbesar di dunia sebelum dipasang di rumah anda. Dilengkapi pensijilan Halal JAKIM rasmi, standard WQA antarabangsa, serta khidmat Cody sanitasi berjadual.
+              </p>
+
+              <div className="grid grid-cols-2 gap-2 pt-1 text-[11px] text-slate-300">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>100% Halal JAKIM</span>
                 </div>
-                <div className="space-y-1 min-w-0">
-                  <h3 className="text-sm font-bold text-white leading-snug">{item.title}</h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Pusat R&D Terbesar</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Servis Cody Berkala</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Waranti Penuh Percuma</span>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
 
+          </div>
+        </div>
+
+        {/* 8-Card Bento Grid (2 cols on mobile) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4">
+          {REASONS.map((item, idx) => {
+            const IconComponent = item.icon;
+            return (
+              <div 
+                key={idx}
+                className="pro-card p-3 sm:p-5 rounded-2xl bg-[#111726] border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between space-y-1.5 shadow-md"
+              >
+                <div>
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0A0F1D] border border-slate-800 flex items-center justify-center mb-2">
+                    <IconComponent className={`w-4 h-4 ${item.iconColor}`} />
+                  </div>
+
+                  <h3 className="text-xs sm:text-sm font-black text-white leading-snug">
+                    {item.title}
+                  </h3>
+                  
+                  <p className="text-[10px] sm:text-xs text-slate-300 mt-1 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+
+                <div className="pt-1.5 border-t border-slate-800/80 text-[8px] sm:text-[9px] text-slate-500 font-bold uppercase tracking-wider">
+                  Sebab {idx + 1}/8
+                </div>
+              </div>
+            );
+          })}
         </div>
 
       </div>
 
-      {/* Poster Zoom Modal */}
-      {isPosterOpen && (
+      {/* 8 Sebab Fullscreen Zoom Modal */}
+      {isInfographicZoomed && (
         <div 
-          onClick={() => setIsPosterOpen(false)}
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 cursor-pointer"
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
+          onClick={() => setIsInfographicZoomed(false)}
         >
-          <div className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center">
+          <div className="relative max-w-lg w-full flex flex-col items-center">
             <button
-              onClick={() => setIsPosterOpen(false)}
-              className="absolute -top-12 right-0 text-white bg-slate-800 hover:bg-slate-700 p-2 rounded-full border border-slate-600 transition-colors"
+              type="button"
+              onClick={() => setIsInfographicZoomed(false)}
+              className="absolute -top-10 right-0 p-1.5 rounded-full bg-slate-800 text-white hover:bg-slate-700 transition-colors"
+              aria-label="Tutup"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
             <img 
-              src="/images/8-sebab-pilih-coway.png" 
-              alt="8 Sebab Kenapa Anda Perlu Pilih Coway (Paparan Penuh)" 
-              className="max-h-[85vh] max-w-full object-contain rounded-2xl border border-slate-800 shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
+              src="/images/8-sebab-pilih-coway.webp" 
+              alt="8 Sebab Utama Memilih Coway Malaysia - Paparan Penuh" 
+              className="max-h-[80vh] w-auto object-contain rounded-2xl border border-slate-800 shadow-2xl"
             />
           </div>
         </div>
       )}
+
     </section>
   );
 };
