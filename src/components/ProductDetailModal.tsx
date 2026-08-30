@@ -3,259 +3,369 @@
 import React, { useState } from 'react';
 import { Product } from '@/types/product';
 import { siteConfig } from '@/data/siteConfig';
-import { getProductWhatsAppUrl, getProductEmallUrl } from '@/lib/whatsapp';
+import { getProductWhatsAppUrl } from '@/lib/whatsapp';
+import { getDailyEstimate } from '@/lib/pricing';
+import { useDialog } from '@/hooks/useDialog';
+import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
 import { 
   X, 
-  Check, 
-  MessageCircle, 
-  ShoppingCart, 
+  ShoppingBag, 
+  Droplet, 
   ShieldCheck, 
-  Wrench, 
-  BadgeCheck,
-  ExternalLink,
-  Flame,
-  Info
+  CheckCircle2, 
+  Maximize2,
+  Calendar,
+  Layers,
+  Sparkles,
+  Zap,
+  Gauge,
+  Award,
+  Users
 } from 'lucide-react';
 
 interface ProductDetailModalProps {
-  product: Product;
-  initialColor?: string;
+  product: Product | null;
+  isOpen: boolean;
   onClose: () => void;
+  onOpenLightbox?: (product: Product, initialColor?: string) => void;
 }
 
-export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ 
-  product, 
-  initialColor, 
-  onClose 
+export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
+  product,
+  isOpen,
+  onClose,
+  onOpenLightbox
 }) => {
-  const getInitialIndex = () => {
-    if (!initialColor || !product.colorVariants) return 0;
-    const idx = product.colorVariants.findIndex(c => c.name === initialColor);
-    return idx >= 0 ? idx : 0;
-  };
+  const [selectedColorIdx, setSelectedColorIdx] = useState<number>(0);
+  const dialogRef = useDialog(isOpen && Boolean(product), onClose);
 
-  const [selectedColorIdx, setSelectedColorIdx] = useState<number>(getInitialIndex());
+  if (!isOpen || !product) return null;
 
-  const emallLink = getProductEmallUrl(product.emallUrl);
-
-  const activeImage = product.colorVariants && product.colorVariants.length > 0 
-    ? product.colorVariants[selectedColorIdx].image 
+  const activeImage = (product.colorVariants && product.colorVariants.length > 0)
+    ? product.colorVariants[selectedColorIdx].image
     : product.image;
 
-  const activeColorName = product.colorVariants && product.colorVariants.length > 0
+  const activeColorName = (product.colorVariants && product.colorVariants.length > 0)
     ? product.colorVariants[selectedColorIdx].name
     : undefined;
 
-  const regPrice = Math.round(parseFloat(product.regularMonthly.replace(/[^0-9.]/g, ''))) || 0;
-  const promoPrice = parseInt(product.promoMonthly) || 0;
-  const savings = Math.max(0, regPrice - promoPrice);
+  const dailyEstimate = getDailyEstimate(product.regularMonthly);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
-      <div className="pro-card p-6 sm:p-8 bg-slate-900 border border-slate-800 w-full sm:max-w-2xl rounded-t-3xl sm:rounded-2xl max-h-[92vh] overflow-y-auto relative shadow-2xl animate-in slide-in-from-bottom duration-200">
+    <div
+      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto"
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    >
+      
+      {/* Modal Container */}
+      <div
+        ref={dialogRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="product-detail-title"
+        className="relative w-full max-w-4xl bg-[#0D1322] border border-slate-800 rounded-3xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col animate-in zoom-in-95 duration-200 text-white"
+      >
         
-        {/* Close Button */}
-        <button 
-          onClick={onClose}
-          className="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-full bg-slate-850 border border-slate-750 transition-colors z-10"
-        >
-          <X className="w-5 h-5" />
-        </button>
-
-        {/* Header Badge */}
-        <div className="flex items-center gap-2 mb-3">
-          <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-950 text-sky-400 border border-sky-800">
-            {product.badge}
-          </span>
-          <span className="text-xs font-mono text-slate-400 font-bold">{product.code}</span>
-        </div>
-
-        {/* Title */}
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-white">{product.name}</h2>
-        <p className="text-sm text-slate-300 mt-1 leading-relaxed">{product.description}</p>
-
-        {/* Product Image Stage */}
-        <div className="h-48 sm:h-64 bg-slate-950 rounded-2xl flex items-center justify-center my-4 p-4 border border-slate-800 relative">
-          <img 
-            src={activeImage} 
-            alt={`${product.name} ${activeColorName || ''}`} 
-            className="max-h-full max-w-full object-contain drop-shadow-2xl transition-all duration-300"
-          />
-          {activeColorName && (
-            <div className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-slate-900/90 border border-slate-750 text-xs font-medium text-slate-300">
-              Pilihan Warna: <strong className="text-white">{activeColorName}</strong>
-            </div>
-          )}
-        </div>
-
-        {/* Color Switcher */}
-        {product.colorVariants && product.colorVariants.length > 0 && (
-          <div className="mb-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">
-              Pilihan Warna Rasmi Coway:
+        {/* Header Bar */}
+        <div className="px-5 sm:px-6 py-3.5 sm:py-4 border-b border-slate-850 flex items-center justify-between bg-[#080C16] shrink-0">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-sky-950 text-sky-300 border border-sky-800">
+              {product.badge || product.filterType || 'Coway Model'}
             </span>
-            <div className="flex flex-wrap gap-2">
-              {product.colorVariants.map((variant, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSelectedColorIdx(idx)}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
-                    selectedColorIdx === idx
-                      ? 'bg-slate-800 border-sky-500 text-white ring-1 ring-sky-500'
-                      : 'bg-slate-850 border-slate-750 text-slate-400 hover:text-white'
-                  }`}
-                >
-                  <span 
-                    className="w-3.5 h-3.5 rounded-full border border-slate-600 shadow-sm"
-                    style={{ backgroundColor: variant.colorHex }}
-                  />
-                  <span>{variant.name}</span>
-                  {selectedColorIdx === idx && <Check className="w-3.5 h-3.5 text-sky-400" />}
-                </button>
-              ))}
-            </div>
+            <span className="text-xs sm:text-sm font-mono font-bold text-slate-400">{product.code}</span>
           </div>
-        )}
 
-        {/* Price Matrix Breakdown */}
-        <div className="my-4 p-4 rounded-xl bg-slate-850 border border-slate-800 space-y-3">
+          <button
+            type="button"
+            onClick={onClose}
+            className="p-1.5 sm:p-2 rounded-full bg-slate-850 hover:bg-slate-800 text-slate-300 hover:text-white transition-colors"
+            aria-label="Tutup Paparan"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Scrollable Body Content */}
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-5 sm:space-y-6">
           
-          {/* Promo Highlight */}
-          <div className="p-3 rounded-lg bg-sky-950/60 border border-sky-800/80 flex items-center justify-between">
-            <div>
-              <span className="text-[10px] uppercase font-bold text-sky-400 block">Promosi Bulan 1 - {product.promoMonths}</span>
-              <div className="text-2xl font-black text-sky-400">
-                RM{product.promoMonthly}<span className="text-xs font-normal text-slate-300">/bulan*</span>
+          {/* Top Section: Studio Image Stage & Primary Overview */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-center">
+            
+            {/* Left: Product Studio Presentation Stage */}
+            <div className="md:col-span-5 flex flex-col items-center">
+              <div className="relative w-full h-52 sm:h-64 bg-[#0A0F1D] rounded-2xl p-4 border border-slate-800/80 flex items-center justify-center group overflow-hidden">
+                <img
+                  src={activeImage}
+                  alt={product.name}
+                  className="max-h-48 sm:max-h-56 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                />
+
+                {onOpenLightbox && (
+                  <button
+                    type="button"
+                    onClick={() => onOpenLightbox(product, activeColorName)}
+                    className="absolute top-3 right-3 p-2 rounded-xl bg-slate-850/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-750 transition-all shadow-md"
+                    title="Lihat Gambar Penuh"
+                    aria-label="Lihat Gambar Penuh"
+                  >
+                    <Maximize2 className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+
+              {/* Color Swatches Selector */}
+              {product.colorVariants && product.colorVariants.length > 0 && (
+                <div className="flex items-center gap-3 mt-3 px-2">
+                  <span className="text-xs text-slate-400">
+                    Warna: <strong className="text-white">{activeColorName}</strong>
+                  </span>
+                  <div className="flex items-center gap-2">
+                    {product.colorVariants.map((variant, cIdx) => (
+                      <button
+                        key={cIdx}
+                        type="button"
+                        onClick={() => setSelectedColorIdx(cIdx)}
+                        style={{ backgroundColor: variant.colorHex }}
+                        className={`w-6 h-6 rounded-full border transition-all ${
+                          selectedColorIdx === cIdx 
+                            ? 'ring-2 ring-sky-400 scale-110 border-white' 
+                            : 'border-slate-700 opacity-70 hover:opacity-100'
+                        }`}
+                        title={variant.name}
+                        aria-label={`Warna ${variant.name}`}
+                        aria-pressed={selectedColorIdx === cIdx}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Right: Product Headline & Direct Actions */}
+            <div className="md:col-span-7 space-y-3.5">
+              <div>
+                <h2 id="product-detail-title" className="text-xl sm:text-3xl font-black text-white leading-tight">
+                  {product.name}
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed font-normal">
+                  {product.description}
+                </p>
+              </div>
+
+              {/* Rental Pricing Highlight Box */}
+              <div className="p-4 rounded-2xl bg-[#0A0F1D] border border-slate-800 space-y-2">
+                <div className="flex items-baseline justify-between">
+                  <div>
+                    <span className="text-[10px] sm:text-xs uppercase font-bold text-slate-400 block">Kadar Sewaan Bulanan</span>
+                    <div className="text-2xl sm:text-3xl font-black text-white">
+                      {product.regularMonthly}<span className="text-xs font-normal text-slate-400">/bulan</span>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-[10px] sm:text-xs text-slate-400 block">Kos Anggaran</span>
+                    <div className="text-sm sm:text-base font-extrabold text-sky-400">
+                      ≈ {dailyEstimate} sehari
+                    </div>
+                  </div>
+                </div>
+
+                {product.promoMonths && (
+                  <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs sm:text-sm">
+                    <span className="text-amber-400 font-bold flex items-center gap-1">
+                      <Sparkles className="w-3.5 h-3.5" /> Promosi Pengenalan (Bulan 1–{product.promoMonths}):
+                    </span>
+                    <span className="font-extrabold text-amber-300 text-sm sm:text-base">
+                      RM{product.promoMonthly}/bulan
+                    </span>
+                  </div>
+                )}
+
+                {product.outrightPrice && (
+                  <div className="pt-1.5 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                    <span>Pilihan Beli Terus (Outright):</span>
+                    <strong className="text-slate-200">{product.outrightPrice}</strong>
+                  </div>
+                )}
+              </div>
+
+              {/* Side-by-Side Booking Buttons */}
+              <div className="grid grid-cols-2 gap-2 pt-1">
+                <a
+                  href={product.emallUrl || siteConfig.emallUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-3 px-3 rounded-2xl bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-750 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95 text-center"
+                >
+                  <ShoppingBag className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>Beli di E-Mall</span>
+                </a>
+
+                <a
+                  href={getProductWhatsAppUrl(product.name, product.code)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-3 px-3 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 transition-all active:scale-95 text-center"
+                >
+                  <WhatsAppIcon className="w-4 h-4 fill-white shrink-0" />
+                  <span>WhatsApp Tempah</span>
+                </a>
               </div>
             </div>
-            <span className="px-2 py-1 rounded bg-sky-900 text-sky-200 font-bold text-[10px] uppercase">
-              Jimat RM{savings}/bln
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
-              <span className="text-[10px] text-slate-400 block uppercase font-semibold">Selepas Promo</span>
-              <span className="font-extrabold text-white text-sm">RM{regPrice}/bulan</span>
-              <span className="text-[10px] text-slate-500 block">bulan seterusnya</span>
-            </div>
-
-            <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
-              <span className="text-[10px] text-slate-400 block uppercase font-semibold">Beli Tunai (Outright)</span>
-              <span className="font-extrabold text-sky-300 text-sm">
-                {product.outrightPrice !== 'NA' ? product.outrightPrice : 'Pelan Sewa Sahaja'}
-              </span>
-              <span className="text-[10px] text-slate-500 block">sekali bayar</span>
-            </div>
-          </div>
-
-          {/* Assurances */}
-          <div className="pt-2 border-t border-slate-800 grid grid-cols-3 gap-1 text-center text-[10px] text-emerald-400 font-medium">
-            <div>✓ RM0 Pendaftaran</div>
-            <div>✓ Pasang Percuma</div>
-            <div>✓ Servis Cody Percuma</div>
-          </div>
-        </div>
-
-        {/* Action Buttons: WhatsApp Primary, E-Mall Secondary */}
-        <div className="space-y-2 pt-1">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            
-            {/* WhatsApp Booking (PRIMARY) */}
-            <a 
-              href={getProductWhatsAppUrl(product.name, product.code, activeColorName)}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 order-1"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>WhatsApp Johan — Semak Kelayakan</span>
-            </a>
-
-            {/* Online Purchase on E-Mall (SECONDARY) */}
-            <a 
-              href={emallLink}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="py-3.5 px-4 rounded-xl bg-slate-850 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-750 font-bold text-xs transition-all flex items-center justify-center gap-2 order-2"
-            >
-              <ShoppingCart className="w-4 h-4 text-sky-400" />
-              <span>Beli Terus di E-Mall (Kod: {siteConfig.hpCode})</span>
-              <ExternalLink className="w-3.5 h-3.5 opacity-70" />
-            </a>
 
           </div>
-          <p className="text-[10px] text-slate-500 text-center pt-1">
-            *Kadar sewa bulanan promosi RM20 adalah kadar pengenalan untuk tempoh yang ditetapkan. Tertakluk kepada terma pelan kontrak & kelulusan Coway (M) Sdn Bhd.
-          </p>
-        </div>
 
-        {/* Technical Specs Table */}
-        <div className="mt-6 border-t border-slate-800 pt-5 space-y-4">
-          <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
-            <Info className="w-4 h-4 text-sky-400" />
-            <span>Spesifikasi Teknikal Lengkap</span>
-          </h3>
+          {/* Full Technical Specifications Bento Grid */}
+          <div className="space-y-4 pt-4 border-t border-slate-800">
+            <h3 className="text-sm sm:text-base font-black text-white flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-sky-400" />
+              <span>Spesifikasi Teknikal & Ciri Penuh</span>
+            </h3>
 
-          <div className="rounded-xl border border-slate-800 overflow-hidden text-xs">
-            <table className="w-full text-left">
-              <tbody className="divide-y divide-slate-800 bg-slate-850/50">
-                {product.tankCapacity && (
-                  <tr>
-                    <td className="p-3 font-semibold text-slate-400 bg-slate-900/60 w-1/3">Kapasiti Tangki</td>
-                    <td className="p-3 text-slate-200">
-                      {product.tankCapacity.hot && `Panas: ${product.tankCapacity.hot} | `}
-                      {product.tankCapacity.cold && `Sejuk: ${product.tankCapacity.cold} | `}
-                      {product.tankCapacity.ambient && `Suhu Bilik: ${product.tankCapacity.ambient} | `}
-                      <strong>Jumlah: {product.tankCapacity.total}</strong>
-                    </td>
-                  </tr>
-                )}
-                {product.filterType && (
-                  <tr>
-                    <td className="p-3 font-semibold text-slate-400 bg-slate-900/60">Jenis Penapisan</td>
-                    <td className="p-3 text-slate-200">{product.filterType}</td>
-                  </tr>
-                )}
-                {product.dimensions && (
-                  <tr>
-                    <td className="p-3 font-semibold text-slate-400 bg-slate-900/60">Dimensi (L x D x T)</td>
-                    <td className="p-3 text-slate-200">{product.dimensions}</td>
-                  </tr>
-                )}
-                {product.powerConsumption && (
-                  <tr>
-                    <td className="p-3 font-semibold text-slate-400 bg-slate-900/60">Penggunaan Kuasa</td>
-                    <td className="p-3 text-slate-200">{product.powerConsumption}</td>
-                  </tr>
-                )}
-                {product.filtrationStages && (
-                  <tr>
-                    <td className="p-3 font-semibold text-slate-400 bg-slate-900/60">Peringkat Penapis</td>
-                    <td className="p-3 text-slate-200">{product.filtrationStages}</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Key Features List */}
-        {product.keyFeatures && product.keyFeatures.length > 0 && (
-          <div className="mt-5 border-t border-slate-800 pt-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
-              Ciri-Ciri Keutamaan Model Ini:
-            </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
-              {product.keyFeatures.map((feat, idx) => (
-                <div key={idx} className="flex items-center gap-2 p-2 rounded-lg bg-slate-850 border border-slate-800">
-                  <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>{feat}</span>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3 text-xs">
+              
+              {/* Temperature Options */}
+              {product.temperatureOptions && (
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-[#0A0F1D] border border-slate-800">
+                  <div className="flex items-center gap-1.5 text-slate-400 mb-1 text-[11px] font-bold">
+                    <Droplet className="w-3.5 h-3.5 text-sky-400" />
+                    <span>Pilihan Suhu</span>
+                  </div>
+                  <div className="font-extrabold text-white">{product.temperatureOptions}</div>
                 </div>
-              ))}
+              )}
+
+              {/* Tank Capacity */}
+              {product.tankCapacity && (
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-[#0A0F1D] border border-slate-800">
+                  <div className="flex items-center gap-1.5 text-slate-400 mb-1 text-[11px] font-bold">
+                    <Gauge className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Kapasiti Tangki</span>
+                  </div>
+                  <div className="font-extrabold text-white">
+                    {product.tankCapacity.total ? product.tankCapacity.total : 'Kapasiti Tangki Penuh'}
+                  </div>
+                  {product.tankCapacity.hot && (
+                    <div className="text-[10px] text-slate-400 mt-0.5">Panas: {product.tankCapacity.hot} • Sejuk: {product.tankCapacity.cold || '-'}</div>
+                  )}
+                </div>
+              )}
+
+              {/* Coverage Area */}
+              {product.coverageArea && (
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-[#0A0F1D] border border-slate-800">
+                  <div className="flex items-center gap-1.5 text-slate-400 mb-1 text-[11px] font-bold">
+                    <Layers className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Keluasan Liputan</span>
+                  </div>
+                  <div className="font-extrabold text-white">{product.coverageArea}</div>
+                </div>
+              )}
+
+              {/* Service Interval */}
+              {product.serviceInterval && (
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-[#0A0F1D] border border-slate-800">
+                  <div className="flex items-center gap-1.5 text-slate-400 mb-1 text-[11px] font-bold">
+                    <Calendar className="w-3.5 h-3.5 text-indigo-400" />
+                    <span>Servis Cody</span>
+                  </div>
+                  <div className="font-extrabold text-white">{product.serviceInterval}</div>
+                </div>
+              )}
+
+              {/* Filtration Stages */}
+              {product.filtrationStages && (
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-[#0A0F1D] border border-slate-800">
+                  <div className="flex items-center gap-1.5 text-slate-400 mb-1 text-[11px] font-bold">
+                    <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Sistem Penapis</span>
+                  </div>
+                  <div className="font-extrabold text-white">{product.filtrationStages}</div>
+                </div>
+              )}
+
+              {/* Dimensions */}
+              {product.dimensions && (
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-[#0A0F1D] border border-slate-800">
+                  <div className="flex items-center gap-1.5 text-slate-400 mb-1 text-[11px] font-bold">
+                    <Gauge className="w-3.5 h-3.5 text-pink-400" />
+                    <span>Dimensi (L x D x T)</span>
+                  </div>
+                  <div className="font-extrabold text-white">{product.dimensions}</div>
+                </div>
+              )}
+
+              {/* Weight */}
+              {product.weight && (
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-[#0A0F1D] border border-slate-800">
+                  <div className="flex items-center gap-1.5 text-slate-400 mb-1 text-[11px] font-bold">
+                    <Award className="w-3.5 h-3.5 text-purple-400" />
+                    <span>Berat Bersih</span>
+                  </div>
+                  <div className="font-extrabold text-white">{product.weight}</div>
+                </div>
+              )}
+
+              {/* Power Consumption */}
+              {product.powerConsumption && (
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-[#0A0F1D] border border-slate-800">
+                  <div className="flex items-center gap-1.5 text-slate-400 mb-1 text-[11px] font-bold">
+                    <Zap className="w-3.5 h-3.5 text-yellow-400" />
+                    <span>Penggunaan Kuasa</span>
+                  </div>
+                  <div className="font-extrabold text-white">{product.powerConsumption}</div>
+                </div>
+              )}
+
             </div>
+
+            {/* Key Features List */}
+            {product.keyFeatures && product.keyFeatures.length > 0 && (
+              <div className="p-4 rounded-2xl bg-[#0A0F1D] border border-slate-800 space-y-2">
+                <div className="text-xs font-bold text-slate-400">Kelebihan & Ciri Eksklusif:</div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  {product.keyFeatures.map((feature, fIdx) => (
+                    <div key={fIdx} className="flex items-start gap-2 text-slate-200">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Certifications Badges */}
+            {product.certifications && product.certifications.length > 0 && (
+              <div className="pt-2">
+                <div className="text-xs font-bold text-slate-400 mb-2">Pensijilan Rasmi:</div>
+                <div className="flex flex-wrap gap-2">
+                  {product.certifications.map((cert, cIdx) => (
+                    <span key={cIdx} className="px-3 py-1 rounded-xl bg-[#0A0F1D] border border-slate-800 text-slate-200 text-xs font-bold">
+                      ✓ {cert}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
           </div>
-        )}
+
+        </div>
+
+        {/* Modal Footer Bar */}
+        <div className="px-5 sm:px-6 py-3.5 border-t border-slate-850 bg-[#080C16] flex items-center justify-between shrink-0">
+          <div className="text-xs text-slate-400">
+            Perunding Rasmi: <strong className="text-white">{siteConfig.agentName}</strong> (Kod: {siteConfig.hpCode})
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-200 text-xs font-bold transition-colors"
+          >
+            Tutup
+          </button>
+        </div>
 
       </div>
     </div>

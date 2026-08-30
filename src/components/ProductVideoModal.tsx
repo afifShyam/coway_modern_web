@@ -4,10 +4,12 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Product } from '@/types/product';
 import { siteConfig } from '@/data/siteConfig';
 import { getProductWhatsAppUrl, getProductEmallUrl } from '@/lib/whatsapp';
+import { useDialog } from '@/hooks/useDialog';
 import { X, Play, Pause, Volume2, VolumeX, Maximize2, MessageCircle, Video, ShoppingCart, Sparkles } from 'lucide-react';
 
 interface ProductVideoModalProps {
   product: Product | null;
+  isOpen?: boolean;
   onClose: () => void;
 }
 
@@ -38,9 +40,9 @@ export const ProductVideoModal: React.FC<ProductVideoModalProps> = ({ product, o
     }
   }, [product]);
 
+  // Handle Space bar to toggle play/pause
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
       if (e.key === ' ' && videoRef.current) {
         e.preventDefault();
         togglePlay();
@@ -48,7 +50,9 @@ export const ProductVideoModal: React.FC<ProductVideoModalProps> = ({ product, o
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose, isPlaying]);
+  }, [isPlaying]);
+
+  const dialogRef = useDialog(Boolean(product && product.videoUrl), onClose);
 
   if (!product || !product.videoUrl) return null;
 
@@ -114,11 +118,15 @@ export const ProductVideoModal: React.FC<ProductVideoModalProps> = ({ product, o
   return (
     <div 
       className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200"
-      onClick={onClose}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
       <div 
+        ref={dialogRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="video-modal-title"
         className="relative max-w-3xl w-full bg-slate-900 rounded-3xl p-3.5 sm:p-5 border border-slate-800 shadow-2xl overflow-hidden space-y-4"
-        onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
         <div className="flex items-center justify-between px-2 pt-1">
@@ -127,7 +135,7 @@ export const ProductVideoModal: React.FC<ProductVideoModalProps> = ({ product, o
               <Video className="w-4 h-4" />
             </span>
             <div>
-              <h3 className="text-sm sm:text-base font-bold text-white leading-tight">
+              <h3 id="video-modal-title" className="text-sm sm:text-base font-bold text-white leading-tight">
                 {videoTitle}
               </h3>
               <div className="flex items-center gap-2 text-[11px] text-slate-400 font-mono">
@@ -142,6 +150,7 @@ export const ProductVideoModal: React.FC<ProductVideoModalProps> = ({ product, o
             onClick={onClose}
             className="p-2 rounded-full bg-slate-850 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-750 transition-colors"
             title="Tutup (ESC)"
+            aria-label="Tutup"
           >
             <X className="w-5 h-5" />
           </button>
@@ -181,6 +190,7 @@ export const ProductVideoModal: React.FC<ProductVideoModalProps> = ({ product, o
               onClick={toggleMute}
               className="p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-slate-700 backdrop-blur-md transition-colors"
               title={isMuted ? "Buka Audio" : "Bisukan Audio"}
+              aria-label={isMuted ? "Buka Audio" : "Bisukan Audio"}
             >
               {isMuted ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
             </button>
@@ -189,9 +199,11 @@ export const ProductVideoModal: React.FC<ProductVideoModalProps> = ({ product, o
               onClick={handleFullScreen}
               className="p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-slate-700 backdrop-blur-md transition-colors"
               title="Skrin Penuh"
+              aria-label="Skrin Penuh"
             >
               <Maximize2 className="w-4 h-4" />
             </button>
+
           </div>
 
           {/* Bottom Custom Scrub Bar & Controls */}
@@ -216,6 +228,7 @@ export const ProductVideoModal: React.FC<ProductVideoModalProps> = ({ product, o
                 <button 
                   onClick={togglePlay}
                   className="hover:text-white transition-colors"
+                  aria-label={isPlaying ? "Jeda Video" : "Main Video"}
                 >
                   {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
                 </button>
