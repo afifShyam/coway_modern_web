@@ -73,7 +73,7 @@ export const ModelQuizModal: React.FC<ModelQuizModalProps> = ({ isOpen, onClose 
         role="dialog"
         aria-modal="true"
         aria-labelledby="quiz-modal-title"
-        className="pro-card p-6 sm:p-8 bg-[#0D1322] border border-slate-800 max-w-lg w-full rounded-3xl relative shadow-2xl animate-in zoom-in-95 duration-200 text-white"
+        className="pro-card p-6 sm:p-8 bg-[#0D1322] border border-slate-800 max-w-lg w-full rounded-3xl relative shadow-2xl animate-in zoom-in-95 duration-200 text-white focus:outline-none"
       >
         <button 
           type="button"

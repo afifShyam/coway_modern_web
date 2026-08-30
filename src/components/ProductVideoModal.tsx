@@ -126,7 +126,7 @@ export const ProductVideoModal: React.FC<ProductVideoModalProps> = ({ product, o
         role="dialog"
         aria-modal="true"
         aria-labelledby="video-modal-title"
-        className="relative max-w-3xl w-full bg-slate-900 rounded-3xl p-3.5 sm:p-5 border border-slate-800 shadow-2xl overflow-hidden space-y-4"
+        className="relative max-w-3xl w-full bg-slate-900 rounded-3xl p-3.5 sm:p-5 border border-slate-800 shadow-2xl overflow-hidden space-y-4 focus:outline-none"
       >
         {/* Modal Header */}
         <div className="flex items-center justify-between px-2 pt-1">

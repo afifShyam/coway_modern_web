@@ -5,6 +5,7 @@ import { ProductCategory } from '@/types/product';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { CategoryBanners } from '@/components/CategoryBanners';
+import { LifestyleGuide } from '@/components/LifestyleGuide';
 import { ProductCatalog } from '@/components/ProductCatalog';
 import { MobileBottomDock } from '@/components/MobileBottomDock';
 import { MobileQuickNavDrawer } from '@/components/MobileQuickNavDrawer';
@@ -12,8 +13,6 @@ import { ModelQuizModal } from '@/components/ModelQuizModal';
 import { ScrollToTop } from '@/components/ScrollToTop';
 
 interface SiteShellProps {
-  /** Static sections rendered on the server, slotted between the catalog and the footer. */
-  midSections: React.ReactNode;
   belowCatalog: React.ReactNode;
 }
 
@@ -21,10 +20,11 @@ interface SiteShellProps {
  * Owns the only interactive state shared across sections: the quiz modal, the quick-jump
  * drawer, and the catalog category. Everything slotted through props stays a Server Component.
  */
-export const SiteShell: React.FC<SiteShellProps> = ({ midSections, belowCatalog }) => {
+export const SiteShell: React.FC<SiteShellProps> = ({ belowCatalog }) => {
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [category, setCategory] = useState<ProductCategory>('all');
+  const [focusProductId, setFocusProductId] = useState<string | null>(null);
 
   return (
     <>
@@ -39,9 +39,14 @@ export const SiteShell: React.FC<SiteShellProps> = ({ midSections, belowCatalog 
         <CategoryBanners onSelectCategory={setCategory} />
       </div>
 
-      {midSections}
+      <LifestyleGuide onFocusProduct={setFocusProductId} />
 
-      <ProductCatalog category={category} onCategoryChange={setCategory} />
+      <ProductCatalog
+        category={category}
+        onCategoryChange={setCategory}
+        focusProductId={focusProductId}
+        onFocusHandled={() => setFocusProductId(null)}
+      />
 
       {belowCatalog}
 

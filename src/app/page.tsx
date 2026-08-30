@@ -1,6 +1,5 @@
 import React from 'react';
 import { SiteShell } from '@/components/SiteShell';
-import { LifestyleGuide } from '@/components/LifestyleGuide';
 import { GlobalAuthority } from '@/components/GlobalAuthority';
 import { Testimonials } from '@/components/Testimonials';
 import { PromoMatrix } from '@/components/PromoMatrix';
@@ -19,10 +18,6 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#090D16] text-slate-100 selection:bg-sky-500/30 selection:text-white pb-24 sm:pb-12">
       <SiteShell
-        midSections={
-          /* Situation-based entry points: Keluarga, Rumah Sewa, Ais Maker, Resdung */
-          <LifestyleGuide />
-        }
         belowCatalog={
           <>
             <GlobalAuthority />

@@ -64,7 +64,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="product-detail-title"
-        className="relative w-full max-w-4xl bg-[#0D1322] border border-slate-800 rounded-3xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col animate-in zoom-in-95 duration-200 text-white"
+        className="relative w-full max-w-4xl bg-[#0D1322] border border-slate-800 rounded-3xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col animate-in zoom-in-95 duration-200 text-white focus:outline-none"
       >
         
         {/* Header Bar */}

@@ -40,11 +40,16 @@ const CATEGORY_ICONS: Record<ProductCategory, LucideIcon> = {
 interface ProductCatalogProps {
   category: ProductCategory;
   onCategoryChange: (category: ProductCategory) => void;
+  /** Catalog id requested from elsewhere on the page; opens its detail view. */
+  focusProductId?: string | null;
+  onFocusHandled?: () => void;
 }
 
 export const ProductCatalog: React.FC<ProductCatalogProps> = ({
   category: selectedCategory,
-  onCategoryChange
+  onCategoryChange,
+  focusProductId,
+  onFocusHandled
 }) => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [priceFilter, setPriceFilter] = useState<'all' | 'under60' | '60to90' | 'above90'>('all');
@@ -72,6 +77,20 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
   const [activeLightboxProduct, setActiveLightboxProduct] = useState<Product | null>(null);
   const [initialColorForModal, setInitialColorForModal] = useState<string | undefined>(undefined);
   const [activeVideoProduct, setActiveVideoProduct] = useState<Product | null>(null);
+
+  // A recommendation elsewhere on the page (lifestyle guide) asked for a model:
+  // narrow the catalog to its category and open its detail view.
+  useEffect(() => {
+    if (!focusProductId) return;
+    const product = PRODUCTS.find((p) => p.id === focusProductId);
+    if (product) {
+      setSearchQuery('');
+      setPriceFilter('all');
+      onCategoryChange(product.category);
+      setActiveDetailProduct(product);
+    }
+    onFocusHandled?.();
+  }, [focusProductId]);
 
   // Filtered & Sorted Product List
   const filteredProducts = useMemo(() => {

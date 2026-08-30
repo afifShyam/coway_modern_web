@@ -83,7 +83,7 @@ export const ImageLightboxModal: React.FC<ImageLightboxModalProps> = ({
       aria-modal="true"
       aria-labelledby="lightbox-title"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
-      className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-between p-3 sm:p-6 animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-between p-3 sm:p-6 animate-in fade-in duration-200 focus:outline-none"
     >
       
       {/* Top Header Bar */}

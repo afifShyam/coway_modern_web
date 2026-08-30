@@ -62,7 +62,7 @@ export const MobileQuickNavDrawer: React.FC<MobileQuickNavDrawerProps> = ({
         role="dialog"
         aria-modal="true"
         aria-label="Menu Navigasi Pantas"
-        className="fixed inset-y-0 right-0 max-w-xs w-full bg-[#0D1322] border-l border-slate-800 shadow-2xl flex flex-col justify-between text-white animate-in slide-in-from-right duration-300"
+        className="fixed inset-y-0 right-0 max-w-xs w-full bg-[#0D1322] border-l border-slate-800 shadow-2xl flex flex-col justify-between text-white animate-in slide-in-from-right duration-300 focus:outline-none"
       >
         
         {/* Drawer Header */}

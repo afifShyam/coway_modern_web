@@ -1,46 +1,48 @@
+'use client';
+
 import React from 'react';
+import { PRODUCTS } from '@/data/products';
+import { formatRinggit, parsePrice } from '@/lib/pricing';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
+/**
+ * Each situation points at a catalog id; name, code, image and price are read
+ * from that record so this guide can never quote a model the catalog disagrees
+ * with.
+ */
 const SITUATIONS = [
   {
+    productId: 'villaem3',
     title: 'Keluarga 4–6 Orang',
     tag: 'Seisi Keluarga',
-    desc: 'Perlukan air panas untuk susu bayi, air sejuk untuk anak-anak, dan tangki berkapasiti besar.',
-    recommendation: 'Villaem III (CHP-7320L)',
-    price: 'RM74/bulan',
-    image: '/images/products/villaem3.webp',
-    link: '#produk'
+    desc: 'Perlukan air panas untuk susu bayi, air sejuk untuk anak-anak, dan tangki berkapasiti besar.'
   },
   {
+    productId: 'neoplus',
     title: 'Pasangan / Rumah Sewa',
     tag: 'Bajet Mampu Milik',
-    desc: 'Pelan paling jimat dengan fungsi asas air sejuk, panas dan suhu bilik yang sangat praktikal.',
-    recommendation: 'Neo Plus (CHP-264L)',
-    price: 'RM59/bulan',
-    image: '/images/products/neoplus.webp',
-    link: '#produk'
+    desc: 'Pelan paling jimat dengan fungsi asas air sejuk, panas dan suhu bilik yang sangat praktikal.'
   },
   {
+    productId: 'ais',
     title: 'Peminat Minuman Sejuk & Kopi',
     tag: 'Ais Segera',
-    desc: 'Sistem ais batu kristal automatik tanpa perlu dulang ais manual atau ruang beku peti sejuk.',
-    recommendation: 'Coway AIS (CHPI-7520L)',
-    price: 'RM120/bulan',
-    image: '/images/products/ais.webp',
-    link: '#produk'
+    desc: 'Sistem ais batu kristal automatik tanpa perlu dulang ais manual atau ruang beku peti sejuk.'
   },
   {
+    productId: 'storm2',
     title: 'Alahan, Resdung & Anak Kecil',
     tag: 'Udara Bersih',
-    desc: 'Penapisan HEPA H13 menyingkirkan hama habuk, bulu haiwan, bakteria dan bau hapak.',
-    recommendation: 'Storm II (AP-1523D)',
-    price: 'RM60/bulan',
-    image: '/images/products/lombok3.webp',
-    link: '#produk'
+    desc: 'Penapisan HEPA H13 menyingkirkan hama habuk, bulu haiwan, bakteria dan bau hapak.'
   }
-];
+] as const;
 
-export const LifestyleGuide: React.FC = () => {
+interface LifestyleGuideProps {
+  /** Opens the catalog detail view for the recommended model. */
+  onFocusProduct: (productId: string) => void;
+}
+
+export const LifestyleGuide: React.FC<LifestyleGuideProps> = ({ onFocusProduct }) => {
   return (
     <section className="py-8 sm:py-14 bg-[#0D1322] border-b border-slate-850">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
@@ -61,51 +63,62 @@ export const LifestyleGuide: React.FC = () => {
 
         {/* 4 Cards in 2x2 Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
-          {SITUATIONS.map((item, idx) => (
-            <div
-              key={idx}
-              className="pro-card p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#111726] border border-slate-800 hover:border-slate-700 flex flex-col justify-between space-y-3 shadow-lg"
-            >
-              <div>
-                <span className="px-2 py-0.2 rounded-md bg-sky-950 text-sky-300 border border-sky-800 text-[9px] sm:text-[10px] font-bold">
-                  {item.tag}
-                </span>
+          {SITUATIONS.map((item) => {
+            const product = PRODUCTS.find((p) => p.id === item.productId);
+            if (!product) return null;
 
-                <h3 className="text-sm sm:text-base font-black text-white mt-1.5">
-                  {item.title}
-                </h3>
+            return (
+              <div
+                key={item.productId}
+                className="pro-card p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#111726] border border-slate-800 hover:border-slate-700 flex flex-col justify-between space-y-3 shadow-lg"
+              >
+                <div>
+                  <span className="px-2 py-0.2 rounded-md bg-sky-950 text-sky-300 border border-sky-800 text-[9px] sm:text-[10px] font-bold">
+                    {item.tag}
+                  </span>
 
-                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
+                  <h3 className="text-sm sm:text-base font-black text-white mt-1.5">
+                    {item.title}
+                  </h3>
 
-              {/* Recommendation Callout */}
-              <div className="pt-2.5 border-t border-slate-800 space-y-2">
-                <div className="flex items-center gap-2.5 p-2 rounded-xl bg-[#0A0F1D] border border-slate-800">
-                  <div className="w-10 h-10 shrink-0 flex items-center justify-center p-1 bg-[#111726] rounded-lg">
-                    <img 
-                      src={item.image} 
-                      alt={item.recommendation} 
-                      className="max-h-8 max-w-8 object-contain"
-                    />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="text-[11px] font-extrabold text-white truncate">{item.recommendation}</div>
-                    <div className="text-[10px] text-amber-300 font-black">{item.price}</div>
-                  </div>
+                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
 
-                <a
-                  href={item.link}
-                  className="w-full py-2 px-3 rounded-xl bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-750 text-[11px] font-bold flex items-center justify-center gap-1 transition-all"
-                >
-                  <span>Lihat Model Ini</span>
-                  <ArrowRight className="w-3 h-3 text-sky-400" />
-                </a>
+                {/* Recommendation Callout */}
+                <div className="pt-2.5 border-t border-slate-800 space-y-2">
+                  <div className="flex items-center gap-2.5 p-2 rounded-xl bg-[#0A0F1D] border border-slate-800">
+                    <div className="w-10 h-10 shrink-0 flex items-center justify-center p-1 bg-[#111726] rounded-lg">
+                      <img 
+                        src={product.image} 
+                        alt={product.name} 
+                        className="max-h-8 max-w-8 object-contain"
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[11px] font-extrabold text-white truncate">
+                        {product.name} ({product.code})
+                      </div>
+                      <div className="text-[10px] text-amber-300 font-black">
+                        {formatRinggit(parsePrice(product.regularMonthly))}/bulan
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => onFocusProduct(product.id)}
+                    aria-label={`Lihat spesifikasi penuh ${product.name}`}
+                    className="w-full py-2 px-3 rounded-xl bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-750 text-[11px] font-bold flex items-center justify-center gap-1 transition-all active:scale-95"
+                  >
+                    <span>Lihat Spek {product.name}</span>
+                    <ArrowRight className="w-3 h-3 text-sky-400" />
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>
