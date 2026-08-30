@@ -745,7 +745,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'aircond-p15',
     category: 'aircond',
-    name: 'Penyaman Udara F-Series 1.5HP',
+    name: 'Penyaman Udara P-Series 1.5HP',
     code: 'CAC12-ST02',
     description: 'Penyaman udara inverter berkuasa 1.5HP dengan hembusan angin lembut, servis setiap 6 bulan dan jaminan waranti 5 tahun.',
     tags: ['1.5 Kuasa Kuda', 'Inverter 5-Bintang', 'Waranti 5 Tahun', 'Servis 6 Bulan'],

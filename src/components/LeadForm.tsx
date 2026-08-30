@@ -161,7 +161,7 @@ export const LeadForm: React.FC = () => {
                       <option value="Kerusi Urut BEREX Senno Plus">Kerusi Urut SENNO Plus (RM185/bln)</option>
                       <option value="Peti Sejuk 2-Pintu 715L">Peti Sejuk 2-Pintu (RM84/bln)</option>
                       <option value="Peti Sejuk 4-Pintu 551L">Peti Sejuk 4-Pintu (RM99/bln)</option>
-                      <option value="Penyaman Udara Inverter F-Series">Penyaman Udara (Dari RM100/bln)</option>
+                      <option value="Penyaman Udara Inverter (F-Series / P-Series)">Penyaman Udara (Dari RM100/bln)</option>
                     </select>
                   </div>
 
