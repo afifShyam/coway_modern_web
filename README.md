@@ -1,6 +1,6 @@
 # Coway Modern Web Application (Next.js + TypeScript + Tailwind CSS)
 
-High-performance, modern web application designed for Coway Health Planner **Johan Adam (HP Code: 745394)**. Built with modern architecture, type safety, modular components, and optimized for high-conversion e-commerce.
+High-performance, modern web application designed for Coway Health Planner **Johan Adam (HP Code: 748757)**. Built with modern architecture, type safety, modular components, and optimized for high-conversion e-commerce.
 
 ## 🚀 Tech Stack & Architecture
 
@@ -33,8 +33,7 @@ coway_modern_web/
 │   │   ├── LeadForm.tsx        # Instant inquiry form with WhatsApp integration
 │   │   ├── Footer.tsx          # Footer with certification badges & links
 │   │   ├── MobileBottomDock.tsx# Bottom quick-action bar for mobile
-│   │   ├── ModelQuizModal.tsx  # Interactive Model Finder Quiz modal
-│   │   └── SocialProofToast.tsx# Live dynamic purchase notifications
+│   │   └── ModelQuizModal.tsx  # Interactive Model Finder Quiz modal
 │   ├── data/                   # Centralized datasets
 │   │   ├── products.ts         # 25+ product models with pricing & images
 │   │   ├── promos.ts           # Promotion tiers and duration matrices
