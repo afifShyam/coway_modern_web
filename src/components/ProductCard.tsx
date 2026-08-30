@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { Product } from '@/types/product';
-import { siteConfig } from '@/data/siteConfig';
 import { getProductWhatsAppUrl, getProductEmallUrl } from '@/lib/whatsapp';
 import { getDailyEstimate } from '@/lib/pricing';
 import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
