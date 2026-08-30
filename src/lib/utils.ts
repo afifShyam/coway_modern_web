@@ -1,7 +1,9 @@
-export function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat('en-MY', {
-    style: 'currency',
-    currency: 'MYR',
-    minimumFractionDigits: 0,
-  }).format(amount);
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+/**
+ * Combines and merges Tailwind CSS class names without conflicting rules.
+ */
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }
