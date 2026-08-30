@@ -2,255 +2,334 @@
 
 import React, { useState } from 'react';
 import { Product } from '@/types/product';
-import { getProductWhatsAppUrl, getProductEmallUrl } from '@/lib/whatsapp';
-import { MessageCircle, Info, ZoomIn, Video, ExternalLink } from 'lucide-react';
+import { siteConfig } from '@/data/siteConfig';
+import { getProductWhatsAppUrl } from '@/lib/whatsapp';
+import { getDailyEstimate } from '@/lib/pricing';
+import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
+import { 
+  ShoppingBag, 
+  Maximize2, 
+  Video, 
+  Info, 
+  Droplet,
+  CheckCircle2
+} from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
   viewMode?: 'grid' | 'list';
-  onSelectDetail: (product: Product, selectedColor?: string) => void;
-  onOpenLightbox: (product: Product, selectedColor?: string) => void;
+  onOpenDetail: (product: Product) => void;
+  onOpenLightbox: (product: Product, initialColor?: string) => void;
   onOpenVideo?: (product: Product) => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ 
-  product, 
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
   viewMode = 'grid',
-  onSelectDetail,
+  onOpenDetail,
   onOpenLightbox,
   onOpenVideo
 }) => {
   const [selectedColorIdx, setSelectedColorIdx] = useState<number>(0);
-  
-  const hasVideo = Boolean(product.videoUrl || product.youtubeId);
 
-  const activeImage = product.colorVariants && product.colorVariants.length > 0 
-    ? product.colorVariants[selectedColorIdx].image 
+  const activeImage = (product.colorVariants && product.colorVariants.length > 0)
+    ? product.colorVariants[selectedColorIdx].image
     : product.image;
 
-  const activeColorName = product.colorVariants && product.colorVariants.length > 0
+  const activeColorName = (product.colorVariants && product.colorVariants.length > 0)
     ? product.colorVariants[selectedColorIdx].name
     : undefined;
 
-  const emallLink = getProductEmallUrl(product.emallUrl);
-  const regularNum = parseInt(product.regularMonthly.replace(/[^0-9.]/g, '')) || 0;
-  const dailyCost = (regularNum / 30).toFixed(2);
+  const dailyEstimate = getDailyEstimate(product.regularMonthly);
 
-  // List View Mode (Compact horizontal row)
+  // =========================================================================
+  // --- LIST VIEW (RESPONSIVE EXECUTIVE DARK CARD) ---
+  // =========================================================================
   if (viewMode === 'list') {
     return (
-      <div className="pro-card p-3 sm:p-4 bg-slate-850 border border-slate-800 flex items-center justify-between gap-3 hover:border-slate-700 rounded-2xl transition-all">
-        <div className="flex items-center gap-3 flex-1 min-w-0">
+      <div className="pro-card p-3 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#111726] border border-slate-800 hover:border-slate-700 transition-all shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 group">
+        
+        {/* Left Side: Thumbnail & Title Info */}
+        <div className="flex items-start sm:items-center gap-3 sm:gap-4 min-w-0 flex-1">
           
-          {/* Clickable Image Box */}
+          {/* Thumbnail Image Box */}
           <div 
-            onClick={() => onOpenLightbox(product, activeColorName)}
-            className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-900 rounded-xl p-1.5 flex items-center justify-center shrink-0 border border-slate-800 cursor-pointer relative group overflow-hidden"
-            title="Klik untuk lihat gambar penuh"
+            onClick={() => onOpenDetail(product)}
+            className="w-18 h-18 sm:w-24 sm:h-24 shrink-0 bg-[#0A0F1D] rounded-xl sm:rounded-2xl p-1.5 sm:p-2 border border-slate-800/80 flex items-center justify-center cursor-pointer relative group/img overflow-hidden"
           >
-            <img 
-              src={activeImage} 
-              alt={product.name} 
-              className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
+            <img
+              src={activeImage}
+              alt={product.name}
+              className="max-h-14 max-w-14 sm:max-h-20 sm:max-w-20 w-auto h-auto object-contain transition-transform duration-300 group-hover/img:scale-105"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity rounded-xl">
-              <ZoomIn className="w-4 h-4 text-white" />
-            </div>
+            {(product.videoUrl || product.youtubeId) && (
+              <div className="absolute bottom-1 right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-rose-600 text-white flex items-center justify-center shadow-xs">
+                <Video className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+              </div>
+            )}
           </div>
-          
-          <div 
-            onClick={() => onSelectDetail(product, activeColorName)}
-            className="min-w-0 cursor-pointer"
-          >
-            <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-slate-900 text-sky-400 border border-slate-800">
-                {product.badge}
-              </span>
-              <span className="text-[10px] font-mono text-slate-400 font-bold">{product.code}</span>
-              {activeColorName && (
-                <span className="text-[9px] text-slate-400 font-medium hidden sm:inline">
-                  • {activeColorName}
+
+          {/* Product Details & Tags */}
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap mb-0.5 sm:mb-1">
+              <span className="text-[10px] sm:text-xs font-mono font-bold text-slate-400">{product.code}</span>
+              {product.badge && (
+                <span className="px-1.5 sm:px-2 py-0.2 rounded-md bg-sky-950 text-sky-300 border border-sky-800 text-[9px] sm:text-[10px] font-bold">
+                  {product.badge}
                 </span>
               )}
             </div>
-            <h3 className="text-sm sm:text-base font-bold text-white truncate mt-0.5">{product.name}</h3>
-            
-            {/* Price line */}
-            <div className="flex items-center gap-2 mt-0.5 text-xs">
-              <span className="font-extrabold text-white">
-                RM{regularNum}/bln <span className="text-[10px] text-slate-400 font-medium">(≈ RM{dailyCost}/hari)</span>
-              </span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-950/80 text-amber-300 border border-amber-800/60 font-semibold hidden sm:inline">
-                Promo {product.promoMonths} bln: RM{product.promoMonthly}/bln
-              </span>
+
+            <h3 
+              onClick={() => onOpenDetail(product)}
+              className="text-sm sm:text-lg font-black text-white hover:text-sky-400 cursor-pointer transition-colors leading-snug break-words"
+            >
+              {product.name}
+            </h3>
+
+            {/* Quick Specs Snippet */}
+            <div className="flex items-center gap-1.5 sm:gap-2 mt-1 sm:mt-1.5 text-xs text-slate-400 flex-wrap">
+              {product.temperatureOptions && (
+                <span className="inline-flex items-center gap-1 bg-[#0A0F1D] px-1.5 sm:px-2 py-0.5 rounded-lg border border-slate-800 text-slate-300 text-[10px] sm:text-[11px]">
+                  <Droplet className="w-3 h-3 text-sky-400" />
+                  <span className="truncate max-w-[140px] sm:max-w-none">{product.temperatureOptions}</span>
+                </span>
+              )}
+              {product.tankCapacity?.total && (
+                <span className="bg-[#0A0F1D] px-1.5 sm:px-2 py-0.5 rounded-lg border border-slate-800 text-slate-300 text-[10px] sm:text-[11px]">
+                  Tangki: <strong>{product.tankCapacity.total}</strong>
+                </span>
+              )}
+              {product.coverageArea && (
+                <span className="bg-[#0A0F1D] px-1.5 sm:px-2 py-0.5 rounded-lg border border-slate-800 text-slate-300 text-[10px] sm:text-[11px]">
+                  Liputan: <strong>{product.coverageArea}</strong>
+                </span>
+              )}
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          {/* Video Button */}
-          {hasVideo && onOpenVideo && (
-            <button 
-              onClick={() => onOpenVideo(product)}
-              className="p-2 rounded-xl bg-sky-950/60 hover:bg-sky-900 text-sky-400 border border-sky-800/80 text-xs transition-colors"
-              title="Tonton Video Demo"
-            >
-              <Video className="w-4 h-4" />
-            </button>
-          )}
-
-          <button 
-            onClick={() => onSelectDetail(product, activeColorName)}
-            className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs transition-colors"
-            title="Lihat Maklumat & Spesifikasi"
-          >
-            <Info className="w-4 h-4" />
-          </button>
+        {/* Right Side: Price & Action Buttons */}
+        <div className="flex flex-row md:flex-col items-center md:items-end justify-between sm:justify-end gap-2 sm:gap-3 pt-2.5 sm:pt-0 border-t md:border-t-0 border-slate-800 shrink-0">
           
-          {/* Personalized WhatsApp Button */}
-          <a 
-            href={getProductWhatsAppUrl(product.name, product.code, activeColorName)}
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm whitespace-nowrap"
-          >
-            <MessageCircle className="w-3.5 h-3.5 fill-white text-emerald-600" />
-            <span>Tanya Johan</span>
-          </a>
+          {/* Price Block */}
+          <div className="text-left md:text-right">
+            <div className="flex items-baseline gap-1">
+              <span className="text-base sm:text-2xl font-black text-white">{product.regularMonthly}</span>
+              <span className="text-[10px] sm:text-xs text-slate-400 font-medium">/bln</span>
+            </div>
+            <div className="text-[10px] sm:text-[11px] text-slate-400">
+              ≈ <strong className="text-sky-400">{dailyEstimate}</strong>/hari
+            </div>
+          </div>
+
+          {/* Action Buttons Group */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <button
+              type="button"
+              onClick={() => onOpenDetail(product)}
+              aria-label={`Lihat spesifikasi penuh ${product.name}`}
+              className="py-2 px-2 sm:px-3 rounded-xl bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-750 text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1 shadow-xs transition-all active:scale-95 whitespace-nowrap"
+            >
+              <Info className="w-3 h-3 text-sky-400" />
+              <span className="hidden xs:inline">Spek</span>
+            </button>
+
+            <a
+              href={product.emallUrl || siteConfig.emallUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-2 px-2.5 sm:px-3 rounded-xl bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-750 text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1 shadow-xs transition-all active:scale-95 whitespace-nowrap"
+            >
+              <ShoppingBag className="w-3 h-3 text-amber-400" />
+              <span>Online</span>
+            </a>
+
+            <a
+              href={getProductWhatsAppUrl(product.name, product.code)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-2 px-3 sm:px-4 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-black text-[10px] sm:text-xs flex items-center justify-center gap-1.5 shadow-xs transition-all active:scale-95 whitespace-nowrap"
+            >
+              <WhatsAppIcon className="w-3.5 h-3.5 fill-white" />
+              <span>Wasap</span>
+            </a>
+          </div>
+
         </div>
+
       </div>
     );
   }
 
-  // Grid View Mode
+  // =========================================================================
+  // --- GRID VIEW (MOBILE-FIRST 2-COLUMN SHOWROOM CARD) ---
+  // =========================================================================
   return (
-    <div className="pro-card p-3.5 sm:p-4 flex flex-col justify-between relative bg-slate-850 border border-slate-800 hover:border-slate-750 rounded-2xl transition-all shadow-md">
+    <div className="pro-card p-3 sm:p-5 rounded-2xl sm:rounded-3xl bg-[#111726] border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between group shadow-xl relative">
+      
       <div>
-        {/* Top Badge & Code */}
-        <div className="flex items-center justify-between mb-1.5 gap-1">
-          <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-slate-900 text-sky-400 border border-slate-800 truncate max-w-[95px] sm:max-w-none">
-            {product.badge}
-          </span>
-          <span className="text-[10px] font-mono text-slate-400 font-bold">{product.code}</span>
+        {/* Top Header: Badge & Product Code */}
+        <div className="flex items-center justify-between gap-1 mb-2">
+          {product.badge ? (
+            <span className="px-1.5 sm:px-2.5 py-0.2 sm:py-0.5 rounded-md sm:rounded-full text-[8px] sm:text-[10px] font-bold bg-sky-950 text-sky-300 border border-sky-800 truncate">
+              {product.badge}
+            </span>
+          ) : (
+            <span className="text-[8px] sm:text-[10px] uppercase font-bold tracking-wider text-slate-400 truncate">
+              {product.filterType || 'Coway'}
+            </span>
+          )}
+          <span className="text-[9px] sm:text-xs font-mono font-bold text-slate-400 truncate">{product.code}</span>
         </div>
-        
-        {/* Clickable Product Image */}
+
+        {/* Product Image Stage (Studio Presentation) */}
         <div 
-          onClick={() => onOpenLightbox(product, activeColorName)}
-          className="h-28 sm:h-38 flex items-center justify-center my-2 p-1.5 sm:p-2 bg-slate-900/80 rounded-xl border border-slate-800/80 cursor-pointer group relative overflow-hidden"
-          title="Klik untuk besarkan gambar"
+          onClick={() => onOpenDetail(product)}
+          className="relative h-28 sm:h-44 bg-[#0A0F1D] rounded-xl sm:rounded-2xl p-2 sm:p-3 border border-slate-800/80 mb-2 sm:mb-3.5 overflow-hidden flex items-center justify-center cursor-pointer group/img"
         >
-          <img 
-            src={activeImage} 
-            alt={product.name} 
-            className="max-h-24 sm:max-h-32 max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
+          <img
+            src={activeImage}
+            alt={product.name}
+            className="h-full max-h-24 sm:max-h-36 w-auto object-contain transition-transform duration-300 group-hover/img:scale-105"
             loading="lazy"
           />
-          
-          {/* Zoom Overlay Indicator */}
-          <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-slate-900/80 text-slate-300 opacity-70 group-hover:opacity-100 group-hover:text-sky-400 transition-all border border-slate-800">
-            <ZoomIn className="w-3.5 h-3.5" />
-          </div>
-        </div>
 
-        {/* Color Swatches */}
-        {product.colorVariants && product.colorVariants.length > 1 && (
-          <div className="flex items-center justify-center gap-1.5 my-1.5">
-            {product.colorVariants.map((c, i) => (
-              <button
-                key={i}
-                onClick={() => setSelectedColorIdx(i)}
-                title={c.name}
-                style={{ backgroundColor: c.colorHex }}
-                className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full border transition-all ${
-                  selectedColorIdx === i 
-                    ? 'ring-2 ring-sky-400 scale-125 border-white shadow-sm' 
-                    : 'border-slate-600 opacity-60 hover:opacity-100'
-                }`}
-              />
-            ))}
-            <span className="text-[9px] text-slate-400 font-medium ml-1 truncate max-w-[70px] hidden xs:inline">
-              {activeColorName}
-            </span>
-          </div>
-        )}
-
-        {/* Product Title & Description */}
-        <div onClick={() => onSelectDetail(product, activeColorName)} className="cursor-pointer">
-          <h3 className="text-sm sm:text-base font-extrabold text-white truncate">{product.name}</h3>
-          <p className="text-[11px] text-slate-400 mt-0.5 line-clamp-1 leading-relaxed">
-            {product.description}
-          </p>
-        </div>
-      </div>
-
-      {/* ================= HONEST PRICING BLOCK ================= */}
-      <div className="mt-2.5 pt-2.5 border-t border-slate-800 space-y-2">
-        
-        {/* Main Monthly Anchor + Daily Framing */}
-        <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-          <div className="flex items-baseline justify-between">
-            <div>
-              <span className="text-sm sm:text-base font-black text-white">
-                RM{regularNum}
-              </span>
-              <span className="text-[10px] text-slate-400 font-normal">/bulan</span>
-            </div>
-            <span className="text-[10px] text-slate-400 font-medium">
-              ≈ <strong className="text-sky-300">RM{dailyCost}</strong>/hari
-            </span>
-          </div>
-
-          <div className="flex items-center justify-between text-[10px] border-t border-slate-850 pt-1">
-            <span className="text-amber-400 font-bold">Promo {product.promoMonths} bln awal:</span>
-            <span className="font-extrabold text-amber-300">RM{product.promoMonthly}/bln</span>
-          </div>
-        </div>
-
-        {/* Quick Tools Row (Info & Video & E-Mall) */}
-        <div className="flex items-center gap-1 text-[11px]">
-          <button 
-            onClick={() => onSelectDetail(product, activeColorName)}
-            className="flex-1 py-1.5 px-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 font-medium transition-colors flex items-center justify-center gap-1"
-            title="Lihat Spesifikasi Lengkap"
-          >
-            <Info className="w-3 h-3 text-sky-400" />
-            <span>Spesifikasi</span>
-          </button>
-
-          {hasVideo && onOpenVideo && (
-            <button 
-              onClick={() => onOpenVideo(product)}
-              className="py-1.5 px-2 rounded-lg bg-sky-950/70 hover:bg-sky-900 text-sky-300 border border-sky-800/80 font-medium transition-colors flex items-center gap-1"
-              title="Tonton Video Demo"
+          {/* Video Play Trigger */}
+          {(product.videoUrl || product.youtubeId) && onOpenVideo && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenVideo(product);
+              }}
+              className="absolute top-1.5 left-1.5 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-rose-600 hover:bg-rose-500 text-white text-[8px] sm:text-[10px] font-extrabold flex items-center gap-1 shadow-md transition-all active:scale-95"
             >
-              <Video className="w-3 h-3 text-sky-400" />
+              <Video className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
               <span>Video</span>
             </button>
           )}
 
+          {/* Quick Zoom Action */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenLightbox(product, activeColorName);
+            }}
+            className="absolute top-1.5 right-1.5 p-1 sm:p-1.5 rounded-lg sm:rounded-xl bg-slate-850/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-750 transition-all opacity-0 group-hover:opacity-100 hidden sm:block"
+            title="Lihat Gambar Penuh"
+            aria-label={`Lihat gambar penuh ${product.name}`}
+          >
+            <Maximize2 className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        {/* Color Swatches (if available) */}
+        {product.colorVariants && product.colorVariants.length > 0 && (
+          <div className="flex items-center justify-between mb-2 px-0.5">
+            <span className="text-[9px] sm:text-[11px] text-slate-400 truncate max-w-[90px] sm:max-w-none">
+              <strong className="text-slate-200">{activeColorName}</strong>
+            </span>
+            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+              {product.colorVariants.map((variant, cIdx) => (
+                <button
+                  key={cIdx}
+                  type="button"
+                  onClick={() => setSelectedColorIdx(cIdx)}
+                  style={{ backgroundColor: variant.colorHex }}
+                  aria-label={`Warna ${variant.name}`}
+                  aria-pressed={selectedColorIdx === cIdx}
+                  className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full border transition-all ${
+                    selectedColorIdx === cIdx 
+                      ? 'ring-2 ring-sky-400 scale-110 border-white' 
+                      : 'border-slate-700 opacity-70 hover:opacity-100'
+                  }`}
+                  title={variant.name}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Product Title */}
+        <h3 
+          onClick={() => onOpenDetail(product)}
+          className="text-xs sm:text-base font-black text-white hover:text-sky-400 cursor-pointer transition-colors leading-snug truncate"
+        >
+          {product.name}
+        </h3>
+
+        {/* Desktop-only key feature snippet */}
+        {product.keyFeatures && (
+          <div className="mt-2.5 pt-2 border-t border-slate-800 space-y-1 hidden sm:block">
+            {product.keyFeatures.slice(0, 2).map((feat, fIdx) => (
+              <div key={fIdx} className="text-[11px] text-slate-300 flex items-start gap-1.5 leading-tight">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                <span className="line-clamp-1">{feat}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Pricing & Footer Actions */}
+      <div className="mt-2.5 sm:mt-4 pt-2 sm:pt-3 border-t border-slate-800 space-y-2">
+        
+        {/* Pricing Block */}
+        <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-[#0A0F1D] border border-slate-800">
+          <div className="flex items-baseline justify-between">
+            <div className="text-sm sm:text-xl font-black text-white">
+              {product.regularMonthly}<span className="text-[9px] sm:text-xs font-normal text-slate-400">/bln</span>
+            </div>
+            <span className="text-[9px] sm:text-xs text-slate-400 font-medium hidden xs:inline">
+              ≈ <strong className="text-sky-400">{dailyEstimate}</strong>/hari
+            </span>
+          </div>
+
+          {product.promoMonths && (
+            <div className="mt-1 pt-1 border-t border-slate-800 flex items-center justify-between text-[9px] sm:text-xs">
+              <span className="text-amber-400 font-bold">Promo:</span>
+              <span className="font-extrabold text-amber-300">RM{product.promoMonthly}/bln</span>
+            </div>
+          )}
+        </div>
+
+        {/* Action Buttons Grid */}
+        <div className="grid grid-cols-2 gap-1">
           <a
-            href={emallLink}
+            href={product.emallUrl || siteConfig.emallUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 transition-colors"
-            title="Lihat di Coway E-Mall Rasmi"
+            className="py-2 px-1 sm:px-2 rounded-xl bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-750 text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1 shadow-xs transition-all active:scale-95 whitespace-nowrap"
+            title="Beli Terus di Coway E-Mall Rasmi"
           >
-            <ExternalLink className="w-3 h-3" />
+            <ShoppingBag className="w-3 h-3 text-amber-400 shrink-0" />
+            <span>Online</span>
+          </a>
+
+          <a
+            href={getProductWhatsAppUrl(product.name, product.code)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="py-2 px-1 sm:px-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-black text-[10px] sm:text-xs flex items-center justify-center gap-1 shadow-xs transition-all active:scale-95 whitespace-nowrap"
+            title="Hubungi Johan di WhatsApp"
+          >
+            <WhatsAppIcon className="w-3 h-3 fill-white shrink-0" />
+            <span>Wasap</span>
           </a>
         </div>
 
-        {/* Primary Action Button (Tanya Johan WhatsApp) */}
-        <a 
-          href={getProductWhatsAppUrl(product.name, product.code, activeColorName)}
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="w-full py-2.5 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md"
+        {/* View Full Specs Link */}
+        <button
+          type="button"
+          onClick={() => onOpenDetail(product)}
+          className="w-full py-1 text-[10px] sm:text-[11px] text-slate-400 hover:text-sky-400 font-bold flex items-center justify-center gap-1 transition-colors"
         >
-          <MessageCircle className="w-4 h-4 fill-white text-emerald-600" />
-          <span>Tanya Johan</span>
-        </a>
+          <Info className="w-3 h-3" />
+          <span>Lihat Spek Penuh</span>
+        </button>
 
       </div>
 
