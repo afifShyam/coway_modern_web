@@ -13,7 +13,7 @@ export interface PromoTier {
 
 export const PROMO_TIERS: PromoTier[] = [
   {
-    category: 'Penapis Air & Penulen Udara',
+    category: 'Penapis Air & Penapis Udara',
     icon: '💧',
     plans: [
       { contract: 'Kontrak 3+2 Tahun', promoDuration: '3 Bulan Pertama', promoPrice: 'RM20' },
@@ -28,8 +28,7 @@ export const PROMO_TIERS: PromoTier[] = [
     icon: '🛏️',
     plans: [
       { contract: 'Kontrak 5+0 Tahun', promoDuration: '3 Bulan Pertama', promoPrice: 'RM20' },
-      { contract: 'Kontrak 7+0 Tahun', promoDuration: '5 Bulan Pertama', promoPrice: 'RM20' },
-      { contract: 'Kontrak 9+0 Tahun', promoDuration: '7 Bulan Pertama', promoPrice: 'RM20', highlight: true },
+      { contract: 'Kontrak 7+0 Tahun', promoDuration: '5 Bulan Pertama', promoPrice: 'RM20', highlight: true },
     ],
     ctaText: 'Tuntut Promosi Kerusi Urut & Tilam',
     ctaParam: 'promosi%20kerusi%20urut%20Coway%20RM20'

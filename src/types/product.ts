@@ -40,6 +40,12 @@ export interface Product {
   colorVariants?: ColorVariant[];
   tankCapacity?: TankCapacity;
   dimensions?: string;
+  weight?: string;
+  coverageArea?: string;
+  temperatureOptions?: string;
+  serviceInterval?: string;
+  certifications?: string[];
+  idealFor?: string;
   powerConsumption?: string;
   filtrationStages?: string;
   keyFeatures?: string[];
@@ -52,6 +58,4 @@ export interface Product {
 export interface CategoryTab {
   id: ProductCategory;
   label: string;
-  icon: string;
-  count: number;
 }
