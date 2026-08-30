@@ -1,4 +1,4 @@
-import { Product, CategoryTab } from '@/types/product';
+import { Product, CategoryTab, ProductCategory } from '@/types/product';
 import { siteConfig } from '@/data/siteConfig';
 
 export const CATEGORY_TABS: CategoryTab[] = [
@@ -861,3 +861,16 @@ export const PRODUCTS: Product[] = [
     ]
   }
 ];
+
+/**
+ * Model counts derived from the catalog itself, so every badge and CTA that
+ * promises "N model" can never drift from what the filter actually shows.
+ */
+export const CATEGORY_COUNTS: Record<ProductCategory, number> = PRODUCTS.reduce(
+  (acc, product) => {
+    acc[product.category] += 1;
+    return acc;
+  },
+  Object.fromEntries(CATEGORY_TABS.map((tab) => [tab.id, 0])) as Record<ProductCategory, number>
+);
+CATEGORY_COUNTS.all = PRODUCTS.length;

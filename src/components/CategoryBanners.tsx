@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { ProductCategory } from '@/types/product';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { CATEGORY_COUNTS } from '@/data/products';
+import { Sparkles, ArrowRight, Armchair, Bed } from 'lucide-react';
 
 interface CategoryBannersProps {
   onSelectCategory?: (category: ProductCategory) => void;
@@ -38,7 +39,7 @@ export const CategoryBanners: React.FC<CategoryBannersProps> = ({ onSelectCatego
                   Kategori Utama
                 </span>
                 <span className="px-2 py-0.2 rounded-full text-[9px] sm:text-[10px] font-bold bg-sky-950 text-sky-300 border border-sky-800">
-                  10 Model
+                  {CATEGORY_COUNTS.water} Model
                 </span>
               </div>
               <h3 className="text-lg sm:text-xl font-extrabold text-white group-hover:text-sky-400 transition-colors">
@@ -62,7 +63,7 @@ export const CategoryBanners: React.FC<CategoryBannersProps> = ({ onSelectCatego
                 onClick={() => onSelectCategory && onSelectCategory('water')}
                 className="w-full py-2.5 px-4 rounded-xl bg-slate-850 hover:bg-slate-800 border border-slate-750 text-slate-200 hover:text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all"
               >
-                <span>Lihat 10 Model Penapis Air</span>
+                <span>Lihat {CATEGORY_COUNTS.water} Model Penapis Air</span>
                 <ArrowRight className="w-3.5 h-3.5 text-sky-400" />
               </a>
             </div>
@@ -76,7 +77,7 @@ export const CategoryBanners: React.FC<CategoryBannersProps> = ({ onSelectCatego
                   Udara Bersih & Segar
                 </span>
                 <span className="px-2 py-0.2 rounded-full text-[9px] sm:text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800">
-                  5 Model
+                  {CATEGORY_COUNTS.air} Model
                 </span>
               </div>
               <h3 className="text-lg sm:text-xl font-extrabold text-white group-hover:text-emerald-400 transition-colors">
@@ -100,13 +101,15 @@ export const CategoryBanners: React.FC<CategoryBannersProps> = ({ onSelectCatego
                 onClick={() => onSelectCategory && onSelectCategory('air')}
                 className="w-full py-2.5 px-4 rounded-xl bg-slate-850 hover:bg-slate-800 border border-slate-750 text-slate-200 hover:text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all"
               >
-                <span>Lihat 5 Model Penapis Udara</span>
+                <span>Lihat {CATEGORY_COUNTS.air} Model Penapis Udara</span>
                 <ArrowRight className="w-3.5 h-3.5 text-emerald-400" />
               </a>
             </div>
           </div>
 
-          {/* 3. Kerusi Urut & Tilam Hotel (BEREX) */}
+          {/* 3. Kerusi Urut & Tilam Hotel (BEREX) — two categories, so two
+              explicit destinations: a single CTA silently landed on the two
+              mattresses and made the pictured massage chair look missing. */}
           <div className="pro-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#111726] border border-slate-800 hover:border-amber-500/50 flex flex-col justify-between group shadow-xl">
             <div>
               <div className="flex items-center justify-between mb-2">
@@ -133,14 +136,26 @@ export const CategoryBanners: React.FC<CategoryBannersProps> = ({ onSelectCatego
                   className="h-full max-h-28 object-contain group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <a
-                href="#produk"
-                onClick={() => onSelectCategory && onSelectCategory('berex')}
-                className="w-full py-2.5 px-4 rounded-xl bg-slate-850 hover:bg-slate-800 border border-slate-750 text-slate-200 hover:text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all"
-              >
-                <span>Lihat Kerusi Urut & Tilam</span>
-                <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
-              </a>
+
+              <div className="grid grid-cols-2 gap-2">
+                <a
+                  href="#produk"
+                  onClick={() => onSelectCategory && onSelectCategory('relax')}
+                  className="py-2.5 px-3 rounded-xl bg-slate-850 hover:bg-slate-800 border border-slate-750 text-slate-200 hover:text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all"
+                >
+                  <Armchair className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <span>{CATEGORY_COUNTS.relax} Kerusi Urut</span>
+                </a>
+
+                <a
+                  href="#produk"
+                  onClick={() => onSelectCategory && onSelectCategory('berex')}
+                  className="py-2.5 px-3 rounded-xl bg-slate-850 hover:bg-slate-800 border border-slate-750 text-slate-200 hover:text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all"
+                >
+                  <Bed className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <span>{CATEGORY_COUNTS.berex} Tilam Hotel</span>
+                </a>
+              </div>
             </div>
           </div>
 

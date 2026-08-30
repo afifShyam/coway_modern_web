@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import { PRODUCTS, CATEGORY_TABS } from '@/data/products';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { PRODUCTS, CATEGORY_TABS, CATEGORY_COUNTS } from '@/data/products';
 import { ProductCategory, Product } from '@/types/product';
 import { ProductCard } from '@/components/ProductCard';
 import { ProductDetailModal } from '@/components/ProductDetailModal';
@@ -36,17 +36,6 @@ const CATEGORY_ICONS: Record<ProductCategory, LucideIcon> = {
   bathroom: Bath
 };
 
-/** Model counts are derived from the catalog itself so they can never drift from it. */
-const CATEGORY_COUNTS: Record<ProductCategory, number> = PRODUCTS.reduce(
-  (acc, product) => {
-    acc[product.category] += 1;
-    return acc;
-  },
-  Object.fromEntries(
-    CATEGORY_TABS.map((tab) => [tab.id, 0])
-  ) as Record<ProductCategory, number>
-);
-CATEGORY_COUNTS.all = PRODUCTS.length;
 
 interface ProductCatalogProps {
   category: ProductCategory;
@@ -64,6 +53,19 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
   
   // Mobile Pagination / View Limiter to avoid scrolling fatigue
   const [visibleCount, setVisibleCount] = useState<number>(8);
+
+  // The tab strip scrolls horizontally, so a category chosen elsewhere (banners,
+  // quick-nav drawer) can land off-screen and leave the catalog looking unfiltered.
+  const tabStripRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const strip = tabStripRef.current;
+    const active = strip?.querySelector<HTMLElement>('[data-active="true"]');
+    if (!strip || !active) return;
+    strip.scrollTo({
+      left: Math.max(0, active.offsetLeft - (strip.clientWidth - active.clientWidth) / 2),
+      behavior: 'smooth'
+    });
+  }, [selectedCategory]);
 
   // Modal States
   const [activeDetailProduct, setActiveDetailProduct] = useState<Product | null>(null);
@@ -172,7 +174,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
         </div>
 
         {/* Category Filter Tabs (Horizontal Scrollable on Mobile) */}
-        <div className="mb-4 sm:mb-6 overflow-x-auto scrollbar-none -mx-3 px-3 sm:mx-0 sm:px-0">
+        <div ref={tabStripRef} className="mb-4 sm:mb-6 overflow-x-auto scrollbar-none -mx-3 px-3 sm:mx-0 sm:px-0">
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 pb-1">
             {CATEGORY_TABS.map((tab) => {
               const isSelected = selectedCategory === tab.id;
@@ -183,6 +185,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   type="button"
                   onClick={() => handleCategorySelect(tab.id)}
                   aria-pressed={isSelected}
+                  data-active={isSelected}
                   className={`py-2 px-3 sm:px-4 rounded-xl sm:rounded-2xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5 shadow-xs active:scale-95 ${
                     isSelected
                       ? 'bg-sky-600 text-white shadow-md'
