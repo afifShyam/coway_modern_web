@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import { siteConfig } from '@/data/siteConfig';
-import { getWhatsAppUrl, getProductWhatsAppUrl } from '@/lib/whatsapp';
+import { getWhatsAppUrl, getProductWhatsAppUrl, getProductEmallUrl } from '@/lib/whatsapp';
 import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
 import { PRODUCTS } from '@/data/products';
 import { getDailyEstimate, parsePrice, formatRinggit } from '@/lib/pricing';
@@ -379,11 +379,11 @@ export const Hero: React.FC<HeroProps> = () => {
                   {/* Side-by-Side Action Buttons */}
                   <div className="grid grid-cols-2 gap-1 pt-0.5">
                     <a
-                      href={siteConfig.emallUrl}
+                      href={getProductEmallUrl(product.emallUrl)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="py-1.5 px-1 rounded-xl bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-750 text-[10px] font-bold flex items-center justify-center gap-1 shadow-xs transition-all active:scale-95 whitespace-nowrap"
-                      title="Beli Terus di Coway E-Mall Rasmi"
+                      title={`Beli ${product.name} di Coway E-Mall Rasmi`}
                     >
                       <ShoppingBag className="w-3 h-3 text-amber-400 shrink-0" />
                       <span>Online</span>

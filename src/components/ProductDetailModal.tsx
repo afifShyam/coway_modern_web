@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Product } from '@/types/product';
 import { siteConfig } from '@/data/siteConfig';
-import { getProductWhatsAppUrl } from '@/lib/whatsapp';
+import { getProductWhatsAppUrl, getProductEmallUrl } from '@/lib/whatsapp';
 import { getDailyEstimate } from '@/lib/pricing';
 import { useDialog } from '@/hooks/useDialog';
 import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
@@ -192,7 +192,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               {/* Side-by-Side Booking Buttons */}
               <div className="grid grid-cols-2 gap-2 pt-1">
                 <a
-                  href={product.emallUrl || siteConfig.emallUrl}
+                  href={getProductEmallUrl(product.emallUrl)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="py-3 px-3 rounded-2xl bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-750 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95 text-center"

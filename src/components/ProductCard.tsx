@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Product } from '@/types/product';
 import { siteConfig } from '@/data/siteConfig';
-import { getProductWhatsAppUrl } from '@/lib/whatsapp';
+import { getProductWhatsAppUrl, getProductEmallUrl } from '@/lib/whatsapp';
 import { getDailyEstimate } from '@/lib/pricing';
 import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
 import { 
@@ -137,7 +137,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </button>
 
             <a
-              href={product.emallUrl || siteConfig.emallUrl}
+              href={getProductEmallUrl(product.emallUrl)}
               target="_blank"
               rel="noopener noreferrer"
               className="py-2 px-2.5 sm:px-3 rounded-xl bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-750 text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1 shadow-xs transition-all active:scale-95 whitespace-nowrap"
@@ -299,7 +299,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* Action Buttons Grid */}
         <div className="grid grid-cols-2 gap-1">
           <a
-            href={product.emallUrl || siteConfig.emallUrl}
+            href={getProductEmallUrl(product.emallUrl)}
             target="_blank"
             rel="noopener noreferrer"
             className="py-2 px-1 sm:px-2 rounded-xl bg-slate-850 hover:bg-slate-800 text-slate-200 border border-slate-750 text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1 shadow-xs transition-all active:scale-95 whitespace-nowrap"
