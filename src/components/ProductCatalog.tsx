@@ -40,9 +40,13 @@ const CATEGORY_ICONS: Record<ProductCategory, LucideIcon> = {
 interface ProductCatalogProps {
   category: ProductCategory;
   onCategoryChange: (category: ProductCategory) => void;
-  /** Catalog id requested from elsewhere on the page; opens its detail view. */
-  focusProductId?: string | null;
-  onFocusHandled?: () => void;
+  /**
+   * Catalog id requested from elsewhere on the page; opens its detail view.
+   * The parent MUST clear it via onFocusHandled, otherwise re-requesting the
+   * same model never changes the value and the second request is ignored.
+   */
+  focusProductId: string | null;
+  onFocusHandled: () => void;
 }
 
 export const ProductCatalog: React.FC<ProductCatalogProps> = ({
@@ -79,9 +83,21 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
   const [activeVideoProduct, setActiveVideoProduct] = useState<Product | null>(null);
 
   // A recommendation elsewhere on the page (lifestyle guide) asked for a model:
-  // narrow the catalog to its category and open its detail view.
+  // narrow the catalog to its category and open its detail view. The ref makes
+  // the effect idempotent per request, so a repeated delivery of the same id
+  // cannot reopen the modal; it resets on clear so tapping the same card twice
+  // still works. onCategoryChange/onFocusHandled are deliberately absent from
+  // the deps: they are inline closures with a fresh identity every render, and
+  // including them would re-fire this effect in a loop.
+  const handledFocusRef = useRef<string | null>(null);
   useEffect(() => {
-    if (!focusProductId) return;
+    if (!focusProductId) {
+      handledFocusRef.current = null;
+      return;
+    }
+    if (handledFocusRef.current === focusProductId) return;
+    handledFocusRef.current = focusProductId;
+
     const product = PRODUCTS.find((p) => p.id === focusProductId);
     if (product) {
       setSearchQuery('');
@@ -89,7 +105,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
       onCategoryChange(product.category);
       setActiveDetailProduct(product);
     }
-    onFocusHandled?.();
+    onFocusHandled();
   }, [focusProductId]);
 
   // Filtered & Sorted Product List
